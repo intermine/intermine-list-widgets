@@ -42,7 +42,7 @@ class type.isJSON extends type.Root
     constructor: (@actual) ->
         @result = true
         try
-            JSON?.parse actual
+            JSON.parse actual
         catch e
             @result = false
 

@@ -83,7 +83,7 @@ class ChartView extends Backbone.View
                                     quickPq =   resultsPq.replace("%series", translate @response, column)
                         
                         # Turn into JSON object?
-                        resultsPq = JSON?.parse resultsPq ; quickPq = JSON?.parse quickPq
+                        resultsPq = JSON.parse resultsPq ; quickPq = JSON.parse quickPq
 
                         # Remove any previous.
                         if @barView? then @barView.close()

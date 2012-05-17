@@ -130,7 +130,7 @@ class EnrichmentView extends Backbone.View
             rowIdentifiers.push model.get 'identifier'
 
         # PathQuery for matches values.
-        pq = JSON?.parse @response['pathQueryForMatches']
+        pq = JSON.parse @response['pathQueryForMatches']
         pq.where.push
             "path":   @response.pathConstraint
             "op":     "ONE OF"

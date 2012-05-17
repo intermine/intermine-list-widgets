@@ -27,7 +27,7 @@ class EnrichmentPopoverView extends Backbone.View
             "style":            @style or "width:300px;margin-left:-300px"
 
         # PathQuery for matches values.
-        pq = JSON?.parse @response['pathQueryForMatches']
+        pq = JSON.parse @response['pathQueryForMatches']
         pq.where.push
             "path":   @response.pathConstraint
             "op":     "ONE OF"
@@ -46,7 +46,11 @@ class EnrichmentPopoverView extends Backbone.View
                     # Filter out duplicates by saving to a dict.
                     values.push value unless value in values
 
+                # Actually render the values through a template.
                 @renderValues values
+
+                # Now that the size has changed, adjust the popover.
+                @adjustPopover()
         )
 
         @
@@ -58,8 +62,26 @@ class EnrichmentPopoverView extends Backbone.View
             'type':        @response.type
             'valuesLimit': @valuesLimit
 
+    # Adjust popover position so that it is not cutoff if too close to the edge.
+    adjustPopover: =>
+        window.setTimeout (=>
+            table =         $(@el).closest('div.wrapper') # wrapper for table height
+            popover =       $(@el).find('.popover') # popover
+            parent =        popover.closest('td.matches') # table cell
+            return unless parent.length # not in a table context
+            widget =        parent.closest('div.inner')
+            header =        widget.find('div.header') # header before content
+            head =          widget.find('div.content div.head') # table head
+
+            # Adjust the negative position from top to see the popover.
+            diff =          ((parent.position().top - header.height() + head.height()) + 30 + popover.outerHeight()) - table.height()
+            if diff > 0 then popover.css 'top', -diff
+        ), 0
+
     # Toggle me on/off.
-    toggle: => $(@el).toggle()
+    toggle: =>
+        $(@el).toggle()
+        @adjustPopover()
 
     # Build PathQuery for resultsAction and listAction.
     getPq: =>
