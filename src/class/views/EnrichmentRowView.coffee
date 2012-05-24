@@ -24,7 +24,10 @@ class EnrichmentRowView extends Backbone.View
         @model.toggleSelected()
 
         # Have we got popover view to inject?
-        if @popoverView? then $(@el).find('td.matches a.count').after @popoverView.el
+        if @popoverView?
+            $(@el).find('td.matches a.count').after @popoverView.el
+            # Re-delegate all events.
+            @popoverView.delegateEvents()
 
     # Show matches.
     toggleMatchesAction: =>
