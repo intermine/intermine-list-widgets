@@ -5,7 +5,8 @@ class TableRowView extends Backbone.View
     tagName: "tr"
 
     events:
-        "click td.check input": "selectAction"
+        "click td.check input":     "selectAction"
+        "click td.matches a.count": "toggleMatchesAction"
 
     initialize: (o) ->
         @[k] = v for k, v of o
@@ -20,3 +21,20 @@ class TableRowView extends Backbone.View
 
     # Toggle the `selected` attr of this row object.
     selectAction: => @model.toggleSelected()
+
+    # Show matches.
+    toggleMatchesAction: =>
+        if not @popoverView?
+            $(@el).find('td.matches a.count').after (@popoverView = new TablePopoverView(
+                "identifiers":    [ @model.get "identifier" ]
+                "description":    @model.get("descriptions").join(', ')
+                "template":       @template
+                "matchCb":        @matchCb
+                "resultsCb":      @resultsCb
+                "listCb":         @listCb
+                "pathQuery":      @response.pathQuery
+                "pathConstraint": @response.pathConstraint
+                "imService":      @imService
+                "type":           @response.type
+            )).el
+        else @popoverView.toggle()
