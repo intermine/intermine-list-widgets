@@ -20,7 +20,11 @@ class TableRowView extends Backbone.View
         @
 
     # Toggle the `selected` attr of this row object.
-    selectAction: => @model.toggleSelected()
+    selectAction: =>        
+        @model.toggleSelected()
+
+        # Have we got popover view to inject?
+        if @popoverView? then $(@el).find('td.matches a.count').after @popoverView.el
 
     # Show matches.
     toggleMatchesAction: =>
