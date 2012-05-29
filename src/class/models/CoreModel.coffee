@@ -48,6 +48,17 @@ class EnrichmentRow extends CoreModel
         "selected":     type.isBoolean
         "externalLink": type.isString
 
+    # Override default JSON serialization to process the p value.
+    toJSON: ->
+        # Default `_.clone`.
+        attributes = _.clone @attributes
+        # Switch to exp notation or show fixed.
+        if attributes['p-value'] < 0.001
+            attributes['p-value'] = attributes['p-value'].toExponential 6
+        else
+            attributes['p-value'] = attributes['p-value'].toFixed 6
+        attributes
+
 
 #### Enrichment Rows Collection
 class EnrichmentResults extends CoreCollection
