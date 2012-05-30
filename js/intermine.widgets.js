@@ -357,8 +357,7 @@ factory = function(Backbone) {
       opts.name = this.name || this.id;
       switch (type) {
         case "AJAXTransport":
-          opts.title = opts.statusText;
-          opts.text = opts.responseText;
+          opts.title = "AJAX Request Failed";
           break;
         case "JSONResponse":
           opts.title = "Invalid JSON Response";
@@ -490,8 +489,11 @@ factory = function(Backbone) {
             });
           }
         },
-        error: function(err) {
-          return _this.error(err, "AJAXTransport");
+        error: function(request, status, error) {
+          clearTimeout(timeout);
+          return _this.error({
+            'text': "" + _this.service + "list/chart"
+          }, "AJAXTransport");
         }
       });
     };
@@ -600,8 +602,11 @@ factory = function(Backbone) {
             });
           }
         },
-        error: function(err) {
-          return _this.error(err, "AJAXTransport");
+        error: function(request, status, error) {
+          clearTimeout(timeout);
+          return _this.error({
+            'text': "" + _this.service + "list/table"
+          }, "AJAXTransport");
         }
       });
     };
@@ -736,8 +741,11 @@ factory = function(Backbone) {
             });
           }
         },
-        error: function(err) {
-          return _this.error(err, "AJAXTransport");
+        error: function(request, status, error) {
+          clearTimeout(timeout);
+          return _this.error({
+            'text': "" + _this.service + "list/enrichment"
+          }, "AJAXTransport");
         }
       });
     };
@@ -2088,7 +2096,7 @@ Widgets = (function() {
 
   Widgets.name = 'Widgets';
 
-  Widgets.prototype.VERSION = '1.1.8';
+  Widgets.prototype.VERSION = '1.1.10';
 
   Widgets.prototype.wait = true;
 

@@ -6,7 +6,7 @@ $ = window.jQuery or window.Zepto
 # Public interface for the various InterMine Widgets.
 class Widgets
 
-    VERSION: '1.1.9'
+    VERSION: '1.1.10'
 
     wait:    true
 
