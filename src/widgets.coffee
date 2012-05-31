@@ -6,7 +6,7 @@ $ = window.jQuery or window.Zepto
 # Public interface for the various InterMine Widgets.
 class Widgets
 
-    VERSION: '1.2.0'
+    VERSION: '1.2.1'
 
     wait:    true
 
@@ -35,13 +35,7 @@ class Widgets
         path:  "https://www.google.com/jsapi"
         type:  "js"
     ,
-        path:  "http://cdn.intermine.org/js/intermine/imjs/latest/model.js"
-        type:  "js"
-    ,
-        path:  "http://cdn.intermine.org/js/intermine/imjs/latest/query.js"
-        type:  "js"
-    ,
-        path:  "http://cdn.intermine.org/js/intermine/imjs/latest/service.js"
+        path:  "http://cdn.intermine.org/js/intermine/imjs/latest/imjs.js"
         type:  "js"
     ]
 
