@@ -6,28 +6,28 @@ $ = window.jQuery or window.Zepto
 # Public interface for the various InterMine Widgets.
 class Widgets
 
-    VERSION: '1.1.11'
+    VERSION: '1.2.0'
 
     wait:    true
 
     # JavaScript libraries as resources. Will be loaded if not present already.
     resources: [
         name:  'JSON'
-        path:  'http://cdnjs.cloudflare.com/ajax/libs/json3/3.2.2/json3.min.js'
+        path:  'http://cdn.intermine.org/js/json3/3.2.2/json3.min.js'
         type:  'js'
     ,
         name:  "jQuery"
-        path:  "http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"
+        path:  "http://cdn.intermine.org/js/jquery/1.7.2/jquery.min.js"
         type:  "js"
         wait:  true
     ,
         name:  "_"
-        path:  "http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js"
+        path:  "http://cdn.intermine.org/js/underscore.js/1.3.3/underscore-min.js"
         type:  "js"
         wait:  true
     ,
         name:  "Backbone"
-        path:  "http://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.2/backbone-min.js"
+        path:  "http://cdn.intermine.org/js/backbone.js/0.9.2/backbone-min.js"
         type:  "js"
         wait:  true
     ,
@@ -35,13 +35,13 @@ class Widgets
         path:  "https://www.google.com/jsapi"
         type:  "js"
     ,
-        path:  "https://raw.github.com/alexkalderimis/imjs/master/src/model.js"
+        path:  "http://cdn.intermine.org/js/intermine/imjs/latest/model.js"
         type:  "js"
     ,
-        path:  "https://raw.github.com/alexkalderimis/imjs/master/src/query.js"
+        path:  "http://cdn.intermine.org/js/intermine/imjs/latest/query.js"
         type:  "js"
     ,
-        path:  "https://raw.github.com/alexkalderimis/imjs/master/src/service.js"
+        path:  "http://cdn.intermine.org/js/intermine/imjs/latest/service.js"
         type:  "js"
     ]
 
