@@ -12,3 +12,4 @@
         <%= @possible[0] %>
     <% end %>
 </div>
+<div style="clear:both"></div>
