@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>Widgets (Mynd) API Documentation</title>
+  <link rel='stylesheet' href='../assets/codo.css' type='text/css'>
+  <script src='../assets/codo.js'></script>
+  <script src='../assets/search_data.js'></script>
+</head>
+  <body>
+    <div id='base' data-path='../'></div>
+<div id='header'>
+  <div id='menu'>
+    <a href='../class_index.html' title='Index'>Index</a>
+    &raquo;
+    <span class='title'>EnrichmentView</span>
+    <nav>
+      <ul>
+        <li class='noframes'>
+          (<a class='noframes' href='#'>no frames</a>)
+        </li>
+      </ul>
+    </nav>
+    <div id='search'>
+      <a id='class_list_link' href='../class_list.html'>Classes</a>
+      <a id='mixin_list_link' href='../mixin_list.html'>Mixins</a>
+      <a id='method_list_link' href='../method_list.html'>Methods</a>
+      <a id='file_list_link' href='../file_list.html'>Files</a>
+    </div>
+  </div>
+  <iframe id='search_frame'></iframe>
+  <div id='fuzzySearch'>
+    <input type='text'>
+    <ol></ol>
+  </div>
+  <div id='help'>
+    <p>
+      Quickly fuzzy find classes, mixins, methods, file:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-T</span>
+        Open fuzzy finder dialog
+      </li>
+    </ul>
+    <p>
+      In frame mode you can toggle the list naviation frame on the left side:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-L</span>
+        Toggle list view
+      </li>
+    </ul>
+    <p>
+      You can focus a list in frame mode or toggle a tab in frameless mode:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-C</span>
+        Class list
+      </li>
+      <li>
+        <span>Ctrl-I</span>
+        Mixin list
+      </li>
+      <li>
+        <span>Ctrl-M</span>
+        Method list
+      </li>
+      <li>
+        <span>Ctrl-F</span>
+        File list
+      </li>
+    </ul>
+    <p>
+      You can focus and blur the search input:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-S</span>
+        Focus search input
+      </li>
+      <li>
+        <span>Esc</span>
+        Blur search input
+      </li>
+    </ul>
+    <p>
+      In frameless mode you can close the list tab:
+    </p>
+    <ul>
+      <li>
+        <span>Esc</span>
+        Close list tab
+      </li>
+    </ul>
+  </div>
+</div>
+    <div id='content'>
+      <h1>
+        Class:
+        EnrichmentView
+      </h1>
+      <table class='box'>
+        <tr>
+          <td>Defined in:</td>
+          <td>src/class/views/EnrichmentView.coffee</td>
+        </tr>
+        <tr>
+          <td>Inherits:</td>
+          <td>
+            <a href="../classes/Backbone/View.html">Backbone.View</a>
+          </td>
+        </tr>
+      </table>
+      <h2>Instance Method Summary</h2>
+      <ul class='summary'>
+  <li>
+    <span class='signature'>
+      <a href='#initialize-instance'>
+        - (void) <strong>initialize</strong>(o)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#render-instance'>
+        - (void) <strong>render</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#renderToolbar-instance'>
+        - (void) <strong>renderToolbar</strong>()
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+      Render the actions toolbar based on how many collection model rows are selected.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#renderTable-instance'>
+        - (void) <strong>renderTable</strong>()
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+      Render the table of results using Document Fragment to prevent browser reflows.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#renderTableBody-instance'>
+        - (void) <strong>renderTableBody</strong>(table)
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+      Render `<tbody>` from a @collection (use to achieve single re-flow of row Views).
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#formAction-instance'>
+        - (void) <strong>formAction</strong>(e)
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+      On form select option change, set the new options and re-render.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#selectAllAction-instance'>
+        - (void) <strong>selectAllAction</strong>()
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+      (De-)select all.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#exportAction-instance'>
+        - (void) <strong>exportAction</strong>(e)
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+      Export selected rows into a file.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#viewAction-instance'>
+        - (void) <strong>viewAction</strong>()
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+      Selecting table rows and clicking on **View** should create an EnrichmentMatches collection of all matches ids.
+    </span>
+  </li>
+</ul>
+      <h2>Instance Method Details</h2>
+      <div class='methods'>
+  <div class='method_details'>
+    <p class='signature' id='initialize-instance'>
+      - (void) <strong>initialize</strong>(o)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='render-instance'>
+      - (void) <strong>render</strong>()
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='renderToolbar-instance'>
+      - (void) <strong>renderToolbar</strong>()
+      (bound)
+    </p>
+    <div class='docstring'>
+  <p>Render the actions toolbar based on how many collection model rows are selected. </p> 
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='renderTable-instance'>
+      - (void) <strong>renderTable</strong>()
+      (bound)
+    </p>
+    <div class='docstring'>
+  <p>Render the table of results using Document Fragment to prevent browser reflows. </p> 
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='renderTableBody-instance'>
+      - (void) <strong>renderTableBody</strong>(table)
+      (bound)
+    </p>
+    <div class='docstring'>
+  <p>Render <code>&lt;tbody&gt;</code> from a @collection (use to achieve single re-flow of row Views). </p> 
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='formAction-instance'>
+      - (void) <strong>formAction</strong>(e)
+      (bound)
+    </p>
+    <div class='docstring'>
+  <p>On form select option change, set the new options and re-render. </p> 
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='selectAllAction-instance'>
+      - (void) <strong>selectAllAction</strong>()
+      (bound)
+    </p>
+    <div class='docstring'>
+  <p>(De-)select all. </p> 
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='exportAction-instance'>
+      - (void) <strong>exportAction</strong>(e)
+      (bound)
+    </p>
+    <div class='docstring'>
+  <p>Export selected rows into a file. </p> 
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='viewAction-instance'>
+      - (void) <strong>viewAction</strong>()
+      (bound)
+    </p>
+    <div class='docstring'>
+  <p>Selecting table rows and clicking on <strong>View</strong> should create an EnrichmentMatches collection of all matches ids. </p> 
+</div>
+<div class='tags'>
+</div>
+  </div>
+</div>
+    </div>
+    <div id='footer'>
+  Generated on
+  Sat Jun 02 2012 14:51:59 GMT+0100 (BST)
+  by
+  <a href='https://github.com/netzpirat/codo' title='CoffeeScript API documentation generator'>Codo</a>
+  v0.7.1
+  (Node.js v0.6.18).
+  &#10034;
+  Press Ctrl-h to see the keyboard shortcuts
+  &#10034;
+  <a href='http://twitter.com/#!/netzpirat'>@netzpirat</a>
+  &#10034;
+  <a href='https://mksoft.ch'>mksoft.ch</a>
+</div>
+  </body>
+</html>

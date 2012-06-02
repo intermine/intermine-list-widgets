@@ -119,10 +119,6 @@ task "release", "release compiled widgets.js into target InterMine directory", (
 
     console.log "#{COLORS.GREEN}Done#{COLORS.DEFAULT}"
 
-# Create docco docs from hardcoded paths.
-task "docs", "create docco docs", ->
-    exec "docco src/*.coffee src/utils/*.coffee src/class/*.coffee"
-
 
 # --------------------------------------------
 

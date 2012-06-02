@@ -42,6 +42,10 @@ class Widgets
     ,
         path:  "http://cdn.intermine.org/js/canvg/latest/canvg.js"
         type:  "js"
+    ,
+        name:  "Mynd"
+        path:  "http://cdn.intermine.org/js/mynd/0.1.0/mynd.min.js"
+        type:  "js"
     ]
 
     # New Widgets client.

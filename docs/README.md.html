@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>Widgets (Mynd) API Documentation</title>
+  <link rel='stylesheet' href='assets/codo.css' type='text/css'>
+  <script src='assets/codo.js'></script>
+  <script src='assets/search_data.js'></script>
+</head>
+  <body>
+    <div id='base' data-path=''></div>
+<div id='header'>
+  <div id='menu'>
+    <a href='class_index.html' title='Index'>Index</a>
+    &raquo;
+    <span class='title'>README.md</span>
+    <nav>
+      <ul>
+        <li class='noframes'>
+          (<a class='noframes' href='#'>no frames</a>)
+        </li>
+      </ul>
+    </nav>
+    <div id='search'>
+      <a id='class_list_link' href='class_list.html'>Classes</a>
+      <a id='mixin_list_link' href='mixin_list.html'>Mixins</a>
+      <a id='method_list_link' href='method_list.html'>Methods</a>
+      <a id='file_list_link' href='file_list.html'>Files</a>
+    </div>
+  </div>
+  <iframe id='search_frame'></iframe>
+  <div id='fuzzySearch'>
+    <input type='text'>
+    <ol></ol>
+  </div>
+  <div id='help'>
+    <p>
+      Quickly fuzzy find classes, mixins, methods, file:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-T</span>
+        Open fuzzy finder dialog
+      </li>
+    </ul>
+    <p>
+      In frame mode you can toggle the list naviation frame on the left side:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-L</span>
+        Toggle list view
+      </li>
+    </ul>
+    <p>
+      You can focus a list in frame mode or toggle a tab in frameless mode:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-C</span>
+        Class list
+      </li>
+      <li>
+        <span>Ctrl-I</span>
+        Mixin list
+      </li>
+      <li>
+        <span>Ctrl-M</span>
+        Method list
+      </li>
+      <li>
+        <span>Ctrl-F</span>
+        File list
+      </li>
+    </ul>
+    <p>
+      You can focus and blur the search input:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-S</span>
+        Focus search input
+      </li>
+      <li>
+        <span>Esc</span>
+        Blur search input
+      </li>
+    </ul>
+    <p>
+      In frameless mode you can close the list tab:
+    </p>
+    <ul>
+      <li>
+        <span>Esc</span>
+        Close list tab
+      </li>
+    </ul>
+  </div>
+</div>
+    <div id='content'>
+      <nav class='toc'>
+        <p class='title'>
+          <a class='hide_toc' href='#'>
+            <strong>Table of Contents</strong>
+          </a>
+          <small>
+            (<a class='float_toc' href='#'>left</a>)
+          </small>
+        </p>
+      </nav>
+      <div id='filecontents'>
+        <p>Client for embedding InterMine widgets (ws_widgets branch only!).
+
+</p>
+<h2>Requirements:</h2>
+<h3>To Run:</h3>
+<ul>
+<li><a href="http://cdn.intermine.org/api">InterMine JavaScript API Loader</a></li>
+</ul>
+<p>The following will be fetched automatically:
+
+</p>
+<ul>
+<li>jQuery</li>
+<li>underscore.js</li>
+<li>backbone.js</li>
+<li>InterMine imjs</li>
+</ul>
+<h3>To Compile:</h3>
+<p>You can install all of the following dependencies by running:
+
+</p>
+<pre><code class="lang-bash">sudo npm install -g coffee-script
+npm install -d</code></pre>
+<ul>
+<li><a href="http://coffeescript.org/">CoffeeScript</a> 1.3.1+ &amp; <a href="https://github.com/sstephenson/eco">eco</a> templating.</li>
+<li><a href="https://github.com/mishoo/UglifyJS">uglify-js</a> to compress templates.</li>
+</ul>
+<h2>Configure:</h2>
+<p>You can either use the InterMine API Loader to always give you the latest version of the widgets:
+
+</p>
+<pre><code class="lang-html">&lt;script src=&quot;http://cdn.intermine.org/api&quot;&gt;&lt;/script&gt;</code></pre>
+<pre><code class="lang-javascript">intermine.load(&#39;widgets&#39;, function() {
+    var Widgets = new intermine.widgets(&#39;http://flymine.org/service&#39;);
+});</code></pre>
+<p>Or you can include both the API Loader and Widgets JS files and use them immediately:
+
+</p>
+<pre><code class="lang-html">// point to API, requirement for all InterMine client side JavaScript
+&lt;script src=&quot;http://cdn.intermine.org/api&quot;&gt;&lt;/script&gt;
+// include Widgets library locally, is immediately available on the `intermine` namespace
+&lt;script src=&quot;js/intermine.widgets.js&quot;&gt;&lt;/script&gt;</code></pre>
+<pre><code class="lang-javascript">var Widgets = new intermine.widgets(&#39;http://flymine.org/service&#39;);</code></pre>
+<p>Then, <strong>choose which widgets</strong> you want to load:
+
+</p>
+<pre><code class="lang-javascript">// Load all Widgets:
+Widgets.all(&#39;Gene&#39;, &#39;myList&#39;, &#39;#all-widgets&#39;);
+// Load a specific Chart Widget:
+Widgets.chart(&#39;flyfish&#39;, &#39;myList&#39;, &#39;#widget-1&#39;);
+// Load a specific Enrichment Widget:
+Widgets.enrichment(&#39;pathway_enrichment&#39;, &#39;myList&#39;, &#39;#widget-2&#39;);
+// Load a specific Table Widget:
+Widgets.table(&#39;interactions&#39;, &#39;myList&#39;, &#39;#widget-3&#39;);</code></pre>
+<h2>Use:</h2>
+<ol>
+<li>Start a simple HTTP server using <code>.webserver.sh</code>.</li>
+<li>Visit <a href="http://0.0.0.0:1111/"><a href="http://0.0.0.0:1111/">http://0.0.0.0:1111/</a></a></li>
+</ol>
+<h2>Compile:</h2>
+<p>Run <code>cake compile:main</code> to compile widgets and templates into one target. Check optional parameters by running <code>cake</code>.
+
+</p>
+<h2>Test:</h2>
+<ol>
+<li>Run <code>cake compile:tests</code> to compile tests.</li>
+<li>Visit <a href="http://0.0.0.0:1111/test"><a href="http://0.0.0.0:1111/test">http://0.0.0.0:1111/test</a></a> to run the tests using <a href="http://visionmedia.github.com/mocha/">Mocha</a> and <a href="http://chaijs.com/">Chai</a>.</li>
+</ol>
+<p>The tests are automatically loaded from available tests in the <code>test/src</code> directory. Libraries needed to run the tests are loaded automatically too. You can speed up their execution by including the files the <code>&lt;head&gt;</code> section of the <code>test/index.html</code> file.
+
+</p>
+<h2>Release to InterMine:</h2>
+<p><strong>Configure</strong> the <code>Cakefile</code> with paths to your own InterMine SVN:
+
+</p>
+<pre><code class="lang-coffeescript"># Path to InterMine SVN output.
+INTERMINE =
+    ROOT: &quot;/home/rs676/svn/ws_widgets&quot;
+    OUTPUT: &quot;intermine/webapp/main/resources/webapp/js/widget.js&quot;</code></pre>
+<h3>With Commit</h3>
+<p><strong>Execute</strong> the release task by running <code>cake --commit &quot;message&quot; release</code>; this will commit the <code>widget.js</code> file with your custom message.
+
+</p>
+<h2>Example:</h2>
+<p><img src="https://raw.github.com/radekstepan/intermine-widget-client/master/example.png" alt="image">
+
+</p>
+<h2>Q&amp;A:</h2>
+<h3>Where is documentation?</h3>
+<p>Commented source code is in the <code>/docs</code> directory: <a href="http://0.0.0.0:1111/docs/widgets.html"><a href="http://0.0.0.0:1111/docs/widgets.html">http://0.0.0.0:1111/docs/widgets.html</a></a>.
+
+</p>
+<h3>How do apply a CSS style to the widgets?</h3>
+<p>Use or modify a <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a> <a href="http://bootswatch.com/">theme</a>.
+
+</p>
+<h3>I want to define a custom behavior when clicking on an Enrichment or Chart widget.</h3>
+<p>Clicking on an individual match (Gene, Protein etc.) in popover window:
+
+</p>
+<pre><code class="lang-javascript">var options = {
+    matchCb: function(id, type) {
+        window.open(mineURL + &quot;/portal.do?class=&quot; + type + &quot;&amp;externalids=&quot; + id);
+    }
+};
+Widgets.enrichment(&#39;pathway_enrichment&#39;, &#39;myList&#39;, &#39;#widget&#39;, options);</code></pre>
+<p>Clicking on View results button in a popover window:
+
+</p>
+<pre><code class="lang-javascript">var options = {
+    resultsCb: function(pq) {
+        ...
+    }
+};
+Widgets.enrichment(&#39;pathway_enrichment&#39;, &#39;myList&#39;, &#39;#widget&#39;, options);</code></pre>
+<p>Clicking on Create list button in a popover window:
+
+</p>
+<pre><code class="lang-javascript">var options = {
+    listCb: function(pq) {
+        ...
+    }
+};
+Widgets.enrichment(&#39;pathway_enrichment&#39;, &#39;myList&#39;, &#39;#widget&#39;, options);</code></pre>
+<h3>I want to hide the title or description of a widget.</h3>
+<pre><code class="lang-javascript">var options = {
+    &quot;title&quot;: false,
+    &quot;description&quot;: false
+};
+Widgets.enrichment(&#39;pathway_enrichment&#39;, &#39;myList&#39;, &#39;#widget&#39;, options);</code></pre>
+<h3>I am clicking on Download after selecting a few Enrichment Widget rows and nothing happens.</h3>
+<p>Make sure you run widgets through the <code>http://</code> protocol instead of <code>file://</code>.
+
+</p>
+<h2>Browser Support:</h2>
+<ul>
+<li>Linux Chrome 16</li>
+<li>Linux Firefox 11</li>
+<li>Linux Opera 11.61*</li>
+<li>MacOS X Google Chrome 19</li>
+<li>MacOS X Firefox 4.0.1</li>
+<li>MacOS X Safari 5.0.6</li>
+<li>Windows 7 Chrome 18</li>
+<li>Windows 7 Firefox 11</li>
+<li>Windows 7 Firefox 4</li>
+<li>Windows 7 Firefox 2</li>
+<li>Windows 7 Firefox 3</li>
+<li>Windows 7 Opera 11.61</li>
+<li>Windows 7 Opera 9.64</li>
+<li>Windows 7 Safari 5.1.7</li>
+<li>Windows 7 Internet Explorer 8</li>
+</ul>
+<p>Support of other browsers cannot be guaranteed.
+
+</p>
+<h3>Known Issues:</h3>
+<ol>
+<li>Windows 7 <strong>Internet Explorer 7</strong> does not support <code>display:table-*</code> properties and thus faux table header is not inlined. (IE7 not supported)</li>
+<li>Linux <strong>Opera 11.61</strong> Google Visualization sometimes trims horizontal axis label.</li>
+</ol>
+
+      </div>
+    </div>
+    <div id='footer'>
+  Generated on
+  Sat Jun 02 2012 14:51:59 GMT+0100 (BST)
+  by
+  <a href='https://github.com/netzpirat/codo' title='CoffeeScript API documentation generator'>Codo</a>
+  v0.7.1
+  (Node.js v0.6.18).
+  &#10034;
+  Press Ctrl-h to see the keyboard shortcuts
+  &#10034;
+  <a href='http://twitter.com/#!/netzpirat'>@netzpirat</a>
+  &#10034;
+  <a href='https://mksoft.ch'>mksoft.ch</a>
+</div>
+  </body>
+</html>

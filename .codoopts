@@ -1,0 +1,6 @@
+--readme     README.md
+--title      "Widgets (Mynd) API Documentation"
+--private
+--quiet
+--output-dir ./docs
+./src
