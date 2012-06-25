@@ -5,7 +5,7 @@ Client for embedding InterMine widgets (ws_widgets branch only!).
 
 - [InterMine JavaScript API Loader](http://radekstepan.github.com/intermine-api-loader/intermine.api.js)
 
-The following will be fetched automatically:
+The following will be fetched automatically if it does not exist already:
 
 - Google Visualization API
 - jQuery
@@ -18,11 +18,12 @@ The following will be fetched automatically:
 You can install all the following dependencies by running:
 
 ```bash
-npm install -d
+$ npm install -d
 ```
 
-- [CoffeeScript](http://coffeescript.org/) 1.3.1+ & [eco](https://github.com/sstephenson/eco) templating.
-- [uglify-js](https://github.com/mishoo/UglifyJS) to compress templates.
+- [CoffeeScript](http://coffeescript.org/) 1.3.1+
+- [eco](https://github.com/sstephenson/eco) templating
+- [uglify-js](https://github.com/mishoo/UglifyJS) to compress templates
 
 ## Configure:
 
@@ -70,7 +71,7 @@ Widgets.table('interactions', 'myList', '#widget-3');
 
 ## Compile:
 
-Run `cake compile:main` to compile widgets and templates into one target. Check optional parameters by running `cake`.
+Run `$ cake compile:main` to compile widgets and templates into one target. Check optional parameters by running `cake`.
 
 ## Test:
 

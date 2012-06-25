@@ -108,7 +108,8 @@ class ChartView extends Backbone.View
 
         else
             # Render no results.
-            $(@el).find("div.content").html $ @template "noresults"
+            $(@el).find("div.content").html $ @template "noresults",
+                'text': "No \"#{@response.title}\" with your list."
 
     # On form select option change, set the new options and re-render.
     formAction: (e) =>

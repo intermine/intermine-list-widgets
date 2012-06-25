@@ -45,7 +45,8 @@ class EnrichmentView extends Backbone.View
             @renderTable()
         else
             # Render no results
-            $(@el).find("div.content").html $ @template "noresults"
+            $(@el).find("div.content").html $ @template "noresults",
+                'text': 'No enrichment found.'
 
         @
 
