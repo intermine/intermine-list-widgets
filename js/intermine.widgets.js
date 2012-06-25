@@ -1711,6 +1711,8 @@ factory = function(Backbone) {
     function ChartView() {
       this.formAction = __bind(this.formAction, this);
   
+      this.viewSeriesAction = __bind(this.viewSeriesAction, this);
+  
       this.viewAllAction = __bind(this.viewAllAction, this);
   
       this.renderToolbar = __bind(this.renderToolbar, this);
@@ -1789,29 +1791,30 @@ factory = function(Backbone) {
           chart.draw(google.visualization.arrayToDataTable(this.response.results, false), this.chartOptions);
           if (this.response.pathQuery != null) {
             return google.visualization.events.addListener(chart, "select", function() {
-              var column, description, item, quickPq, resultsPq, row, translate, _i, _len, _ref;
+              var column, description, quickPq, resultsPq, row, selection, translate;
               translate = function(response, series) {
                 if (response.seriesValues != null) {
                   return response.seriesValues.split(',')[response.seriesLabels.split(',').indexOf(series)];
                 }
               };
+              selection = chart.getSelection()[0];
               description = '';
               resultsPq = _this.response.pathQuery;
               quickPq = _this.response.simplePathQuery;
-              _ref = chart.getSelection();
-              for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-                item = _ref[_i];
-                if (item.row != null) {
-                  row = _this.response.results[item.row + 1][0];
-                  description += row;
-                  resultsPq = resultsPq.replace("%category", row);
-                  quickPq = quickPq.replace("%category");
-                  if (item.column != null) {
-                    column = _this.response.results[0][item.column];
-                    description += ' ' + column;
-                    resultsPq = resultsPq.replace("%series", translate(_this.response, column));
-                    quickPq = resultsPq.replace("%series", translate(_this.response, column));
-                  }
+              if (selection.row != null) {
+                row = _this.response.results[selection.row + 1][0];
+                description += row;
+                resultsPq = resultsPq.replace("%category", row);
+                quickPq = quickPq.replace("%category");
+                if (selection.column != null) {
+                  column = _this.response.results[0][selection.column];
+                  description += ' ' + column;
+                  resultsPq = resultsPq.replace("%series", translate(_this.response, column));
+                  quickPq = resultsPq.replace("%series", translate(_this.response, column));
+                }
+              } else {
+                if (selection.column != null) {
+                  return _this.viewSeriesAction(resultsPq.replace("%series", translate(_this.response, _this.response.results[0][selection.column])));
                 }
               }
               resultsPq = JSON.parse(resultsPq);
@@ -1864,6 +1867,20 @@ factory = function(Backbone) {
             pq.where.splice(i, 1);
             break;
           }
+        }
+      }
+      return this.options.resultsCb(pq);
+    };
+  
+    ChartView.prototype.viewSeriesAction = function(pathQuery) {
+      var field, i, pq, _ref;
+      pq = JSON.parse(pathQuery);
+      _ref = pq.where;
+      for (i in _ref) {
+        field = _ref[i];
+        if ((field != null ? field.value : void 0) === '%category') {
+          pq.where.splice(i, 1);
+          break;
         }
       }
       return this.options.resultsCb(pq);
@@ -2074,7 +2091,7 @@ $ = window.jQuery || window.Zepto;
 
 Widgets = (function() {
 
-  Widgets.prototype.VERSION = '1.2.3';
+  Widgets.prototype.VERSION = '1.3.0';
 
   Widgets.prototype.wait = true;
 

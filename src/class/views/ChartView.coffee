@@ -71,27 +71,34 @@ class ChartView extends Backbone.View
                 # Add event listener on click the chart bar.
                 if @response.pathQuery?
                     google.visualization.events.addListener chart, "select", =>
+
                         # Translate view series into PathQuery series (Expressed/Not Expressed into true/false).
                         translate = (response, series) ->
                             # Chromosome Distribution widget fails on this step not having `seriesValues`.
                             if response.seriesValues?
                                 response.seriesValues.split(',')[response.seriesLabels.split(',').indexOf(series)]
 
+                        # Get the selection.
+                        selection = chart.getSelection()[0]
+
                         # Determine which bar we are in.
                         description = '' ; resultsPq = @response.pathQuery ; quickPq = @response.simplePathQuery
-                        for item in chart.getSelection()
-                            if item.row?
-                                row = @response.results[item.row + 1][0]
-                                description += row
-                                # Replace `%category` in PathQueries.
-                                resultsPq = resultsPq.replace "%category", row ; quickPq = quickPq.replace "%category"
-                                # Replace `%series` in PathQuery.
-                                if item.column?
-                                    column = @response.results[0][item.column]
-                                    description += ' ' + column
-                                    resultsPq = resultsPq.replace("%series", translate @response, column)
-                                    quickPq =   resultsPq.replace("%series", translate @response, column)
-                        
+                        if selection.row?
+                            row = @response.results[selection.row + 1][0]
+                            description += row
+                            # Replace `%category` in PathQueries.
+                            resultsPq = resultsPq.replace "%category", row ; quickPq = quickPq.replace "%category"
+                            # Replace `%series` in PathQuery.
+                            if selection.column?
+                                column = @response.results[0][selection.column]
+                                description += ' ' + column
+                                resultsPq = resultsPq.replace("%series", translate @response, column)
+                                quickPq =   resultsPq.replace("%series", translate @response, column)
+                        else
+                            # We have clicked legend series.
+                            if selection.column?
+                                return @viewSeriesAction resultsPq.replace("%series", translate @response, @response.results[0][selection.column])
+
                         # Turn into JSON object?
                         resultsPq = JSON.parse resultsPq ; quickPq = JSON.parse quickPq
 
@@ -138,6 +145,19 @@ class ChartView extends Backbone.View
                 if field?.value is rem
                     pq.where.splice i, 1
                     break
+
+        @options.resultsCb pq
+
+    # Clicking on legend we call `resultsCb` constraining on '%series%'
+    viewSeriesAction: (pathQuery) =>
+        # Parse full PathQuery.
+        pq = JSON.parse pathQuery
+
+        # Remove '%category%' only.
+        for i, field of pq.where
+            if field?.value is '%category'
+                pq.where.splice i, 1
+                break
 
         @options.resultsCb pq
 
