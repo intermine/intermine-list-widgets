@@ -17,7 +17,8 @@ JST["enrichment.form.eco"]=function(e){e||(e={});var t=[],n=function(e){var n=t,
 JST["enrichment.row.eco"]=function(e){e||(e={});var t=[],n=function(e){var n=t,r;return t=[],e.call(this),r=t.join(""),t=n,i(r)},r=function(e){return e&&e.ecoSafe?e:typeof e!="undefined"&&e!=null?o(e):""},i,s=e.safe,o=e.escape;return i=e.safe=function(e){if(e&&e.ecoSafe)return e;if(typeof e=="undefined"||e==null)e="";var t=new String(e);return t.ecoSafe=!0,t},o||(o=e.escape=function(e){return(""+e).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}),function(){(function(){t.push('<td class="check"><input type="checkbox" '),this.row.selected&&t.push('checked="checked"'),t.push(' /></td>\n<td class="description">\n    '),t.push(r(this.row.description)),t.push("\n    "),this.row.externalLink&&(t.push('\n        [<a href="'),t.push(this.row.externalLink),t.push('" target="_blank">Link</a>]\n    ')),t.push('\n</td>\n<td class="pValue" style="white-space:nowrap">'),t.push(r(this.row["p-value"])),t.push('</td>\n<td class="matches">\n    <a class="count" style="cursor:pointer">'),t.push(r(this.row.matches)),t.push("</a>\n</td>")}).call(this)}.call(e),e.safe=s,e.escape=o,t.join("")}
 JST["enrichment.table.eco"]=function(e){e||(e={});var t=[],n=function(e){var n=t,r;return t=[],e.call(this),r=t.join(""),t=n,i(r)},r=function(e){return e&&e.ecoSafe?e:typeof e!="undefined"&&e!=null?o(e):""},i,s=e.safe,o=e.escape;return i=e.safe=function(e){if(e&&e.ecoSafe)return e;if(typeof e=="undefined"||e==null)e="";var t=new String(e);return t.ecoSafe=!0,t},o||(o=e.escape=function(e){return(""+e).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}),function(){(function(){t.push('<!-- actual fixed head -->\n<div class="head" style="display:table">\n    <div style="font-weight:bold;display:table-cell;padding:0 8px;"><input type="checkbox" class="check" /></div>\n    <div style="font-weight:bold;display:table-cell;padding:0 8px;">'),t.push(r(this.label)),t.push('</div>\n    <div style="font-weight:bold;display:table-cell;padding:0 8px;">p-Value</div>\n    <div style="font-weight:bold;display:table-cell;padding:0 8px;">Matches</div>\n    <div style="clear:both"></div>\n</div>\n<div class="wrapper" style="overflow:auto;overflow-x:hidden">\n    <table class="table table-striped">\n        <!-- head for proper cell width -->\n        <thead style="visibility:hidden">\n            <tr>\n                <th></th>\n                <th>'),t.push(r(this.label)),t.push("</th>\n                <th>p-Value</th>\n                <th>Matches</th>\n            </tr>\n        </thead>\n        <tbody>\n            <!-- loop enrichment.row.eco -->\n        </tbody>\n    </table>\n</div>")}).call(this)}.call(e),e.safe=s,e.escape=o,t.join("")}
 JST["enrichment.eco"]=function(e){e||(e={});var t=[],n=function(e){var n=t,r;return t=[],e.call(this),r=t.join(""),t=n,i(r)},r=function(e){return e&&e.ecoSafe?e:typeof e!="undefined"&&e!=null?o(e):""},i,s=e.safe,o=e.escape;return i=e.safe=function(e){if(e&&e.ecoSafe)return e;if(typeof e=="undefined"||e==null)e="";var t=new String(e);return t.ecoSafe=!0,t},o||(o=e.escape=function(e){return(""+e).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}),function(){(function(){t.push('<div class="header">\n    <h3>'),this.title&&t.push(r(this.title)),t.push("</h3>\n    <p>"),this.description&&t.push(this.description),t.push("</p>\n    "),this.notAnalysed&&(t.push("\n        <p>Number of Genes in this list not analysed in this widget: <a>"),t.push(r(this.notAnalysed)),t.push("</a></p>\n    ")),t.push('\n\n    <div class="form">\n        <!-- enrichment.form.eco -->\n    </div>\n\n    <div class="actions" style="padding:10px 0">\n        <!-- actions.eco -->\n    </div>\n</div>\n<div class="content">\n    <!-- enrichment.table.eco -->\n</div>')}).call(this)}.call(e),e.safe=s,e.escape=o,t.join("")}
-JST["chart.eco"]=function(e){e||(e={});var t=[],n=function(e){var n=t,r;return t=[],e.call(this),r=t.join(""),t=n,i(r)},r=function(e){return e&&e.ecoSafe?e:typeof e!="undefined"&&e!=null?o(e):""},i,s=e.safe,o=e.escape;return i=e.safe=function(e){if(e&&e.ecoSafe)return e;if(typeof e=="undefined"||e==null)e="";var t=new String(e);return t.ecoSafe=!0,t},o||(o=e.escape=function(e){return(""+e).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}),function(){(function(){t.push('<div class="header">\n    <h3>'),this.title&&t.push(r(this.title)),t.push("</h3>\n    <p>"),this.description&&t.push(this.description),t.push("</p>\n    "),this.notAnalysed&&(t.push("\n        <p>Number of Genes in this list not analysed in this widget: <a>"),t.push(r(this.notAnalysed)),t.push("</a></p>\n    ")),t.push('\n\n    <div class="form">\n        <form style="margin:0">\n            <!-- extra.eco -->\n        </form>\n    </div>\n</div>\n<div class="content"></div>')}).call(this)}.call(e),e.safe=s,e.escape=o,t.join("")}
+JST["chart.eco"]=function(e){e||(e={});var t=[],n=function(e){var n=t,r;return t=[],e.call(this),r=t.join(""),t=n,i(r)},r=function(e){return e&&e.ecoSafe?e:typeof e!="undefined"&&e!=null?o(e):""},i,s=e.safe,o=e.escape;return i=e.safe=function(e){if(e&&e.ecoSafe)return e;if(typeof e=="undefined"||e==null)e="";var t=new String(e);return t.ecoSafe=!0,t},o||(o=e.escape=function(e){return(""+e).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}),function(){(function(){t.push('<div class="header">\n    <h3>'),this.title&&t.push(r(this.title)),t.push("</h3>\n    <p>"),this.description&&t.push(this.description),t.push("</p>\n    "),this.notAnalysed&&(t.push("\n        <p>Number of Genes in this list not analysed in this widget: <a>"),t.push(r(this.notAnalysed)),t.push("</a></p>\n    ")),t.push('\n\n    <div class="form">\n        <form style="margin:0">\n            <!-- extra.eco -->\n        </form>\n    </div>\n\n    <div class="actions" style="padding:10px 0">\n        <!-- chart.actions.eco -->\n    </div>\n</div>\n<div class="content"></div>')}).call(this)}.call(e),e.safe=s,e.escape=o,t.join("")}
+JST["chart.actions.eco"]=function(e){e||(e={});var t=[],n=function(e){var n=t,r;return t=[],e.call(this),r=t.join(""),t=n,i(r)},r=function(e){return e&&e.ecoSafe?e:typeof e!="undefined"&&e!=null?o(e):""},i,s=e.safe,o=e.escape;return i=e.safe=function(e){if(e&&e.ecoSafe)return e;if(typeof e=="undefined"||e==null)e="";var t=new String(e);return t.ecoSafe=!0,t},o||(o=e.escape=function(e){return(""+e).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}),function(){(function(){t.push('<a class="btn btn-small view-all">View all</a>')}).call(this)}.call(e),e.safe=s,e.escape=o,t.join("")}
 /* Types in JS.
 */
 
@@ -1709,23 +1710,24 @@ factory = function(Backbone) {
   
     function ChartView() {
       this.formAction = __bind(this.formAction, this);
+  
+      this.viewAllAction = __bind(this.viewAllAction, this);
+  
+      this.renderToolbar = __bind(this.renderToolbar, this);
       return ChartView.__super__.constructor.apply(this, arguments);
     }
   
     ChartView.prototype.chartOptions = {
       fontName: "Sans-Serif",
       fontSize: 11,
-      width: 460,
-      height: 450,
       colors: ["#2F72FF", "#9FC0FF"],
       legend: {
         position: "top"
       },
       chartArea: {
         top: 30,
-        left: 50,
-        width: 400,
-        height: 305
+        bottom: 80,
+        left: 50
       },
       hAxis: {
         titleTextStyle: {
@@ -1740,7 +1742,8 @@ factory = function(Backbone) {
     };
   
     ChartView.prototype.events = {
-      "change div.form select": "formAction"
+      "change div.form select": "formAction",
+      "click div.actions a.view-all": "viewAllAction"
     };
   
     ChartView.prototype.initialize = function(o) {
@@ -1753,7 +1756,7 @@ factory = function(Backbone) {
     };
   
     ChartView.prototype.render = function() {
-      var chart,
+      var chart, height, width,
         _this = this;
       $(this.el).html(this.template("chart", {
         "title": this.options.title ? this.response.title : "",
@@ -1769,6 +1772,13 @@ factory = function(Backbone) {
       }
       if (this.response.results.length > 1) {
         if (this.response.chartType in google.visualization) {
+          this.renderToolbar();
+          width = $(this.el).width();
+          height = $(this.el).height() - $(this.el).find('div.header').height();
+          this.chartOptions.width = width;
+          this.chartOptions.chartArea.width = width - this.chartOptions.chartArea.left;
+          this.chartOptions.height = height;
+          this.chartOptions.chartArea.height = height - this.chartOptions.chartArea.top - this.chartOptions.chartArea.bottom;
           this.chartOptions.hAxis = {
             'title': this.response.chartType === 'BarChart' ? this.response.rangeLabel : this.response.domainLabel
           };
@@ -1835,6 +1845,14 @@ factory = function(Backbone) {
           'text': "No \"" + this.response.title + "\" with your list."
         })));
       }
+    };
+  
+    ChartView.prototype.renderToolbar = function() {
+      return $(this.el).find("div.actions").html($(this.template("chart.actions")));
+    };
+  
+    ChartView.prototype.viewAllAction = function() {
+      return console.log('View all');
     };
   
     ChartView.prototype.formAction = function(e) {

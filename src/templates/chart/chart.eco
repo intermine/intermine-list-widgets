@@ -10,5 +10,9 @@
             <!-- extra.eco -->
         </form>
     </div>
+
+    <div class="actions" style="padding:10px 0">
+        <!-- chart.actions.eco -->
+    </div>
 </div>
 <div class="content"></div>

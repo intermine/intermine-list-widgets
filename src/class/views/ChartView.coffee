@@ -6,16 +6,13 @@ class ChartView extends Backbone.View
     chartOptions:
         fontName: "Sans-Serif"
         fontSize: 11
-        width:    460
-        height:   450
         colors:   [ "#2F72FF", "#9FC0FF" ]
         legend:
             position: "top"
         chartArea:
             top:    30
+            bottom: 80
             left:   50
-            width:  400
-            height: 305
         hAxis:
             titleTextStyle:
                 fontName: "Sans-Serif"
@@ -24,7 +21,8 @@ class ChartView extends Backbone.View
                 fontName: "Sans-Serif"
 
     events:
-        "change div.form select": "formAction"
+        "change div.form select":       "formAction"
+        "click div.actions a.view-all": "viewAllAction"
 
     initialize: (o) ->
         @[k] = v for k, v of o
@@ -37,6 +35,8 @@ class ChartView extends Backbone.View
             "description": if @options.description then @response.description else ""
             "notAnalysed": @response.notAnalysed
 
+        # View all results btn.
+
         # Extra attributes (DataSets etc.)?
         if @response.filterLabel?
             $(@el).find('div.form form').append @template "extra",
@@ -48,6 +48,16 @@ class ChartView extends Backbone.View
         if @response.results.length > 1
             # Create the chart.
             if @response.chartType of google.visualization # If the type exists...
+
+                # Add actions toolbar.
+                @renderToolbar()
+
+                # Set the width/height of the drawing area.
+                width = $(@el).width() ; height = $(@el).height() - $(@el).find('div.header').height()
+                @chartOptions.width = width
+                @chartOptions.chartArea.width = width - @chartOptions.chartArea.left
+                @chartOptions.height = height
+                @chartOptions.chartArea.height = height - @chartOptions.chartArea.top - @chartOptions.chartArea.bottom
 
                 # Set the legend on axes.
                 @chartOptions.hAxis =
@@ -102,6 +112,7 @@ class ChartView extends Backbone.View
                                 "imService":   @widget.imService
                                 "type":        @response.type
                             )).el
+
             else
                 # Undefined Google Visualization chart type.
                 @error 'title': @response.chartType, 'text': "This chart type does not exist in Google Visualization API"
@@ -110,6 +121,14 @@ class ChartView extends Backbone.View
             # Render no results.
             $(@el).find("div.content").html $ @template "noresults",
                 'text': "No \"#{@response.title}\" with your list."
+
+    renderToolbar: =>
+        $(@el).find("div.actions").html(
+            $ @template "chart.actions"
+        )
+
+    viewAllAction: =>
+        console.log 'View all'
 
     # On form select option change, set the new options and re-render.
     formAction: (e) =>
