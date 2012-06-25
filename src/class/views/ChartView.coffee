@@ -127,8 +127,19 @@ class ChartView extends Backbone.View
             $ @template "chart.actions"
         )
 
+    # View both series.
     viewAllAction: =>
-        console.log 'View all'
+        # Parse full PathQuery.
+        pq = JSON.parse @response.pathQuery
+
+        # Remove both '%category%' and '%series%'.
+        for rem in [ '%category', '%series' ]
+            for i, field of pq.where
+                if field?.value is rem
+                    pq.where.splice i, 1
+                    break
+
+        @options.resultsCb pq
 
     # On form select option change, set the new options and re-render.
     formAction: (e) =>

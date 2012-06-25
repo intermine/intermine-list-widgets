@@ -1852,7 +1852,21 @@ factory = function(Backbone) {
     };
   
     ChartView.prototype.viewAllAction = function() {
-      return console.log('View all');
+      var field, i, pq, rem, _i, _len, _ref, _ref1;
+      pq = JSON.parse(this.response.pathQuery);
+      _ref = ['%category', '%series'];
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        rem = _ref[_i];
+        _ref1 = pq.where;
+        for (i in _ref1) {
+          field = _ref1[i];
+          if ((field != null ? field.value : void 0) === rem) {
+            pq.where.splice(i, 1);
+            break;
+          }
+        }
+      }
+      return this.options.resultsCb(pq);
     };
   
     ChartView.prototype.formAction = function(e) {
@@ -2060,7 +2074,7 @@ $ = window.jQuery || window.Zepto;
 
 Widgets = (function() {
 
-  Widgets.prototype.VERSION = '1.2.2';
+  Widgets.prototype.VERSION = '1.2.3';
 
   Widgets.prototype.wait = true;
 
