@@ -128,7 +128,10 @@ task "docs", "create docco docs", ->
 
 
 main = (callback) ->
-    console.log "#{COLORS.BOLD}Compiling main#{COLORS.DEFAULT}"
+    #@+VERSION
+    VERSION = JSON.parse(fs.readFileSync('./package.json')).version
+
+    console.log "#{COLORS.BOLD}Compiling version #{VERSION}#{COLORS.DEFAULT}"
 
     # Head.
     head = (cb) -> cb "(function() {\nvar o = {};\n"
@@ -191,7 +194,7 @@ main = (callback) ->
     # Compile the public library.
     widgets = (cb) ->
         console.log MAIN.INPUT
-        compiled = cs.compile fs.readFileSync(MAIN.INPUT, "utf-8"), bare: "on"
+        compiled = cs.compile fs.readFileSync(MAIN.INPUT, "utf-8").replace('#@+VERSION', "'#{VERSION}'"), bare: "on"
         cb compiled
 
     # Close.
