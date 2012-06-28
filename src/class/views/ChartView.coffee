@@ -69,58 +69,7 @@ class ChartView extends Backbone.View
                 chart.draw(google.visualization.arrayToDataTable(@response.results, false), @chartOptions)
 
                 # Add event listener on click the chart bar.
-                if @response.pathQuery?
-                    google.visualization.events.addListener chart, "select", =>
-
-                        # Translate view series into PathQuery series (Expressed/Not Expressed into true/false).
-                        translate = (response, series) ->
-                            # Chromosome Distribution widget fails on this step not having `seriesValues`.
-                            if response.seriesValues?
-                                response.seriesValues.split(',')[response.seriesLabels.split(',').indexOf(series)]
-
-                        # Remove any previous popovers.
-                        if @barView? then @barView.close()
-
-                        # Get the selection.
-                        selection = chart.getSelection()[0]
-
-                        # We are selecting things.
-                        if selection
-                            # Determine which bar we are in.
-                            description = '' ; resultsPq = @response.pathQuery ; quickPq = @response.simplePathQuery
-                            if selection.row?
-                                row = @response.results[selection.row + 1][0]
-                                description += row
-                                # Replace `%category` in PathQueries.
-                                resultsPq = resultsPq.replace "%category", row ; quickPq = quickPq.replace "%category"
-                                # Replace `%series` in PathQuery.
-                                if selection.column?
-                                    column = @response.results[0][selection.column]
-                                    description += ' ' + column
-                                    resultsPq = resultsPq.replace("%series", translate @response, column)
-                                    quickPq =   resultsPq.replace("%series", translate @response, column)
-                            else
-                                # We have clicked legend series.
-                                if selection.column?
-                                    return @viewSeriesAction resultsPq.replace("%series", translate @response, @response.results[0][selection.column])
-
-                            # Turn into JSON object?
-                            resultsPq = JSON.parse resultsPq ; quickPq = JSON.parse quickPq
-
-                            # We may have deselected a bar.
-                            if description
-                                # Create `View`
-                                $(@el).find('div.content').append (@barView = new ChartPopoverView(
-                                    "description": description
-                                    "template":    @template
-                                    "resultsPq":   resultsPq
-                                    "resultsCb":   @options.resultsCb
-                                    "listCb":      @options.listCb
-                                    "matchCb":     @options.matchCb
-                                    "quickPq":     quickPq
-                                    "imService":   @widget.imService
-                                    "type":        @response.type
-                                )).el
+                if @response.pathQuery? then google.visualization.events.addListener chart, "select", => @viewBarAction chart
 
             else
                 # Undefined Google Visualization chart type.
@@ -135,6 +84,58 @@ class ChartView extends Backbone.View
         $(@el).find("div.actions").html(
             $ @template "chart.actions"
         )
+
+    # Listener for bar onclick.
+    viewBarAction: (chart) =>
+        # Translate view series into PathQuery series (Expressed/Not Expressed into true/false).
+        translate = (response, series) ->
+            # Chromosome Distribution widget fails on this step not having `seriesValues`.
+            if response.seriesValues?
+                response.seriesValues.split(',')[response.seriesLabels.split(',').indexOf(series)]
+
+        # Remove any previous popovers.
+        if @barView? then @barView.close()
+
+        # Get the selection.
+        selection = chart.getSelection()[0]
+
+        # We are selecting things.
+        if selection
+            # Determine which bar we are in.
+            description = '' ; resultsPq = @response.pathQuery ; quickPq = @response.simplePathQuery
+            if selection.row?
+                row = @response.results[selection.row + 1][0]
+                description += row
+                # Replace `%category` in PathQueries.
+                resultsPq = resultsPq.replace "%category", row ; quickPq = quickPq.replace "%category"
+                # Replace `%series` in PathQuery.
+                if selection.column?
+                    column = @response.results[0][selection.column]
+                    description += ' ' + column
+                    resultsPq = resultsPq.replace("%series", translate @response, column)
+                    quickPq =   resultsPq.replace("%series", translate @response, column)
+            else
+                # We have clicked legend series.
+                if selection.column?
+                    return @viewSeriesAction resultsPq.replace("%series", translate @response, @response.results[0][selection.column])
+
+            # Turn into JSON object?
+            resultsPq = JSON.parse resultsPq ; quickPq = JSON.parse quickPq
+
+            # We may have deselected a bar.
+            if description
+                # Create `View`
+                $(@el).find('div.content').append (@barView = new ChartPopoverView(
+                    "description": description
+                    "template":    @template
+                    "resultsPq":   resultsPq
+                    "resultsCb":   @options.resultsCb
+                    "listCb":      @options.listCb
+                    "matchCb":     @options.matchCb
+                    "quickPq":     quickPq
+                    "imService":   @widget.imService
+                    "type":        @response.type
+                )).el
 
     # View both series.
     viewAllAction: =>
