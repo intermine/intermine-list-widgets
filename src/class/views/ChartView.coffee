@@ -20,12 +20,19 @@ class ChartView extends Backbone.View
             titleTextStyle:
                 fontName: "Sans-Serif"
 
+    # Multiselect mode?
+    multiselect: false
+
     events:
         "change div.form select":       "formAction"
         "click div.actions a.view-all": "viewAllAction"
 
     initialize: (o) ->
         @[k] = v for k, v of o
+
+        # Keyup events for the whole page.
+        $(document).on 'keyup keydown', @keypressAction
+
         @render()
 
     render: ->
@@ -66,10 +73,20 @@ class ChartView extends Backbone.View
                     'title': if @response.chartType is 'BarChart' then @response.domainLabel else @response.rangeLabel
 
                 chart = new google.visualization[@response.chartType]($(@el).find("div.content")[0])
-                chart.draw(google.visualization.arrayToDataTable(@response.results, false), @chartOptions)
+
+                # Lose focus on the `<iframe>` you stupid stupid Google Viz.
+                google.visualization.events.addListener chart, 'click', =>
+                    # Create fake input element and give it focus immediately destroying it.
+                    $(@el).find('.content').prepend input = $ '<input/>',
+                        'class': 'focus'
+                        'type':  'text'
+                    input.focus().remove()
 
                 # Add event listener on click the chart bar.
                 if @response.pathQuery? then google.visualization.events.addListener chart, "select", => @viewBarAction chart
+
+                # Draw.
+                chart.draw(google.visualization.arrayToDataTable(@response.results, false), @chartOptions)
 
             else
                 # Undefined Google Visualization chart type.
@@ -85,57 +102,128 @@ class ChartView extends Backbone.View
             $ @template "chart.actions"
         )
 
+    # Translate view series into PathQuery series (Expressed/Not Expressed into true/false).
+    translate: (response, series) ->
+        # Chromosome Distribution widget fails on this step not having `seriesValues`.
+        if response.seriesValues?
+            response.seriesValues.split(',')[response.seriesLabels.split(',').indexOf(series)]
+
+    # Monitor key-presses of command keys to do multiselect.
+    keypressAction: (e) =>
+        if e.type is 'keydown'
+            if e.keyCode >= 16 and e.keyCode <= 18
+                # Set multiselect mode.
+                @multiselect = true
+        else
+            if e.keyCode >= 16 and e.keyCode <= 18
+                # Switch off multiselect.
+                @multiselect = false
+                # Show the collated bars.
+                if @selection? and @selection.length isnt 0
+                    @viewBarsAction @selection
+                    @selection = null
+
     # Listener for bar onclick.
     viewBarAction: (chart) =>
-        # Translate view series into PathQuery series (Expressed/Not Expressed into true/false).
-        translate = (response, series) ->
-            # Chromosome Distribution widget fails on this step not having `seriesValues`.
-            if response.seriesValues?
-                response.seriesValues.split(',')[response.seriesLabels.split(',').indexOf(series)]
-
         # Remove any previous popovers.
         if @barView? then @barView.close()
 
         # Get the selection.
         selection = chart.getSelection()[0]
 
-        # We are selecting things.
-        if selection
-            # Determine which bar we are in.
-            description = '' ; resultsPq = @response.pathQuery ; quickPq = @response.simplePathQuery
-            if selection.row?
-                row = @response.results[selection.row + 1][0]
-                description += row
-                # Replace `%category` in PathQueries.
-                resultsPq = resultsPq.replace "%category", row ; quickPq = quickPq.replace "%category"
-                # Replace `%series` in PathQuery.
-                if selection.column?
-                    column = @response.results[0][selection.column]
-                    description += ' ' + column
-                    resultsPq = resultsPq.replace("%series", translate @response, column)
-                    quickPq =   resultsPq.replace("%series", translate @response, column)
-            else
-                # We have clicked legend series.
-                if selection.column?
-                    return @viewSeriesAction resultsPq.replace("%series", translate @response, @response.results[0][selection.column])
+        # Multiselect mode?
+        if @multiselect
+            @selection ?= []
+            @selection.push selection
+        else
+            # We are selecting things.
+            if selection
+                # Determine which bar we are in.
+                description = '' ; resultsPq = @response.pathQuery ; quickPq = @response.simplePathQuery
+                if selection.row?
+                    row = @response.results[selection.row + 1][0]
+                    description += row
+                    # Replace `%category` in PathQueries.
+                    resultsPq = resultsPq.replace "%category", row ; quickPq = quickPq.replace "%category"
+                    # Replace `%series` in PathQuery.
+                    if selection.column?
+                        column = @response.results[0][selection.column]
+                        description += ' ' + column
+                        resultsPq = resultsPq.replace("%series", @translate @response, column)
+                        quickPq =   resultsPq.replace("%series", @translate @response, column)
+                else
+                    # We have clicked legend series.
+                    if selection.column?
+                        return @viewSeriesAction resultsPq.replace("%series", @translate @response, @response.results[0][selection.column])
 
-            # Turn into JSON object?
-            resultsPq = JSON.parse resultsPq ; quickPq = JSON.parse quickPq
+                # Turn into JSON object?
+                resultsPq = JSON.parse resultsPq ; quickPq = JSON.parse quickPq
 
-            # We may have deselected a bar.
-            if description
-                # Create `View`
-                $(@el).find('div.content').append (@barView = new ChartPopoverView(
-                    "description": description
-                    "template":    @template
-                    "resultsPq":   resultsPq
-                    "resultsCb":   @options.resultsCb
-                    "listCb":      @options.listCb
-                    "matchCb":     @options.matchCb
-                    "quickPq":     quickPq
-                    "imService":   @widget.imService
-                    "type":        @response.type
-                )).el
+                # We may have deselected a bar.
+                if description
+                    # Create `View`
+                    $(@el).find('div.content').append (@barView = new ChartPopoverView(
+                        "description": description
+                        "template":    @template
+                        "resultsPq":   resultsPq
+                        "resultsCb":   @options.resultsCb
+                        "listCb":      @options.listCb
+                        "matchCb":     @options.matchCb
+                        "quickPq":     quickPq
+                        "imService":   @widget.imService
+                        "type":        @response.type
+                    )).el
+
+    # Command select multiple bars action.
+    viewBarsAction: (selections) =>
+        # Parse full PathQuery.
+        pq = JSON.parse @response.pathQuery
+        
+        # Split the constraints in the pq.
+        for i, field of pq.where
+            switch field.value
+                when '%category' then category = field
+                when '%series' then series = field
+                else
+                    field.code = 'A'
+                    bag = field
+
+        # Remove the constraints from pq.
+        pq.where = [ bag, category, series ] ; pq.constraintLogic = ''
+
+        # Or logic for all the constraints we are merging.
+        orLogic = [ ]
+
+        # Char code for char to use in logic.
+        code = 66 # 'B'
+
+        # Traverse the selection making an array of constraints.
+        constraints = [ bag ]
+        for selection in selections
+            if selection?
+                # Category.
+                constraints.push jQuery.extend true, {}, category,
+                    'code':  a = String.fromCharCode(code++).toUpperCase()
+                    'value': @response.results[selection.row + 1][0]
+                
+                # Series.
+                if selection.column?
+                    constraints.push jQuery.extend true, {}, series,
+                        'code':  b = String.fromCharCode(code++).toUpperCase()
+                        'value': @translate @response, @response.results[0][selection.column]
+                    orLogic.push '(' + [a, b].join(' AND ') + ')'
+                else
+                    orLogic.push a
+
+        # At least some error check...
+        if code > 90 then throw 'Too many constraints'
+
+        # Update the pq.
+        pq.constraintLogic = [ 'A', '(' + orLogic.join(' OR ') + ')' ].join(' AND ')
+        pq.where = constraints
+
+        # In fact, we may only have one constraint... the bag.
+        if code > 66 then @options.resultsCb pq
 
     # View both series.
     viewAllAction: =>

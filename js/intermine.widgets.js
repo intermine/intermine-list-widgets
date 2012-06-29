@@ -10,12 +10,12 @@ JST["loading.eco"]=function(a){a||(a={});var b=[],c=function(a){var c=b,d;return
 JST["invalidjsonkey.eco"]=function(a){a||(a={});var b=[],c=function(a){var c=b,d;return b=[],a.call(this),d=b.join(""),b=c,e(d)},d=function(a){return a&&a.ecoSafe?a:typeof a!="undefined"&&a!=null?g(a):""},e,f=a.safe,g=a.escape;return e=a.safe=function(a){if(a&&a.ecoSafe)return a;if(typeof a=="undefined"||a==null)a="";var b=new String(a);return b.ecoSafe=!0,b},g||(g=a.escape=function(a){return(""+a).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}),function(){(function(){b.push('<li style="vertical-align:bottom">\n    <span style="display:inline-block" class="label label-important">'),b.push(d(this.key)),b.push("</span> is "),b.push(d(this.actual)),b.push("; was expecting "),b.push(d(this.expected)),b.push("\n</li>")}).call(this)}.call(a),a.safe=f,a.escape=g,b.join("")}
 JST["popover.values.eco"]=function(a){a||(a={});var b=[],c=function(a){var c=b,d;return b=[],a.call(this),d=b.join(""),b=c,e(d)},d=function(a){return a&&a.ecoSafe?a:typeof a!="undefined"&&a!=null?g(a):""},e,f=a.safe,g=a.escape;return e=a.safe=function(a){if(a&&a.ecoSafe)return a;if(typeof a=="undefined"||a==null)a="";var b=new String(a);return b.ecoSafe=!0,b},g||(g=a.escape=function(a){return(""+a).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}),function(){(function(){var a,c,e,f;b.push("<h4>"),b.push(d(this.values.length)),b.push(" "),b.push(d(this.type)),this.values.length!==1&&b.push(d("s")),b.push(":</h4>\n\n"),f=this.values.slice(0,this.valuesLimit-1+1||9e9);for(c=0,e=f.length;c<e;c++)a=f[c],b.push('\n    <a href="#" class="match">'),b.push(d(a)),b.push("</a>\n");b.push("\n"),this.values.length>this.valuesLimit&&b.push("&hellip;")}).call(this)}.call(a),a.safe=f,a.escape=g,b.join("")}
 JST["popover.eco"]=function(a){a||(a={});var b=[],c=function(a){var c=b,d;return b=[],a.call(this),d=b.join(""),b=c,e(d)},d=function(a){return a&&a.ecoSafe?a:typeof a!="undefined"&&a!=null?g(a):""},e,f=a.safe,g=a.escape;return e=a.safe=function(a){if(a&&a.ecoSafe)return a;if(typeof a=="undefined"||a==null)a="";var b=new String(a);return b.ecoSafe=!0,b},g||(g=a.escape=function(a){return(""+a).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}),function(){(function(){b.push('<div class="popover" style="position:absolute;top:5px;right:0;z-index:1;display:block">\n    <div class="popover-inner" style="'),b.push(d(this.style)),b.push('">\n        <a style="cursor:pointer;margin:2px 5px 0 0" class="close">×</a>\n        <h3 class="popover-title">\n            '),b.push(d(this.description.slice(0,this.descriptionLimit-1+1||9e9))),b.push("\n            "),this.description.length>this.descriptionLimit&&b.push("&hellip;"),b.push('\n        </h3>\n        <div class="popover-content">\n            <div class="values">\n                <!-- popover.values.eco -->\n            </div>\n            <div style="margin-top:10px">\n                <a class="btn btn-small btn-primary results">View results</a>\n                <a class="btn btn-small list disabled">Create list</a>\n            </div>\n        </div>\n    </div>\n</div>')}).call(this)}.call(a),a.safe=f,a.escape=g,b.join("")}
+JST["chart.actions.eco"]=function(a){a||(a={});var b=[],c=function(a){var c=b,d;return b=[],a.call(this),d=b.join(""),b=c,e(d)},d=function(a){return a&&a.ecoSafe?a:typeof a!="undefined"&&a!=null?g(a):""},e,f=a.safe,g=a.escape;return e=a.safe=function(a){if(a&&a.ecoSafe)return a;if(typeof a=="undefined"||a==null)a="";var b=new String(a);return b.ecoSafe=!0,b},g||(g=a.escape=function(a){return(""+a).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}),function(){(function(){b.push('<a class="btn btn-small view-all">View all</a>')}).call(this)}.call(a),a.safe=f,a.escape=g,b.join("")}
+JST["chart.eco"]=function(a){a||(a={});var b=[],c=function(a){var c=b,d;return b=[],a.call(this),d=b.join(""),b=c,e(d)},d=function(a){return a&&a.ecoSafe?a:typeof a!="undefined"&&a!=null?g(a):""},e,f=a.safe,g=a.escape;return e=a.safe=function(a){if(a&&a.ecoSafe)return a;if(typeof a=="undefined"||a==null)a="";var b=new String(a);return b.ecoSafe=!0,b},g||(g=a.escape=function(a){return(""+a).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}),function(){(function(){b.push('<div class="header">\n    <h3>'),this.title&&b.push(d(this.title)),b.push("</h3>\n    <p>"),this.description&&b.push(this.description),b.push("</p>\n    "),this.notAnalysed?(b.push("\n        <p>Number of Genes in this list not analysed in this widget: <a>"),b.push(d(this.notAnalysed)),b.push("</a></p>\n    ")):b.push("\n        <p>All items in your list have been analysed.</p>\n    "),b.push('\n\n    <div class="form">\n        <form style="margin:0">\n            <!-- extra.eco -->\n        </form>\n    </div>\n\n    <div class="actions" style="padding:10px 0">\n        <!-- chart.actions.eco -->\n    </div>\n</div>\n<div class="content"></div>')}).call(this)}.call(a),a.safe=f,a.escape=g,b.join("")}
 JST["enrichment.row.eco"]=function(a){a||(a={});var b=[],c=function(a){var c=b,d;return b=[],a.call(this),d=b.join(""),b=c,e(d)},d=function(a){return a&&a.ecoSafe?a:typeof a!="undefined"&&a!=null?g(a):""},e,f=a.safe,g=a.escape;return e=a.safe=function(a){if(a&&a.ecoSafe)return a;if(typeof a=="undefined"||a==null)a="";var b=new String(a);return b.ecoSafe=!0,b},g||(g=a.escape=function(a){return(""+a).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}),function(){(function(){b.push('<td class="check"><input type="checkbox" '),this.row.selected&&b.push('checked="checked"'),b.push(' /></td>\n<td class="description">\n    '),b.push(d(this.row.description)),b.push("\n    "),this.row.externalLink&&(b.push('\n        [<a href="'),b.push(this.row.externalLink),b.push('" target="_blank">Link</a>]\n    ')),b.push('\n</td>\n<td class="pValue" style="white-space:nowrap">'),b.push(d(this.row["p-value"])),b.push('</td>\n<td class="matches">\n    <a class="count" style="cursor:pointer">'),b.push(d(this.row.matches)),b.push("</a>\n</td>")}).call(this)}.call(a),a.safe=f,a.escape=g,b.join("")}
 JST["enrichment.eco"]=function(a){a||(a={});var b=[],c=function(a){var c=b,d;return b=[],a.call(this),d=b.join(""),b=c,e(d)},d=function(a){return a&&a.ecoSafe?a:typeof a!="undefined"&&a!=null?g(a):""},e,f=a.safe,g=a.escape;return e=a.safe=function(a){if(a&&a.ecoSafe)return a;if(typeof a=="undefined"||a==null)a="";var b=new String(a);return b.ecoSafe=!0,b},g||(g=a.escape=function(a){return(""+a).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}),function(){(function(){b.push('<div class="header">\n    <h3>'),this.title&&b.push(d(this.title)),b.push("</h3>\n    <p>"),this.description&&b.push(this.description),b.push("</p>\n    "),this.notAnalysed?(b.push("\n        <p>Number of Genes in this list not analysed in this widget: <a>"),b.push(d(this.notAnalysed)),b.push("</a></p>\n    ")):b.push("\n        <p>All items in your list have been analysed.</p>\n    "),b.push('\n\n    <div class="form">\n        <!-- enrichment.form.eco -->\n    </div>\n\n    <div class="actions" style="padding:10px 0">\n        <!-- actions.eco -->\n    </div>\n</div>\n<div class="content">\n    <!-- enrichment.table.eco -->\n</div>')}).call(this)}.call(a),a.safe=f,a.escape=g,b.join("")}
 JST["enrichment.table.eco"]=function(a){a||(a={});var b=[],c=function(a){var c=b,d;return b=[],a.call(this),d=b.join(""),b=c,e(d)},d=function(a){return a&&a.ecoSafe?a:typeof a!="undefined"&&a!=null?g(a):""},e,f=a.safe,g=a.escape;return e=a.safe=function(a){if(a&&a.ecoSafe)return a;if(typeof a=="undefined"||a==null)a="";var b=new String(a);return b.ecoSafe=!0,b},g||(g=a.escape=function(a){return(""+a).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}),function(){(function(){b.push('<!-- actual fixed head -->\n<div class="head" style="display:table">\n    <div style="font-weight:bold;display:table-cell;padding:0 8px;"><input type="checkbox" class="check" /></div>\n    <div style="font-weight:bold;display:table-cell;padding:0 8px;">'),b.push(d(this.label)),b.push('</div>\n    <div style="font-weight:bold;display:table-cell;padding:0 8px;">p-Value</div>\n    <div style="font-weight:bold;display:table-cell;padding:0 8px;">Matches</div>\n    <div style="clear:both"></div>\n</div>\n<div class="wrapper" style="overflow:auto;overflow-x:hidden">\n    <table class="table table-striped">\n        <!-- head for proper cell width -->\n        <thead style="visibility:hidden">\n            <tr>\n                <th></th>\n                <th>'),b.push(d(this.label)),b.push("</th>\n                <th>p-Value</th>\n                <th>Matches</th>\n            </tr>\n        </thead>\n        <tbody>\n            <!-- loop enrichment.row.eco -->\n        </tbody>\n    </table>\n</div>")}).call(this)}.call(a),a.safe=f,a.escape=g,b.join("")}
 JST["enrichment.form.eco"]=function(a){a||(a={});var b=[],c=function(a){var c=b,d;return b=[],a.call(this),d=b.join(""),b=c,e(d)},d=function(a){return a&&a.ecoSafe?a:typeof a!="undefined"&&a!=null?g(a):""},e,f=a.safe,g=a.escape;return e=a.safe=function(a){if(a&&a.ecoSafe)return a;if(typeof a=="undefined"||a==null)a="";var b=new String(a);return b.ecoSafe=!0,b},g||(g=a.escape=function(a){return(""+a).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}),function(){(function(){var a,c,e,f,g,h,i,j;b.push('<form style="margin:0">\n    <div class="group" style="display:inline-block;margin-right:5px;float:left">\n        <label>Test Correction</label>\n        <select name="errorCorrection" class="span2">\n            '),i=this.errorCorrections;for(e=0,g=i.length;e<g;e++)a=i[e],b.push('\n                <option value="'),b.push(d(a)),b.push('" '),this.options.errorCorrection===a&&b.push(d('selected="selected"')),b.push(">\n                    "),b.push(d(a)),b.push("\n            </option>\n            ");b.push('\n        </select>\n    </div>\n\n    <div class="group" style="display:inline-block;margin-right:5px;float:left">\n        <label>Max p-value</label>\n        <select name="pValue" class="span2">\n            '),j=this.pValues;for(f=0,h=j.length;f<h;f++)c=j[f],b.push('\n                <option value="'),b.push(d(c)),b.push('" '),this.options.pValue===c&&b.push(d('selected="selected"')),b.push(">\n                    "),b.push(d(c)),b.push("\n                </option>\n            ");b.push('\n        </select>\n    </div>\n</form>\n<div style="clear:both"></div>')}).call(this)}.call(a),a.safe=f,a.escape=g,b.join("")}
-JST["chart.actions.eco"]=function(a){a||(a={});var b=[],c=function(a){var c=b,d;return b=[],a.call(this),d=b.join(""),b=c,e(d)},d=function(a){return a&&a.ecoSafe?a:typeof a!="undefined"&&a!=null?g(a):""},e,f=a.safe,g=a.escape;return e=a.safe=function(a){if(a&&a.ecoSafe)return a;if(typeof a=="undefined"||a==null)a="";var b=new String(a);return b.ecoSafe=!0,b},g||(g=a.escape=function(a){return(""+a).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}),function(){(function(){b.push('<a class="btn btn-small view-all">View all</a>')}).call(this)}.call(a),a.safe=f,a.escape=g,b.join("")}
-JST["chart.eco"]=function(a){a||(a={});var b=[],c=function(a){var c=b,d;return b=[],a.call(this),d=b.join(""),b=c,e(d)},d=function(a){return a&&a.ecoSafe?a:typeof a!="undefined"&&a!=null?g(a):""},e,f=a.safe,g=a.escape;return e=a.safe=function(a){if(a&&a.ecoSafe)return a;if(typeof a=="undefined"||a==null)a="";var b=new String(a);return b.ecoSafe=!0,b},g||(g=a.escape=function(a){return(""+a).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}),function(){(function(){b.push('<div class="header">\n    <h3>'),this.title&&b.push(d(this.title)),b.push("</h3>\n    <p>"),this.description&&b.push(this.description),b.push("</p>\n    "),this.notAnalysed?(b.push("\n        <p>Number of Genes in this list not analysed in this widget: <a>"),b.push(d(this.notAnalysed)),b.push("</a></p>\n    ")):b.push("\n        <p>All items in your list have been analysed.</p>\n    "),b.push('\n\n    <div class="form">\n        <form style="margin:0">\n            <!-- extra.eco -->\n        </form>\n    </div>\n\n    <div class="actions" style="padding:10px 0">\n        <!-- chart.actions.eco -->\n    </div>\n</div>\n<div class="content"></div>')}).call(this)}.call(a),a.safe=f,a.escape=g,b.join("")}
 JST["table.row.eco"]=function(a){a||(a={});var b=[],c=function(a){var c=b,d;return b=[],a.call(this),d=b.join(""),b=c,e(d)},d=function(a){return a&&a.ecoSafe?a:typeof a!="undefined"&&a!=null?g(a):""},e,f=a.safe,g=a.escape;return e=a.safe=function(a){if(a&&a.ecoSafe)return a;if(typeof a=="undefined"||a==null)a="";var b=new String(a);return b.ecoSafe=!0,b},g||(g=a.escape=function(a){return(""+a).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}),function(){(function(){var a,c,e,f;b.push('<td class="check"><input type="checkbox" '),this.row.selected&&b.push('checked="checked"'),b.push(" /></td>\n"),f=this.row.descriptions;for(c=0,e=f.length;c<e;c++)a=f[c],b.push("\n    <td>"),b.push(d(a)),b.push("</td>\n");b.push('\n<td class="matches">\n    <a class="count" style="cursor:pointer">'),b.push(d(this.row.matches)),b.push("</a>\n</td>")}).call(this)}.call(a),a.safe=f,a.escape=g,b.join("")}
 JST["table.eco"]=function(a){a||(a={});var b=[],c=function(a){var c=b,d;return b=[],a.call(this),d=b.join(""),b=c,e(d)},d=function(a){return a&&a.ecoSafe?a:typeof a!="undefined"&&a!=null?g(a):""},e,f=a.safe,g=a.escape;return e=a.safe=function(a){if(a&&a.ecoSafe)return a;if(typeof a=="undefined"||a==null)a="";var b=new String(a);return b.ecoSafe=!0,b},g||(g=a.escape=function(a){return(""+a).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}),function(){(function(){b.push('<div class="header">\n    <h3>'),this.title&&b.push(d(this.title)),b.push("</h3>\n    <p>"),this.description&&b.push(this.description),b.push("</p>\n    "),this.notAnalysed?(b.push("\n        <p>Number of Genes in this list not analysed in this widget: <a>"),b.push(d(this.notAnalysed)),b.push("</a></p>\n    ")):b.push("\n        <p>All items in your list have been analysed.</p>\n    "),b.push('\n\n    <div class="actions" style="padding:10px 0">\n        <!-- actions.eco -->\n    </div>\n</div>\n<div class="content">\n    <!-- table.table.eco -->\n</div>')}).call(this)}.call(a),a.safe=f,a.escape=g,b.join("")}
 JST["table.table.eco"]=function(a){a||(a={});var b=[],c=function(a){var c=b,d;return b=[],a.call(this),d=b.join(""),b=c,e(d)},d=function(a){return a&&a.ecoSafe?a:typeof a!="undefined"&&a!=null?g(a):""},e,f=a.safe,g=a.escape;return e=a.safe=function(a){if(a&&a.ecoSafe)return a;if(typeof a=="undefined"||a==null)a="";var b=new String(a);return b.ecoSafe=!0,b},g||(g=a.escape=function(a){return(""+a).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}),function(){(function(){var a,c,e,f,g,h,i;b.push('<!-- actual fixed head -->\n<div class="head" style="display:table">\n    <div style="font-weight:bold;display:table-cell;padding:0 8px;"><input type="checkbox" class="check" /></div>\n    '),h=this.columns;for(c=0,f=h.length;c<f;c++)a=h[c],b.push('\n        <div style="font-weight:bold;display:table-cell;padding:0 8px;">'),b.push(d(a)),b.push("</div>\n    ");b.push('\n    <div style="clear:both"></div>\n</div>\n<div class="wrapper" style="overflow:auto;overflow-x:hidden">\n    <table class="table table-striped">\n        <!-- head for proper cell width -->\n        <thead style="visibility:hidden">\n            <tr>\n                <th></th>\n                '),i=this.columns;for(e=0,g=i.length;e<g;e++)a=i[e],b.push("\n                    <th>"),b.push(d(a)),b.push("</th>\n                ");b.push("\n            </tr>\n        </thead>\n        <tbody>\n            <!-- loop table.row.eco -->\n        </tbody>\n    </table>\n</div>")}).call(this)}.call(a),a.safe=f,a.escape=g,b.join("")}
@@ -1439,7 +1439,11 @@ factory = function(Backbone) {
   
       this.viewAllAction = __bind(this.viewAllAction, this);
   
+      this.viewBarsAction = __bind(this.viewBarsAction, this);
+  
       this.viewBarAction = __bind(this.viewBarAction, this);
+  
+      this.keypressAction = __bind(this.keypressAction, this);
   
       this.renderToolbar = __bind(this.renderToolbar, this);
       return ChartView.__super__.constructor.apply(this, arguments);
@@ -1469,6 +1473,8 @@ factory = function(Backbone) {
       }
     };
   
+    ChartView.prototype.multiselect = false;
+  
     ChartView.prototype.events = {
       "change div.form select": "formAction",
       "click div.actions a.view-all": "viewAllAction"
@@ -1480,6 +1486,7 @@ factory = function(Backbone) {
         v = o[k];
         this[k] = v;
       }
+      $(document).on('keyup keydown', this.keypressAction);
       return this.render();
     };
   
@@ -1514,12 +1521,20 @@ factory = function(Backbone) {
             'title': this.response.chartType === 'BarChart' ? this.response.domainLabel : this.response.rangeLabel
           };
           chart = new google.visualization[this.response.chartType]($(this.el).find("div.content")[0]);
-          chart.draw(google.visualization.arrayToDataTable(this.response.results, false), this.chartOptions);
+          google.visualization.events.addListener(chart, 'click', function() {
+            var input;
+            $(_this.el).find('.content').prepend(input = $('<input/>', {
+              'class': 'focus',
+              'type': 'text'
+            }));
+            return input.focus().remove();
+          });
           if (this.response.pathQuery != null) {
-            return google.visualization.events.addListener(chart, "select", function() {
+            google.visualization.events.addListener(chart, "select", function() {
               return _this.viewBarAction(chart);
             });
           }
+          return chart.draw(google.visualization.arrayToDataTable(this.response.results, false), this.chartOptions);
         } else {
           return this.error({
             'title': this.response.chartType,
@@ -1537,52 +1552,127 @@ factory = function(Backbone) {
       return $(this.el).find("div.actions").html($(this.template("chart.actions")));
     };
   
-    ChartView.prototype.viewBarAction = function(chart) {
-      var column, description, quickPq, resultsPq, row, selection, translate;
-      translate = function(response, series) {
-        if (response.seriesValues != null) {
-          return response.seriesValues.split(',')[response.seriesLabels.split(',').indexOf(series)];
+    ChartView.prototype.translate = function(response, series) {
+      if (response.seriesValues != null) {
+        return response.seriesValues.split(',')[response.seriesLabels.split(',').indexOf(series)];
+      }
+    };
+  
+    ChartView.prototype.keypressAction = function(e) {
+      if (e.type === 'keydown') {
+        if (e.keyCode >= 16 && e.keyCode <= 18) {
+          return this.multiselect = true;
         }
-      };
+      } else {
+        if (e.keyCode >= 16 && e.keyCode <= 18) {
+          this.multiselect = false;
+          if ((this.selection != null) && this.selection.length !== 0) {
+            this.viewBarsAction(this.selection);
+            return this.selection = null;
+          }
+        }
+      }
+    };
+  
+    ChartView.prototype.viewBarAction = function(chart) {
+      var column, description, quickPq, resultsPq, row, selection;
       if (this.barView != null) {
         this.barView.close();
       }
       selection = chart.getSelection()[0];
-      if (selection) {
-        description = '';
-        resultsPq = this.response.pathQuery;
-        quickPq = this.response.simplePathQuery;
-        if (selection.row != null) {
-          row = this.response.results[selection.row + 1][0];
-          description += row;
-          resultsPq = resultsPq.replace("%category", row);
-          quickPq = quickPq.replace("%category");
-          if (selection.column != null) {
-            column = this.response.results[0][selection.column];
-            description += ' ' + column;
-            resultsPq = resultsPq.replace("%series", translate(this.response, column));
-            quickPq = resultsPq.replace("%series", translate(this.response, column));
+      if (this.multiselect) {
+        if (this.selection == null) {
+          this.selection = [];
+        }
+        return this.selection.push(selection);
+      } else {
+        if (selection) {
+          description = '';
+          resultsPq = this.response.pathQuery;
+          quickPq = this.response.simplePathQuery;
+          if (selection.row != null) {
+            row = this.response.results[selection.row + 1][0];
+            description += row;
+            resultsPq = resultsPq.replace("%category", row);
+            quickPq = quickPq.replace("%category");
+            if (selection.column != null) {
+              column = this.response.results[0][selection.column];
+              description += ' ' + column;
+              resultsPq = resultsPq.replace("%series", this.translate(this.response, column));
+              quickPq = resultsPq.replace("%series", this.translate(this.response, column));
+            }
+          } else {
+            if (selection.column != null) {
+              return this.viewSeriesAction(resultsPq.replace("%series", this.translate(this.response, this.response.results[0][selection.column])));
+            }
           }
-        } else {
-          if (selection.column != null) {
-            return this.viewSeriesAction(resultsPq.replace("%series", translate(this.response, this.response.results[0][selection.column])));
+          resultsPq = JSON.parse(resultsPq);
+          quickPq = JSON.parse(quickPq);
+          if (description) {
+            return $(this.el).find('div.content').append((this.barView = new ChartPopoverView({
+              "description": description,
+              "template": this.template,
+              "resultsPq": resultsPq,
+              "resultsCb": this.options.resultsCb,
+              "listCb": this.options.listCb,
+              "matchCb": this.options.matchCb,
+              "quickPq": quickPq,
+              "imService": this.widget.imService,
+              "type": this.response.type
+            })).el);
           }
         }
-        resultsPq = JSON.parse(resultsPq);
-        quickPq = JSON.parse(quickPq);
-        if (description) {
-          return $(this.el).find('div.content').append((this.barView = new ChartPopoverView({
-            "description": description,
-            "template": this.template,
-            "resultsPq": resultsPq,
-            "resultsCb": this.options.resultsCb,
-            "listCb": this.options.listCb,
-            "matchCb": this.options.matchCb,
-            "quickPq": quickPq,
-            "imService": this.widget.imService,
-            "type": this.response.type
-          })).el);
+      }
+    };
+  
+    ChartView.prototype.viewBarsAction = function(selections) {
+      var a, b, bag, category, code, constraints, field, i, orLogic, pq, selection, series, _i, _len, _ref;
+      pq = JSON.parse(this.response.pathQuery);
+      _ref = pq.where;
+      for (i in _ref) {
+        field = _ref[i];
+        switch (field.value) {
+          case '%category':
+            category = field;
+            break;
+          case '%series':
+            series = field;
+            break;
+          default:
+            field.code = 'A';
+            bag = field;
         }
+      }
+      pq.where = [bag, category, series];
+      pq.constraintLogic = '';
+      orLogic = [];
+      code = 66;
+      constraints = [bag];
+      for (_i = 0, _len = selections.length; _i < _len; _i++) {
+        selection = selections[_i];
+        if (selection != null) {
+          constraints.push(jQuery.extend(true, {}, category, {
+            'code': a = String.fromCharCode(code++).toUpperCase(),
+            'value': this.response.results[selection.row + 1][0]
+          }));
+          if (selection.column != null) {
+            constraints.push(jQuery.extend(true, {}, series, {
+              'code': b = String.fromCharCode(code++).toUpperCase(),
+              'value': this.translate(this.response, this.response.results[0][selection.column])
+            }));
+            orLogic.push('(' + [a, b].join(' AND ') + ')');
+          } else {
+            orLogic.push(a);
+          }
+        }
+      }
+      if (code > 90) {
+        throw 'Too many constraints';
+      }
+      pq.constraintLogic = ['A', '(' + orLogic.join(' OR ') + ')'].join(' AND ');
+      pq.where = constraints;
+      if (code > 66) {
+        return this.options.resultsCb(pq);
       }
     };
   
@@ -2159,7 +2249,7 @@ Widgets = (function() {
 
   Widgets.name = 'Widgets';
 
-  Widgets.prototype.VERSION = '1.3.4';
+  Widgets.prototype.VERSION = '1.4.0';
 
   Widgets.prototype.wait = true;
 
