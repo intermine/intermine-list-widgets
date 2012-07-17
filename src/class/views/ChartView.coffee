@@ -197,20 +197,37 @@ class ChartView extends Backbone.View
         # Char code for char to use in logic.
         code = 66 # 'B'
 
-        # Traverse the selection making an array of constraints.
         constraints = [ bag ]
+        # Have we used this constraint before?
+        getConstraint = (newConstraint) ->
+            for constraint in constraints
+                if constraint.path is newConstraint.path and constraint.value is newConstraint.value
+                    return constraint.code
+        
+        # Traverse the selection making an array of constraints.
         for selection in selections
             if selection? and category?
                 # Category.
-                constraints.push $.extend true, {}, category,
-                    'code':  a = String.fromCharCode(code++).toUpperCase()
+                constraint = $.extend true, {}, category,
                     'value': @response.results[selection.row + 1][0]
-                
+
+                a = getConstraint(constraint)
+                if not a?
+                    # New constraint.
+                    constraint.code = a = String.fromCharCode(code++).toUpperCase()                    
+                    constraints.push constraint
+
                 # Series.
                 if selection.column? and series?
-                    constraints.push $.extend true, {}, series,
-                        'code':  b = String.fromCharCode(code++).toUpperCase()
+                    constraint = $.extend true, {}, series,
                         'value': @translate @response, @response.results[0][selection.column]
+                    
+                    b = getConstraint(constraint)
+                    if not b?
+                        # New constraint.
+                        constraint.code = b = String.fromCharCode(code++).toUpperCase()
+                        constraints.push constraint
+
                     orLogic.push '(' + [a, b].join(' AND ') + ')'
                 else
                     orLogic.push a
