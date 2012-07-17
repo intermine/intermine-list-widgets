@@ -200,15 +200,15 @@ class ChartView extends Backbone.View
         # Traverse the selection making an array of constraints.
         constraints = [ bag ]
         for selection in selections
-            if selection?
+            if selection? and category?
                 # Category.
-                constraints.push jQuery.extend true, {}, category,
+                constraints.push $.extend true, {}, category,
                     'code':  a = String.fromCharCode(code++).toUpperCase()
                     'value': @response.results[selection.row + 1][0]
                 
                 # Series.
-                if selection.column?
-                    constraints.push jQuery.extend true, {}, series,
+                if selection.column? and series?
+                    constraints.push $.extend true, {}, series,
                         'code':  b = String.fromCharCode(code++).toUpperCase()
                         'value': @translate @response, @response.results[0][selection.column]
                     orLogic.push '(' + [a, b].join(' AND ') + ')'

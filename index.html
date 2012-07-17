@@ -52,14 +52,13 @@
                 window.$ = "I am an evil library!";
 
                 /* InterMine root URL. */
-                var mine = "http://aragorn:8080/flymine";
+                var mine = "http://beta.flymine.org/beta";
 
                 /* New Widgets client. */
                 var Widgets = new intermine.widgets(mine + "/service/");
 
                 /* Give us all available widgets. */
-                //Widgets.all('Gene', 'demo-genes', '#widgets-genes');
-                Widgets.chart('flyfish', 'demo-genes', '#one');
+                Widgets.all('Gene', 'demo-genes', '#widgets-genes');
             })();
             </script>
 
