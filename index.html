@@ -55,7 +55,7 @@
                 var mine = "http://beta.flymine.org/beta";
 
                 /* New Widgets client. */
-                var Widgets = new intermine.widgets(mine + "/service/");
+                var Widgets = new intermine.widgets({"root":  mine + "/service/"});
 
                 /* Give us all available widgets. */
                 Widgets.all('Gene', 'demo-genes', '#widgets-genes');

@@ -41,10 +41,26 @@ class Widgets
 
     ###
     New Widgets client.
-    @param {string} service A string pointing to service endpoint e.g. http://aragorn:8080/flymine/service/.
+    @param {string} service A string pointing to service endpoint e.g. http://aragorn:8080/flymine/service/
     @param {string} token A string for accessing user's lists.
+    or
+    @param {Object} opts Config just like imjs consumes e.g. `{ "root": "", "token": "" }`
     ###
-    constructor: (@service, @token = "") ->
+    constructor: (opts...) ->
+        if typeof opts[0] is 'string'
+            # Assuming a service.
+            @service = opts[0]
+            # Do we have a token?
+            @token = opts[1] or ''
+        else
+            # Assuming an object.
+            if opts[0].root?
+                @service = opts[0].root
+            else
+                throw Error 'You need to set the `root` parameter pointing to the mine\'s service'
+            # Do we have a token?
+            @token = opts[0].token or ''
+
         intermine.load @resources, =>
             # All libraries loaded, welcome jQuery, export classes.
             $ = window.jQuery

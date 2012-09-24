@@ -2197,16 +2197,16 @@ factory = function(Backbone) {
 
 var $, Widgets,
   __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+  __slice = [].slice,
   __hasProp = {}.hasOwnProperty,
   __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
-  __slice = [].slice,
   __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
 $ = window.jQuery || window.Zepto;
 
 Widgets = (function() {
 
-  Widgets.prototype.VERSION = '1.4.2';
+  Widgets.prototype.VERSION = '1.5.1';
 
   Widgets.prototype.wait = true;
 
@@ -2240,10 +2240,19 @@ Widgets = (function() {
     }
   ];
 
-  function Widgets(service, token) {
-    var _this = this;
-    this.service = service;
-    this.token = token != null ? token : "";
+  /*
+      New Widgets client.
+      @param {string} service A string pointing to service endpoint e.g. http://aragorn:8080/flymine/service/
+      @param {string} token A string for accessing user's lists.
+      or
+      @param {Object} opts Config just like imjs consumes e.g. `{ "root": "", "token": "" }`
+  */
+
+
+  function Widgets() {
+    var opts,
+      _this = this;
+    opts = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
     this.all = __bind(this.all, this);
 
     this.table = __bind(this.table, this);
@@ -2252,12 +2261,32 @@ Widgets = (function() {
 
     this.chart = __bind(this.chart, this);
 
+    if (typeof opts[0] === 'string') {
+      this.service = opts[0];
+      this.token = opts[1] || '';
+    } else {
+      if (opts[0].root != null) {
+        this.service = opts[0].root;
+      } else {
+        throw Error('You need to set the `root` parameter pointing to the mine\'s service');
+      }
+      this.token = opts[0].token || '';
+    }
     intermine.load(this.resources, function() {
       $ = window.jQuery;
       __extends(o, factory(window.Backbone));
       return _this.wait = false;
     });
   }
+
+  /*
+      Chart Widget.
+      @param {string} id Represents a widget identifier as represented in webconfig-model.xml
+      @param {string} bagName List name to use with this Widget.
+      @param {jQuery selector} el Where to render the Widget to.
+      @param {Object} widgetOptions `{ "title": true/false, "description": true/false, "matchCb": function(id, type) {}, "resultsCb": function(pq) {}, "listCb": function(pq) {} }`
+  */
+
 
   Widgets.prototype.chart = function() {
     var opts,
@@ -2281,6 +2310,15 @@ Widgets = (function() {
     }
   };
 
+  /*
+      Enrichment Widget.
+      @param {string} id Represents a widget identifier as represented in webconfig-model.xml
+      @param {string} bagName List name to use with this Widget.
+      @param {jQuery selector} el Where to render the Widget to.
+      @param {Object} widgetOptions `{ "title": true/false, "description": true/false, "matchCb": function(id, type) {}, "resultsCb": function(pq) {}, "listCb": function(pq) {} }`
+  */
+
+
   Widgets.prototype.enrichment = function() {
     var opts,
       _this = this;
@@ -2298,6 +2336,15 @@ Widgets = (function() {
     }
   };
 
+  /*
+      Table Widget.
+      @param {string} id Represents a widget identifier as represented in webconfig-model.xml
+      @param {string} bagName List name to use with this Widget.
+      @param {jQuery selector} el Where to render the Widget to.
+      @param {Object} widgetOptions `{ "title": true/false, "description": true/false, "matchCb": function(id, type) {}, "resultsCb": function(pq) {}, "listCb": function(pq) {} }`
+  */
+
+
   Widgets.prototype.table = function() {
     var opts,
       _this = this;
@@ -2314,6 +2361,15 @@ Widgets = (function() {
       })(o.TableWidget, [this.service, this.token].concat(__slice.call(opts)), function(){});
     }
   };
+
+  /*
+      All available List Widgets.
+      @param {string} type Class of objects e.g. Gene, Protein.
+      @param {string} bagName List name to use with this Widget.
+      @param {jQuery selector} el Where to render the Widget to.
+      @param {Object} widgetOptions `{ "title": true/false, "description": true/false, "matchCb": function(id, type) {}, "resultsCb": function(pq) {}, "listCb": function(pq) {} }`
+  */
+
 
   Widgets.prototype.all = function(type, bagName, el, widgetOptions) {
     var _this = this;
