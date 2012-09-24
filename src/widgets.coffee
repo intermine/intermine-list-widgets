@@ -39,10 +39,11 @@ class Widgets
         type:  "js"
     ]
 
-    # New Widgets client.
-    #
-    # 1. `service`: [http://aragorn:8080/flymine/service/](http://aragorn:8080/flymine/service/)
-    # 2. `token`:   token for accessing user's lists 
+    ###
+    New Widgets client.
+    @param {string} service A string pointing to service endpoint e.g. http://aragorn:8080/flymine/service/.
+    @param {string} token A string for accessing user's lists.
+    ###
     constructor: (@service, @token = "") ->
         intermine.load @resources, =>
             # All libraries loaded, welcome jQuery, export classes.
@@ -53,12 +54,13 @@ class Widgets
             # Switch off waiting switch.
             @wait = false
 
-    # Chart Widget.
-    #
-    # 1. `id`:            widgetId
-    # 2. `bagName`:       myBag
-    # 3. `el`:            #target
-    # 4. `widgetOptions`: { "title": true/false, "description": true/false, "matchCb": function(id, type) {}, "resultsCb": function(pq) {}, "listCb": function(pq) {} }
+    ###
+    Chart Widget.
+    @param {string} id Represents a widget identifier as represented in webconfig-model.xml
+    @param {string} bagName List name to use with this Widget.
+    @param {jQuery selector} el Where to render the Widget to.
+    @param {Object} widgetOptions `{ "title": true/false, "description": true/false, "matchCb": function(id, type) {}, "resultsCb": function(pq) {}, "listCb": function(pq) {} }`
+    ###
     chart: (opts...) =>
         if @wait then window.setTimeout((=> @chart(opts...)), 0)
         else
@@ -67,30 +69,33 @@ class Widgets
                 packages: [ "corechart" ]
                 callback: => new o.ChartWidget(@service, @token, opts...)
     
-    # Enrichment Widget.
-    #
-    # 1. `id`:            widgetId
-    # 2. `bagName`:       myBag
-    # 3. `el`:            #target
-    # 4. `widgetOptions`: { "title": true/false, "description": true/false, "matchCb": function(id, type) {}, "resultsCb": function(pq) {}, "listCb": function(pq) {} }
+    ###
+    Enrichment Widget.
+    @param {string} id Represents a widget identifier as represented in webconfig-model.xml
+    @param {string} bagName List name to use with this Widget.
+    @param {jQuery selector} el Where to render the Widget to.
+    @param {Object} widgetOptions `{ "title": true/false, "description": true/false, "matchCb": function(id, type) {}, "resultsCb": function(pq) {}, "listCb": function(pq) {} }`
+    ###
     enrichment: (opts...) =>
         if @wait then window.setTimeout((=> @enrichment(opts...)), 0) else new o.EnrichmentWidget(@service, @token, opts...)
 
-    # Table Widget.
-    #
-    # 1. `id`:            widgetId
-    # 2. `bagName`:       myBag
-    # 3. `el`:            #target
-    # 4. `widgetOptions`: { "title": true/false, "description": true/false, "matchCb": function(id, type) {}, "resultsCb": function(pq) {}, "listCb": function(pq) {} }
+    ###
+    Table Widget.
+    @param {string} id Represents a widget identifier as represented in webconfig-model.xml
+    @param {string} bagName List name to use with this Widget.
+    @param {jQuery selector} el Where to render the Widget to.
+    @param {Object} widgetOptions `{ "title": true/false, "description": true/false, "matchCb": function(id, type) {}, "resultsCb": function(pq) {}, "listCb": function(pq) {} }`
+    ###
     table: (opts...) =>
         if @wait then window.setTimeout((=> @table(opts...)), 0) else new o.TableWidget(@service, @token, opts...)
 
-    # All available Widgets.
-    #
-    # 1. `type`:          Gene, Protein
-    # 2. `bagName`:       myBag
-    # 3. `el`:            #target
-    # 4. `widgetOptions`: { "title": true/false, "description": true/false, "matchCb": function(id, type) {}, "resultsCb": function(pq) {}, "listCb": function(pq) {} }
+    ###
+    All available List Widgets.
+    @param {string} type Class of objects e.g. Gene, Protein.
+    @param {string} bagName List name to use with this Widget.
+    @param {jQuery selector} el Where to render the Widget to.
+    @param {Object} widgetOptions `{ "title": true/false, "description": true/false, "matchCb": function(id, type) {}, "resultsCb": function(pq) {}, "listCb": function(pq) {} }`
+    ###
     all: (type = "Gene", bagName, el, widgetOptions) =>
         if @wait then window.setTimeout((=> @all(type, bagName, el, widgetOptions)), 0)
         else

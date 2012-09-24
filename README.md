@@ -1,11 +1,14 @@
-Client for embedding InterMine widgets (ws_widgets branch only!).
+Client for embedding InterMine List Widgets.
+
+![image](https://raw.github.com/radekstepan/intermine-widget-client/master/example.png)
 
 ## Requirements:
+
 ### To Run:
 
 - [InterMine JavaScript API Loader](http://radekstepan.github.com/intermine-api-loader/intermine.api.js)
 
-The following will be fetched automatically if it does not exist already:
+The following vendor libraries will be fetched automatically if they are not included on a page already:
 
 - Google Visualization API
 - jQuery
@@ -66,37 +69,34 @@ Widgets.table('interactions', 'myList', '#widget-3');
 ```
 
 ## Use:
-1. Start a simple HTTP server using `.webserver.sh`.
-2. Visit [http://0.0.0.0:1111/](http://0.0.0.0:1111/)
+
+Start Python's [SimpleHTTPServer](http://docs.python.org/library/simplehttpserver.html) using:
+
+```bash
+$ npm start
+```
+
+Visit [http://127.0.0.1:1111/](http://127.0.0.1:1111/).
 
 ## Compile:
 
-Run `$ cake compile:main` to compile widgets and templates into one target. Check optional parameters by running `cake`.
+Run the following to compile widgets and templates into one target. Check optional parameters by running `cake`.
+
+```bash
+$ cake compile:main
+```
 
 ## Test:
 
-1. Run `cake compile:tests` to compile tests.
-2. Visit [http://0.0.0.0:1111/test](http://0.0.0.0:1111/test) to run the tests using [Mocha](http://visionmedia.github.com/mocha/) and [Chai](http://chaijs.com/).
+Run the following to compile tests.
 
-The tests are automatically loaded from available tests in the `test/src` directory. Libraries needed to run the tests are loaded automatically too. You can speed up their execution by including the files the `<head>` section of the `test/index.html` file.
-
-## Release to InterMine:
-
-**Configure** the `Cakefile` with paths to your own InterMine SVN:
-
-```coffeescript
-# Path to InterMine SVN output.
-INTERMINE =
-    ROOT: "/home/rs676/svn/ws_widgets"
-    OUTPUT: "intermine/webapp/main/resources/webapp/js/widget.js"
+```bash
+$ cake compile:tests
 ```
 
-### With Commit
+Visit [http://127.0.0.1:1111/test](http://127.0.0.1:1111/test) to run the tests using [Mocha](http://visionmedia.github.com/mocha/) and [Chai](http://chaijs.com/).
 
-**Execute** the release task by running `cake --commit "message" release`; this will commit the `widget.js` file with your custom message.
-
-## Example:
-![image](https://raw.github.com/radekstepan/intermine-widget-client/master/example.png)
+The tests are automatically loaded from available tests in the `test/src` directory. Libraries needed to run the tests are loaded automatically too. You can speed up their execution by including the files the `<head>` section of the `test/index.html` file.
 
 ## Q&A:
 

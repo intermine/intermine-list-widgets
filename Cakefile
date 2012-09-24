@@ -94,31 +94,6 @@ task "compile:tests", "compile tests so we can run them in the browser", (option
     # That's it.
     console.log "#{COLORS.GREEN}Done#{COLORS.DEFAULT}"
 
-# Release the latest version of the .js library into InterMine SVN.
-task "release", "release compiled widgets.js into target InterMine directory", (options) ->
-    console.log "#{COLORS.BOLD}Releasing to #{INTERMINE.ROOT}#{COLORS.DEFAULT}"
-
-    # Does the source and target path exist?
-    exist(MAIN.OUTPUT) and exist([ INTERMINE.ROOT, INTERMINE.OUTPUT ].join('/'), 'dir')
-
-    # Have files changed?
-    if md5(MAIN.OUTPUT) is md5([ INTERMINE.ROOT, INTERMINE.OUTPUT ].join('/'))
-        console.log "#{COLORS.YELLOW}No change detected#{COLORS.DEFAULT}"
-        return
-    
-    # Write it.
-    write [ INTERMINE.ROOT, INTERMINE.OUTPUT ].join('/'), fs.readFileSync(MAIN.OUTPUT, "utf-8"), "w"
-
-    # Make an SVN commit?
-    if options.commit
-        child = exec("(cd #{INTERMINE.ROOT};svn ci #{INTERMINE.OUTPUT} -m \"#{options.commit}\")", (error, stdout, stderr) ->
-            if error
-                console.log [ COLORS.RED, error, COLORS.DEFAULT ].join ''
-                throw new Error e
-        )
-
-    console.log "#{COLORS.GREEN}Done#{COLORS.DEFAULT}"
-
 # Create docco docs from hardcoded paths.
 task "docs", "create docco docs", ->
     exec "docco src/*.coffee src/utils/*.coffee src/class/*.coffee"
