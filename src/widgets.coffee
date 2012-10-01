@@ -93,7 +93,31 @@ class Widgets
     @param {Object} widgetOptions `{ "title": true/false, "description": true/false, "matchCb": function(id, type) {}, "resultsCb": function(pq) {}, "listCb": function(pq) {} }`
     ###
     enrichment: (opts...) =>
-        if @wait then window.setTimeout((=> @enrichment(opts...)), 0) else new o.EnrichmentWidget(@service, @token, opts...)
+        # Wait to render the widget?
+        if @wait
+            window.setTimeout((=> @enrichment(opts...)), 0)
+        else
+            # Do we already have lists accessible to us?
+            if @lists? then new o.EnrichmentWidget(@service, @token, @lists, opts...)
+            else
+                # First to get here slows the others.
+                @wait = true
+                # Fetch/cache lists this user has access to.
+                $.ajax
+                    'url': "#{@service}lists?token=#{@token}"
+                    'dataType': 'jsonp'
+                    'success': (data) =>
+                        # Problems?
+                        if data.statusCode isnt 200 and not data.lists?
+                            $(opts[2]).html $ '<div/>',
+                                'class': "alert alert-error"
+                                'html':  "Problem fetching lists we have access to <a href='#{@service}lists'>#{@service}lists</a>"
+                        else
+                            # Save it and stop waiting.
+                            @lists = data.lists ; @wait = false
+                            # New instance of a widget.
+                            new o.EnrichmentWidget(@service, @token, @lists, opts...)
+
 
     ###
     Table Widget.

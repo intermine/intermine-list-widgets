@@ -37,6 +37,13 @@ class EnrichmentView extends Backbone.View
                 "possible": @response.filters.split(',') # Is a String unfortunately.
                 "selected": @response.filterSelectedValue
 
+        # Background population lists.
+        new EnrichmentPopulationView
+            'el': $(@el).find('div.form form')
+            'lists': @lists
+            'current': @response.current_list
+            'widget': @
+
         # Results?
         if @response.results.length > 0
             # Render the actions toolbar, we have results.
@@ -190,3 +197,10 @@ class EnrichmentView extends Backbone.View
                 "response":    @response
                 "imService":   @widget.imService
             )).el
+
+    # Select background population list.
+    selectBackgroundList: (list) =>
+        # Change the list.
+        @widget.formOptions['current_population'] = list
+        # Re-render.
+        @widget.render()

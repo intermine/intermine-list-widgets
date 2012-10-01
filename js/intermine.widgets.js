@@ -10,6 +10,8 @@ JST["error.eco"]=function(e){e||(e={});var t=[],n=function(e){var n=t,r;return t
 JST["invalidjsonkey.eco"]=function(e){e||(e={});var t=[],n=function(e){var n=t,r;return t=[],e.call(this),r=t.join(""),t=n,i(r)},r=function(e){return e&&e.ecoSafe?e:typeof e!="undefined"&&e!=null?o(e):""},i,s=e.safe,o=e.escape;return i=e.safe=function(e){if(e&&e.ecoSafe)return e;if(typeof e=="undefined"||e==null)e="";var t=new String(e);return t.ecoSafe=!0,t},o||(o=e.escape=function(e){return(""+e).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}),function(){(function(){t.push('<li style="vertical-align:bottom">\n    <span style="display:inline-block" class="label label-important">'),t.push(r(this.key)),t.push("</span> is "),t.push(r(this.actual)),t.push("; was expecting "),t.push(r(this.expected)),t.push("\n</li>")}).call(this)}.call(e),e.safe=s,e.escape=o,t.join("")}
 JST["chart.actions.eco"]=function(e){e||(e={});var t=[],n=function(e){var n=t,r;return t=[],e.call(this),r=t.join(""),t=n,i(r)},r=function(e){return e&&e.ecoSafe?e:typeof e!="undefined"&&e!=null?o(e):""},i,s=e.safe,o=e.escape;return i=e.safe=function(e){if(e&&e.ecoSafe)return e;if(typeof e=="undefined"||e==null)e="";var t=new String(e);return t.ecoSafe=!0,t},o||(o=e.escape=function(e){return(""+e).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}),function(){(function(){t.push('<a class="btn btn-small view-all">View all</a>')}).call(this)}.call(e),e.safe=s,e.escape=o,t.join("")}
 JST["chart.eco"]=function(e){e||(e={});var t=[],n=function(e){var n=t,r;return t=[],e.call(this),r=t.join(""),t=n,i(r)},r=function(e){return e&&e.ecoSafe?e:typeof e!="undefined"&&e!=null?o(e):""},i,s=e.safe,o=e.escape;return i=e.safe=function(e){if(e&&e.ecoSafe)return e;if(typeof e=="undefined"||e==null)e="";var t=new String(e);return t.ecoSafe=!0,t},o||(o=e.escape=function(e){return(""+e).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}),function(){(function(){t.push('<div class="header">\n    <h3>'),this.title&&t.push(r(this.title)),t.push("</h3>\n    <p>"),this.description&&t.push(this.description),t.push("</p>\n    "),this.notAnalysed?(t.push("\n        <p>Number of Genes in this list not analysed in this widget: <a>"),t.push(r(this.notAnalysed)),t.push("</a></p>\n    ")):t.push("\n        <p>All items in your list have been analysed.</p>\n    "),t.push('\n\n    <div class="form">\n        <form style="margin:0">\n            <!-- extra.eco -->\n        </form>\n    </div>\n\n    <div class="actions" style="padding:10px 0">\n        <!-- chart.actions.eco -->\n    </div>\n</div>\n<div class="content"></div>')}).call(this)}.call(e),e.safe=s,e.escape=o,t.join("")}
+JST["enrichment.population.eco"]=function(e){e||(e={});var t=[],n=function(e){var n=t,r;return t=[],e.call(this),r=t.join(""),t=n,i(r)},r=function(e){return e&&e.ecoSafe?e:typeof e!="undefined"&&e!=null?o(e):""},i,s=e.safe,o=e.escape;return i=e.safe=function(e){if(e&&e.ecoSafe)return e;if(typeof e=="undefined"||e==null)e="";var t=new String(e);return t.ecoSafe=!0,t},o||(o=e.escape=function(e){return(""+e).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}),function(){(function(){t.push('<div class="group background" style="display:inline-block;margin-right:5px;float:left">\n    <label>Background population</label>\n    '),t.push(r(this.selected||"Default")),t.push(' <a class="btn btn-small change">Change</a>\n\n    <div class="popover" style="position:absolute;top:0;right:0;z-index:1;display:none">\n        <div class="popover-inner">\n            <a style="cursor:pointer;margin:2px 5px 0 0" class="close">×</a>\n            <h4 class="popover-title">Change background population</h4>\n            <div class="popover-content">\n                <input type="text" />\n                <div class="values" style="max-height:300px;overflow-y:auto">\n                    <!-- enrichment.populationlist.eco -->\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n<div style="clear:both"></div>')}).call(this)}.call(e),e.safe=s,e.escape=o,t.join("")}
+JST["enrichment.populationlist.eco"]=function(e){e||(e={});var t=[],n=function(e){var n=t,r;return t=[],e.call(this),r=t.join(""),t=n,i(r)},r=function(e){return e&&e.ecoSafe?e:typeof e!="undefined"&&e!=null?o(e):""},i,s=e.safe,o=e.escape;return i=e.safe=function(e){if(e&&e.ecoSafe)return e;if(typeof e=="undefined"||e==null)e="";var t=new String(e);return t.ecoSafe=!0,t},o||(o=e.escape=function(e){return(""+e).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}),function(){(function(){var e,n,i,s,o,u,a,f;t.push('<table class="table table-striped">\n    <tbody>\n        <tr><td>\n            '),this.selected?t.push('\n                <a href="#">Default</a>\n            '):t.push('\n                <strong><a href="#">Default</a></strong>\n            '),t.push("\n        </td></tr>\n        "),a=this.lists;for(i=0,o=a.length;i<o;i++){e=a[i],t.push("\n            <tr><td>\n                "),e.name===this.selected?(t.push("\n                    <strong>\n                        <a "),e.description&&(t.push('title="'),t.push(r(e.description)),t.push('"')),t.push(' href="#">'),t.push(r(e.name)),t.push("</a> ("),t.push(r(e.size)),t.push(")\n                    </strong>\n                ")):(t.push("\n                    <a "),e.description&&(t.push('title="'),t.push(r(e.description)),t.push('"')),t.push(' href="#">'),t.push(r(e.name)),t.push("</a> ("),t.push(r(e.size)),t.push(")\n                ")),t.push("\n                \n                "),f=e.tags;for(s=0,u=f.length;s<u;s++)n=f[s],t.push('\n                    <span class="label" style="vertical-align:text-bottom">'),t.push(r(n)),t.push("</span>\n                ");t.push("\n            </td></tr>\n        ")}t.push("\n    </tbody>\n</table>")}).call(this)}.call(e),e.safe=s,e.escape=o,t.join("")}
 JST["enrichment.table.eco"]=function(e){e||(e={});var t=[],n=function(e){var n=t,r;return t=[],e.call(this),r=t.join(""),t=n,i(r)},r=function(e){return e&&e.ecoSafe?e:typeof e!="undefined"&&e!=null?o(e):""},i,s=e.safe,o=e.escape;return i=e.safe=function(e){if(e&&e.ecoSafe)return e;if(typeof e=="undefined"||e==null)e="";var t=new String(e);return t.ecoSafe=!0,t},o||(o=e.escape=function(e){return(""+e).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}),function(){(function(){t.push('<!-- actual fixed head -->\n<div class="head" style="display:table">\n    <div style="font-weight:bold;display:table-cell;padding:0 8px;"><input type="checkbox" class="check" /></div>\n    <div style="font-weight:bold;display:table-cell;padding:0 8px;">'),t.push(r(this.label)),t.push('</div>\n    <div style="font-weight:bold;display:table-cell;padding:0 8px;">p-Value</div>\n    <div style="font-weight:bold;display:table-cell;padding:0 8px;">Matches</div>\n    <div style="clear:both"></div>\n</div>\n<div class="wrapper" style="overflow:auto;overflow-x:hidden">\n    <table class="table table-striped">\n        <!-- head for proper cell width -->\n        <thead style="visibility:hidden">\n            <tr>\n                <th></th>\n                <th>'),t.push(r(this.label)),t.push("</th>\n                <th>p-Value</th>\n                <th>Matches</th>\n            </tr>\n        </thead>\n        <tbody>\n            <!-- loop enrichment.row.eco -->\n        </tbody>\n    </table>\n</div>")}).call(this)}.call(e),e.safe=s,e.escape=o,t.join("")}
 JST["enrichment.eco"]=function(e){e||(e={});var t=[],n=function(e){var n=t,r;return t=[],e.call(this),r=t.join(""),t=n,i(r)},r=function(e){return e&&e.ecoSafe?e:typeof e!="undefined"&&e!=null?o(e):""},i,s=e.safe,o=e.escape;return i=e.safe=function(e){if(e&&e.ecoSafe)return e;if(typeof e=="undefined"||e==null)e="";var t=new String(e);return t.ecoSafe=!0,t},o||(o=e.escape=function(e){return(""+e).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}),function(){(function(){t.push('<div class="header">\n    <h3>'),this.title&&t.push(r(this.title)),t.push("</h3>\n    <p>"),this.description&&t.push(this.description),t.push("</p>\n    "),this.notAnalysed?(t.push("\n        <p>Number of Genes in this list not analysed in this widget: <a>"),t.push(r(this.notAnalysed)),t.push("</a></p>\n    ")):t.push("\n        <p>All items in your list have been analysed.</p>\n    "),t.push('\n\n    <div class="form">\n        <!-- enrichment.form.eco -->\n    </div>\n\n    <div class="actions" style="padding:10px 0">\n        <!-- actions.eco -->\n    </div>\n</div>\n<div class="content">\n    <!-- enrichment.table.eco -->\n</div>')}).call(this)}.call(e),e.safe=s,e.escape=o,t.join("")}
 JST["enrichment.row.eco"]=function(e){e||(e={});var t=[],n=function(e){var n=t,r;return t=[],e.call(this),r=t.join(""),t=n,i(r)},r=function(e){return e&&e.ecoSafe?e:typeof e!="undefined"&&e!=null?o(e):""},i,s=e.safe,o=e.escape;return i=e.safe=function(e){if(e&&e.ecoSafe)return e;if(typeof e=="undefined"||e==null)e="";var t=new String(e);return t.ecoSafe=!0,t},o||(o=e.escape=function(e){return(""+e).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}),function(){(function(){t.push('<td class="check"><input type="checkbox" '),this.row.selected&&t.push('checked="checked"'),t.push(' /></td>\n<td class="description">\n    '),t.push(r(this.row.description)),t.push("\n    "),this.row.externalLink&&(t.push('\n        [<a href="'),t.push(this.row.externalLink),t.push('" target="_blank">Link</a>]\n    ')),t.push('\n</td>\n<td class="pValue" style="white-space:nowrap">'),t.push(r(this.row["p-value"])),t.push('</td>\n<td class="matches">\n    <a class="count" style="cursor:pointer">'),t.push(r(this.row.matches)),t.push("</a>\n</td>")}).call(this)}.call(e),e.safe=s,e.escape=o,t.join("")}
@@ -531,9 +533,22 @@ factory = function(Backbone) {
       }
     };
   
-    function EnrichmentWidget(service, token, id, bagName, el, widgetOptions) {
+    /*
+        Set the params on us and render.
+        @param {string} service http://aragorn.flymine.org:8080/flymine/service/
+        @param {string} token Token for accessing user's lists
+        @param {Array} lists All lists that we have access to
+        @param {string} id widgetId
+        @param {string} bagName myBag
+        @param {string} el #target
+        @param {object} widgetOptions { "title": true/false, "description": true/false, "matchCb": function(id, type) {}, "resultsCb": function(pq) {}, "listCb": function(pq) {} } }
+    */
+  
+  
+    function EnrichmentWidget(service, token, lists, id, bagName, el, widgetOptions) {
       this.service = service;
       this.token = token;
+      this.lists = lists;
       this.id = id;
       this.bagName = bagName;
       this.el = el;
@@ -570,16 +585,17 @@ factory = function(Backbone) {
       _ref1 = this.formOptions;
       for (key in _ref1) {
         value = _ref1[key];
-        if (key !== 'errorCorrection' && key !== 'pValue') {
-          data['filter'] = value;
+        if (key !== 'errorCorrection' && key !== 'pValue' && key !== 'current_population') {
+          key = 'filter';
         }
+        data[key] = value;
       }
       return $.ajax({
         'url': "" + this.service + "list/enrichment",
         'dataType': "jsonp",
         'data': data,
         success: function(response) {
-          var _ref2;
+          var l, lists, _ref2;
           window.clearTimeout(timeout);
           if ((_ref2 = _this.loading) != null) {
             _ref2.remove();
@@ -587,6 +603,18 @@ factory = function(Backbone) {
           _this.validateType(response, _this.spec.response);
           if (response.wasSuccessful) {
             _this.name = response.title;
+            lists = (function() {
+              var _i, _len, _ref3, _results;
+              _ref3 = this.lists;
+              _results = [];
+              for (_i = 0, _len = _ref3.length; _i < _len; _i++) {
+                l = _ref3[_i];
+                if (l.type === response.type && l.size !== 0) {
+                  _results.push(l);
+                }
+              }
+              return _results;
+            }).call(_this);
             return _this.view = new EnrichmentView({
               "widget": _this,
               "el": _this.el,
@@ -597,7 +625,8 @@ factory = function(Backbone) {
                 "pValues": _this.pValues,
                 "errorCorrections": _this.errorCorrections
               },
-              "options": _this.widgetOptions
+              "options": _this.widgetOptions,
+              "lists": lists
             });
           }
         },
@@ -1224,6 +1253,104 @@ factory = function(Backbone) {
   })(Backbone.View);
   
 
+  /* Enrichment Widget background population selection box.
+  */
+  
+  var EnrichmentPopulationView,
+    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+    __hasProp = {}.hasOwnProperty,
+    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+  
+  EnrichmentPopulationView = (function(_super) {
+  
+    __extends(EnrichmentPopulationView, _super);
+  
+    function EnrichmentPopulationView() {
+      this.selectListAction = __bind(this.selectListAction, this);
+  
+      this.filterAction = __bind(this.filterAction, this);
+  
+      this.toggleAction = __bind(this.toggleAction, this);
+  
+      this.renderLists = __bind(this.renderLists, this);
+  
+      this.render = __bind(this.render, this);
+      return EnrichmentPopulationView.__super__.constructor.apply(this, arguments);
+    }
+  
+    EnrichmentPopulationView.prototype.events = {
+      "click a.change": "toggleAction",
+      "click a.close": "toggleAction",
+      "keyup input": "filterAction",
+      "click table a": "selectListAction"
+    };
+  
+    EnrichmentPopulationView.prototype.initialize = function(o) {
+      var k, v;
+      for (k in o) {
+        v = o[k];
+        this[k] = v;
+      }
+      return this.render();
+    };
+  
+    EnrichmentPopulationView.prototype.render = function() {
+      $(this.el).append(this.widget.template("enrichment.population", this));
+      this.renderLists(this.lists);
+      return this;
+    };
+  
+    EnrichmentPopulationView.prototype.renderLists = function(lists) {
+      return $(this.el).find('div.values').html(this.widget.template("enrichment.populationlist", {
+        'lists': lists,
+        'selected': this.selected
+      }));
+    };
+  
+    EnrichmentPopulationView.prototype.toggleAction = function() {
+      return $(this.el).find('div.popover').toggle();
+    };
+  
+    EnrichmentPopulationView.prototype.filterAction = function(e) {
+      var _this = this;
+      if (this.timeout != null) {
+        clearTimeout(this.timeout);
+      }
+      return this.timeout = setTimeout((function() {
+        var l, query, re;
+        query = $(e.target).val();
+        if (query !== _this.query) {
+          _this.query = query;
+          re = new RegExp("" + query + ".*", 'i');
+          return _this.renderLists((function() {
+            var _i, _len, _ref, _results;
+            _ref = this.lists;
+            _results = [];
+            for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+              l = _ref[_i];
+              if (l.name.match(re)) {
+                _results.push(l);
+              }
+            }
+            return _results;
+          }).call(_this));
+        }
+      }), 500);
+    };
+  
+    EnrichmentPopulationView.prototype.selectListAction = function(e) {
+      var list;
+      list = $(e.target).text();
+      e.preventDefault();
+      this.toggleAction();
+      return this.widget.selectBackgroundList(list);
+    };
+  
+    return EnrichmentPopulationView;
+  
+  })(Backbone.View);
+  
+
   /* Table Widget table row matches box.
   */
   
@@ -1788,6 +1915,8 @@ factory = function(Backbone) {
     __extends(EnrichmentView, _super);
   
     function EnrichmentView() {
+      this.selectBackgroundList = __bind(this.selectBackgroundList, this);
+  
       this.viewAction = __bind(this.viewAction, this);
   
       this.exportAction = __bind(this.exportAction, this);
@@ -1840,6 +1969,12 @@ factory = function(Backbone) {
           "selected": this.response.filterSelectedValue
         }));
       }
+      new EnrichmentPopulationView({
+        'el': $(this.el).find('div.form form'),
+        'lists': this.lists,
+        'current': this.response.current_list,
+        'widget': this
+      });
       if (this.response.results.length > 0) {
         this.renderToolbar();
         this.renderTable();
@@ -1989,6 +2124,11 @@ factory = function(Backbone) {
           "imService": this.widget.imService
         })).el);
       }
+    };
+  
+    EnrichmentView.prototype.selectBackgroundList = function(list) {
+      this.widget.formOptions['current_population'] = list;
+      return this.widget.render();
     };
   
     return EnrichmentView;
@@ -2184,6 +2324,7 @@ factory = function(Backbone) {
     "ChartPopoverView": ChartPopoverView,
     "EnrichmentRowView": EnrichmentRowView,
     "ChartView": ChartView,
+    "EnrichmentPopulationView": EnrichmentPopulationView,
     "TablePopoverView": TablePopoverView,
     "EnrichmentPopoverView": EnrichmentPopoverView,
     "TableView": TableView,
@@ -2206,7 +2347,7 @@ $ = window.jQuery || window.Zepto;
 
 Widgets = (function() {
 
-  Widgets.prototype.VERSION = '1.5.1';
+  Widgets.prototype.VERSION = '1.6.0';
 
   Widgets.prototype.wait = true;
 
@@ -2328,11 +2469,35 @@ Widgets = (function() {
         return _this.enrichment.apply(_this, opts);
       }), 0);
     } else {
-      return (function(func, args, ctor) {
-        ctor.prototype = func.prototype;
-        var child = new ctor, result = func.apply(child, args), t = typeof result;
-        return t == "object" || t == "function" ? result || child : child;
-      })(o.EnrichmentWidget, [this.service, this.token].concat(__slice.call(opts)), function(){});
+      if (this.lists != null) {
+        return (function(func, args, ctor) {
+          ctor.prototype = func.prototype;
+          var child = new ctor, result = func.apply(child, args), t = typeof result;
+          return t == "object" || t == "function" ? result || child : child;
+        })(o.EnrichmentWidget, [this.service, this.token, this.lists].concat(__slice.call(opts)), function(){});
+      } else {
+        this.wait = true;
+        return $.ajax({
+          'url': "" + this.service + "lists?token=" + this.token,
+          'dataType': 'jsonp',
+          'success': function(data) {
+            if (data.statusCode !== 200 && !(data.lists != null)) {
+              return $(opts[2]).html($('<div/>', {
+                'class': "alert alert-error",
+                'html': "Problem fetching lists we have access to <a href='" + _this.service + "lists'>" + _this.service + "lists</a>"
+              }));
+            } else {
+              _this.lists = data.lists;
+              _this.wait = false;
+              return (function(func, args, ctor) {
+                ctor.prototype = func.prototype;
+                var child = new ctor, result = func.apply(child, args), t = typeof result;
+                return t == "object" || t == "function" ? result || child : child;
+              })(o.EnrichmentWidget, [_this.service, _this.token, _this.lists].concat(__slice.call(opts)), function(){});
+            }
+          }
+        });
+      }
     }
   };
 

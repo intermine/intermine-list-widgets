@@ -38,15 +38,17 @@ class EnrichmentWidget extends InterMineWidget
             "externalLink":        type.isString
             "pathQueryForMatches": type.isString
 
-    # Set the params on us and render.
-    #
-    # 1. `service`:       http://aragorn.flymine.org:8080/flymine/service/
-    # 2. `token`:         token for accessing user's lists
-    # 3. `id`:            widgetId
-    # 4. `bagName`:       myBag
-    # 4. `el`:            #target
-    # 5. `widgetOptions`: { "title": true/false, "description": true/false, "matchCb": function(id, type) {}, "resultsCb": function(pq) {}, "listCb": function(pq) {} } }
-    constructor: (@service, @token, @id, @bagName, @el, widgetOptions = {}) ->
+    ###
+    Set the params on us and render.
+    @param {string} service http://aragorn.flymine.org:8080/flymine/service/
+    @param {string} token Token for accessing user's lists
+    @param {Array} lists All lists that we have access to
+    @param {string} id widgetId
+    @param {string} bagName myBag
+    @param {string} el #target
+    @param {object} widgetOptions { "title": true/false, "description": true/false, "matchCb": function(id, type) {}, "resultsCb": function(pq) {}, "listCb": function(pq) {} } }
+    ###
+    constructor: (@service, @token, @lists, @id, @bagName, @el, widgetOptions = {}) ->
         # Merge `widgetOptions`.
         @widgetOptions = merge widgetOptions, @widgetOptions
 
@@ -77,7 +79,8 @@ class EnrichmentWidget extends InterMineWidget
         # An extra form filter?
         for key, value of @formOptions
             # This should be handled better...
-            if key not in [ 'errorCorrection', 'pValue' ] then data['filter'] = value
+            if key not in [ 'errorCorrection', 'pValue', 'current_population' ] then key = 'filter'
+            data[key] = value
 
         # Request new data.
         $.ajax
@@ -97,6 +100,9 @@ class EnrichmentWidget extends InterMineWidget
                     # Actual name of the widget.
                     @name = response.title
 
+                    # Pass on only lists of our type that are not empty.
+                    lists = ( l for l in @lists when l.type is response.type and l.size isnt 0 )
+
                     # New **View**.
                     @view = new EnrichmentView(
                         "widget":   @
@@ -108,6 +114,7 @@ class EnrichmentWidget extends InterMineWidget
                             "pValues":          @pValues
                             "errorCorrections": @errorCorrections
                         "options":  @widgetOptions
+                        "lists": lists
                     )
             
             error: (request, status, error) => clearTimeout timeout ; @error { 'text': "#{@service}list/enrichment" }, "AJAXTransport"

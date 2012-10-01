@@ -1,0 +1,26 @@
+<table class="table table-striped">
+    <tbody>
+        <tr><td>
+            <% if !@selected: %>
+                <strong><a href="#">Default</a></strong>
+            <% else: %>
+                <a href="#">Default</a>
+            <% end %>
+        </td></tr>
+        <% for list in @lists: %>
+            <tr><td>
+                <% if list.name is @selected: %>
+                    <strong>
+                        <a <% if list.description: %>title="<%= list.description %>"<% end %> href="#"><%= list.name %></a> (<%= list.size %>)
+                    </strong>
+                <% else: %>
+                    <a <% if list.description: %>title="<%= list.description %>"<% end %> href="#"><%= list.name %></a> (<%= list.size %>)
+                <% end %>
+                
+                <% for tag in list.tags: %>
+                    <span class="label" style="vertical-align:text-bottom"><%= tag %></span>
+                <% end %>
+            </td></tr>
+        <% end %>
+    </tbody>
+</table>
