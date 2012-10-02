@@ -14,7 +14,12 @@ class EnrichmentPopulationView extends Backbone.View
         @render()
 
     render: =>
-        $(@el).append @widget.template "enrichment.population", @
+        # The wrapper.
+        $(@el).append @widget.template "enrichment.population",
+            'selected': @selected or 'Default'
+            'loggedIn': @widget.widget.token? # you are logged in when we have a token
+        
+        # The lists.
         @renderLists @lists
 
         @
@@ -47,7 +52,14 @@ class EnrichmentPopulationView extends Backbone.View
 
     # Select background population list.
     selectListAction: (e) =>
+        # Who are you?
         list = $(e.target).text()
+        
+        # No linking on our turf.
         e.preventDefault()
+
+        # Hide us.
         @toggleAction()
-        @widget.selectBackgroundList list
+
+        # Do the bidding.
+        @widget.selectBackgroundList list, $(@el).find('input.save:checked').length is 1

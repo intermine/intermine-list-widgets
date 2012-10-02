@@ -79,7 +79,7 @@ class EnrichmentWidget extends InterMineWidget
         # An extra form filter?
         for key, value of @formOptions
             # This should be handled better...
-            if key not in [ 'errorCorrection', 'pValue', 'current_population' ] then key = 'filter'
+            if key not in [ 'errorCorrection', 'pValue', 'current_population', 'remember_population' ] then key = 'filter'
             data[key] = value
 
         # Request new data.

@@ -205,12 +205,18 @@ class EnrichmentView extends Backbone.View
             )).el
 
     # Select background population list.
-    selectBackgroundList: (list) =>
+    selectBackgroundList: (list, save=false) =>
         # Pass in `null` to go default. Could be better than string match as we could have a list called Default.
-        if list is 'Default' then list = null
-        
+        if list is 'Default' then list = ''
+
+        # Do we also want to save our preference?
+        @widget.saveBackgroundPopulation list if save
+
         # Change the list.
         @widget.formOptions['current_population'] = list
+
+        # Remember this list as a background population.
+        if save then @widget.formOptions['remember_population'] = true
         
         # Re-render.
         @widget.render()
