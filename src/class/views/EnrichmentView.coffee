@@ -44,6 +44,12 @@ class EnrichmentView extends Backbone.View
             'current': @response.current_list
             'widget': @
 
+        # Custom bg population CSS.
+        if @response.current_list?
+            $(@el).addClass 'customBackgroundPopulation'
+        else
+            $(@el).removeClass 'customBackgroundPopulation'
+
         # Results?
         if @response.results.length > 0
             # Render the actions toolbar, we have results.
@@ -200,7 +206,11 @@ class EnrichmentView extends Backbone.View
 
     # Select background population list.
     selectBackgroundList: (list) =>
+        # Pass in `null` to go default. Could be better than string match as we could have a list called Default.
+        if list is 'Default' then list = null
+        
         # Change the list.
         @widget.formOptions['current_population'] = list
+        
         # Re-render.
         @widget.render()

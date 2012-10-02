@@ -1975,6 +1975,11 @@ factory = function(Backbone) {
         'current': this.response.current_list,
         'widget': this
       });
+      if (this.response.current_list != null) {
+        $(this.el).addClass('customBackgroundPopulation');
+      } else {
+        $(this.el).removeClass('customBackgroundPopulation');
+      }
       if (this.response.results.length > 0) {
         this.renderToolbar();
         this.renderTable();
@@ -2127,7 +2132,11 @@ factory = function(Backbone) {
     };
   
     EnrichmentView.prototype.selectBackgroundList = function(list) {
-      this.widget.formOptions['current_population'] = list;
+      if (list === 'Default') {
+        this.widget.formOptions['current_population'] = null;
+      } else {
+        this.widget.formOptions['current_population'] = list;
+      }
       return this.widget.render();
     };
   
@@ -2347,7 +2356,7 @@ $ = window.jQuery || window.Zepto;
 
 Widgets = (function() {
 
-  Widgets.prototype.VERSION = '1.6.0';
+  Widgets.prototype.VERSION = '1.6.1';
 
   Widgets.prototype.wait = true;
 
