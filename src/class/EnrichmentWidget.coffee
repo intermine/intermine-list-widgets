@@ -37,6 +37,7 @@ class EnrichmentWidget extends InterMineWidget
             "filterSelectedValue": type.isString
             "externalLink":        type.isString
             "pathQueryForMatches": type.isString
+            "current_population":  type.isStringOrNull
 
     ###
     Set the params on us and render.

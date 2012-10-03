@@ -41,7 +41,7 @@ class EnrichmentView extends Backbone.View
         new EnrichmentPopulationView
             'el': $(@el).find('div.form form')
             'lists': @lists
-            'current': @response.current_list
+            'current': @response.current_population
             'widget': @
 
         # Custom bg population CSS.
@@ -208,9 +208,6 @@ class EnrichmentView extends Backbone.View
     selectBackgroundList: (list, save=false) =>
         # Pass in `null` to go default. Could be better than string match as we could have a list called Default.
         if list is 'Default' then list = ''
-
-        # Do we also want to save our preference?
-        @widget.saveBackgroundPopulation list if save
 
         # Change the list.
         @widget.formOptions['current_population'] = list

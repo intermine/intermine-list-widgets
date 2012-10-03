@@ -1,7 +1,7 @@
 <table class="table table-striped">
     <tbody>
         <tr><td>
-            <% if !@selected: %>
+            <% if !@current?: %>
                 <strong><a href="#">Default</a></strong>
             <% else: %>
                 <a href="#">Default</a>
@@ -9,7 +9,7 @@
         </td></tr>
         <% for list in @lists: %>
             <tr><td>
-                <% if list.name is @selected: %>
+                <% if list.name is @current: %>
                     <strong>
                         <a <% if list.description: %>title="<%= list.description %>"<% end %> href="#"><%= list.name %></a> (<%= list.size %>)
                     </strong>

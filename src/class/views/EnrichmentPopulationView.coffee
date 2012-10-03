@@ -16,7 +16,7 @@ class EnrichmentPopulationView extends Backbone.View
     render: =>
         # The wrapper.
         $(@el).append @widget.template "enrichment.population",
-            'selected': @selected or 'Default'
+            'current': if @current? then @current else 'Default'
             'loggedIn': @widget.widget.token? # you are logged in when we have a token
         
         # The lists.
@@ -28,7 +28,7 @@ class EnrichmentPopulationView extends Backbone.View
     renderLists: (lists) =>
         $(@el).find('div.values').html @widget.template "enrichment.populationlist",
             'lists': lists
-            'selected': @selected
+            'current': @current
 
     # Show the background population selection.
     toggleAction: =>

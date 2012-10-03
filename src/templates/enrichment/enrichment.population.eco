@@ -1,6 +1,6 @@
 <div class="group background" style="display:inline-block;margin-right:5px;float:left">
     <label>Background population</label>
-    <%= @selected %> <a class="btn btn-small change">Change</a>
+    <%= @current %> <a class="btn btn-small change">Change</a>
 
     <div class="popover" style="position:absolute;top:0;right:0;z-index:1;display:none">
         <div class="popover-inner">
