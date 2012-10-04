@@ -17,7 +17,7 @@ class EnrichmentPopulationView extends Backbone.View
         # The wrapper.
         $(@el).append @widget.template "enrichment.population",
             'current': if @current? then @current else 'Default'
-            'loggedIn': @widget.widget.token? # you are logged in when we have a token
+            'loggedIn': @loggedIn
         
         # The lists.
         @renderLists @lists

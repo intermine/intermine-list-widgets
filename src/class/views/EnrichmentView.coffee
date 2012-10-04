@@ -42,6 +42,7 @@ class EnrichmentView extends Backbone.View
             'el': $(@el).find('div.form form')
             'lists': @lists
             'current': @response.current_population
+            'loggedIn': @response.loggedId
             'widget': @
 
         # Custom bg population CSS.
@@ -213,7 +214,7 @@ class EnrichmentView extends Backbone.View
         @widget.formOptions['current_population'] = list
 
         # Remember this list as a background population.
-        if save then @widget.formOptions['remember_population'] = true
+        @widget.formOptions['remember_population'] = save
         
         # Re-render.
         @widget.render()
