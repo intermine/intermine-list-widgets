@@ -14,7 +14,11 @@
                         <a <% if list.description: %>title="<%= list.description %>"<% end %> href="#"><%= list.name %></a> (<%= list.size %>)
                     </strong>
                 <% else: %>
-                    <a <% if list.description: %>title="<%= list.description %>"<% end %> href="#"><%= list.name %></a> (<%= list.size %>)
+                    <% if list.size >= @minSize: %>
+                        <a <% if list.description: %>title="<%= list.description %>"<% end %> href="#"><%= list.name %></a> (<%= list.size %>)
+                    <% else: %>
+                        <span><%= list.name %></span> (<%= list.size %>)
+                    <% end %>
                 <% end %>
                 
                 <% for tag in list.tags: %>

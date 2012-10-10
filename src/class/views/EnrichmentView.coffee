@@ -41,8 +41,9 @@ class EnrichmentView extends Backbone.View
         new EnrichmentPopulationView
             'el': $(@el).find('div.form form')
             'lists': @lists
+            'list': @response.list
             'current': @response.current_population
-            'loggedIn': @response.loggedId
+            'loggedIn': @response.is_logged
             'widget': @
 
         # Custom bg population CSS.
@@ -52,7 +53,7 @@ class EnrichmentView extends Backbone.View
             $(@el).removeClass 'customBackgroundPopulation'
 
         # Results?
-        if @response.results.length > 0
+        if @response.results.length > 0 and !@response.message?
             # Render the actions toolbar, we have results.
             @renderToolbar()
 
@@ -60,7 +61,7 @@ class EnrichmentView extends Backbone.View
         else
             # Render no results
             $(@el).find("div.content").html $ @template "noresults",
-                'text': 'No enrichment found.'
+                'text': @response.message or 'No enrichment found.'
 
         @
 

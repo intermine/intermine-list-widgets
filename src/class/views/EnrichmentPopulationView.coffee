@@ -18,7 +18,14 @@ class EnrichmentPopulationView extends Backbone.View
         $(@el).append @widget.template "enrichment.population",
             'current': if @current? then @current else 'Default'
             'loggedIn': @loggedIn
-        
+
+        # Determine the minimum size of the list to make it selectable.
+        # A list we are enriching with needs to be at least as big as the list we are looking at.
+        @minSize = ((lists, list) ->
+            for l in lists
+                if l.name is list then return l.size
+        ) @lists, @list
+
         # The lists.
         @renderLists @lists
 
@@ -29,6 +36,7 @@ class EnrichmentPopulationView extends Backbone.View
         $(@el).find('div.values').html @widget.template "enrichment.populationlist",
             'lists': lists
             'current': @current
+            'minSize': @minSize
 
     # Show the background population selection.
     toggleAction: =>
