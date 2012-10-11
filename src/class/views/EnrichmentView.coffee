@@ -41,7 +41,6 @@ class EnrichmentView extends Backbone.View
         new EnrichmentPopulationView
             'el': $(@el).find('div.form form')
             'lists': @lists
-            'list': @response.list
             'current': @response.current_population
             'loggedIn': @response.is_logged
             'widget': @
