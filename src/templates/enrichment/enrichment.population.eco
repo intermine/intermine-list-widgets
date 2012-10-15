@@ -7,19 +7,19 @@
             <a style="cursor:pointer;margin:2px 5px 0 0" class="close">×</a>
             <h4 class="popover-title">Change background population</h4>
             <div class="popover-content">
-                <input type="text" style="width:96%" />
-                
-                <div class="values" style="max-height:300px;overflow-y:auto">
-                    <!-- enrichment.populationlist.eco -->
-                </div>
-
-                <p style="margin-top:5px">
+                <p style="margin-bottom:5px">
                     <% if @loggedIn: %>
                         <input type="checkbox" class="save" style="vertical-align:top" /> Save your preference for next time
                     <% else: %>
                         Login to save your preference for next time
                     <% end %>
                 </p>
+
+                <input type="text" style="width:96%" placeholder="Filter..." />
+                
+                <div class="values" style="max-height:300px;overflow-y:auto">
+                    <!-- enrichment.populationlist.eco -->
+                </div>
             </div>
         </div>
     </div>
