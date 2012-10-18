@@ -52,15 +52,13 @@
                 window.$ = 'I am an evil library!';
 
                 /* InterMine root URL. */
-                var mine = 'http://frog:8080/flymine-widgets';
+                var mine = 'http://beta.flymine.org/beta';
 
                 /* New Widgets client. */
-                var ListWidgets = new intermine.widgets({'root':  mine + '/service/', 'token': 'q1e3Uaq205Geq7Kfv089Y320SDS'});
+                var ListWidgets = new intermine.widgets({'root':  mine + '/service/'});
 
                 /* Give us all available widgets. */
-                //Widgets.all('Gene', 'demo-genes', '#widgets-genes');
-                ListWidgets.enrichment('bdgp_enrichment', 'gene24List', '#one');
-                /*ListWidgets.enrichment('go_enrichment_for_gene', 'demo-genes', '#two');*/
+                ListWidgets.all('Gene', 'demo-genes', '#widgets-genes');
             })();
             </script>
 

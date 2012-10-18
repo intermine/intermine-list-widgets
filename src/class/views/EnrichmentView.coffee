@@ -152,7 +152,7 @@ class EnrichmentView extends Backbone.View
             "values": rowIdentifiers
 
         # Get the actual data.
-        @widget.imService.query(pq, (q) =>
+        @widget.imService.query(JSON.parse(JSON.stringify(pq)), (q) =>
             q.rows (response) =>
                 # Assume the first column is the table column, while second is the matches object identifier (Gene).
                 # Form 'publication -> genes' object.

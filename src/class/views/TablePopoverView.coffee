@@ -36,7 +36,7 @@ class TablePopoverView extends Backbone.View
 
         # Grab the data.
         values = []
-        @imService.query(@pathQuery, (q) =>
+        @imService.query(JSON.parse(JSON.stringify(@pathQuery)), (q) =>
             q.rows (response) =>
                 for object in response
                     values.push do (object) ->
