@@ -20,6 +20,15 @@ class ChartView extends Backbone.View
             titleTextStyle:
                 fontName: "Sans-Serif"
 
+    # ColorBrewer Blues.
+    brewer:
+        '3': ["rgb(189,215,231)", "rgb(107,174,214)", "rgb(33,113,181)"]
+        '4': ["rgb(189,215,231)", "rgb(107,174,214)", "rgb(49,130,189)", "rgb(8,81,156)"]
+        '5': ["rgb(198,219,239)", "rgb(158,202,225)", "rgb(107,174,214)", "rgb(49,130,189)", "rgb(8,81,156)"]
+        '6': ["rgb(198,219,239)", "rgb(158,202,225)", "rgb(107,174,214)", "rgb(66,146,198)", "rgb(33,113,181)", "rgb(8,69,148)"]
+        '7': ["rgb(222,235,247)", "rgb(198,219,239)", "rgb(158,202,225)", "rgb(107,174,214)", "rgb(66,146,198)", "rgb(33,113,181)", "rgb(8,69,148)"]
+        '8': ["rgb(222,235,247)", "rgb(198,219,239)", "rgb(158,202,225)", "rgb(107,174,214)", "rgb(66,146,198)", "rgb(33,113,181)", "rgb(8,81,156)", "rgb(8,48,107)"]
+
     # Multiselect mode?
     multiselect: false
 
@@ -85,8 +94,21 @@ class ChartView extends Backbone.View
                 # Add event listener on click the chart bar.
                 if @response.pathQuery? then google.visualization.events.addListener chart, "select", => @viewBarAction chart
 
+                # Is this a single series or double series chart?
+                if @response.results[0].length is 1
+                    # Need to prefix a domain label to make it into 2D array throughout.
+                    @response.results[0] = [ @response.domainLabel, @response.results[0][0] ]
+
+                # Duplicate chart options.
+                options = JSON.parse JSON.stringify @chartOptions
+
+                # If we have a PieChart with 3+ things to display use ColorBrewer colors.
+                if @response.chartType is 'PieChart' and (ln = @response.results.length - 1) >= 3
+                    if ln > 8 then ln = 8 # we only have 8 colors max (do not use fairest).
+                    options.colors = @brewer[ln].reverse() # start with dark colors
+
                 # Draw.
-                chart.draw(google.visualization.arrayToDataTable(@response.results, false), @chartOptions)
+                chart.draw(google.visualization.arrayToDataTable(@response.results, false), options)
 
             else
                 # Undefined Google Visualization chart type.
@@ -143,8 +165,10 @@ class ChartView extends Backbone.View
                 if selection.row?
                     row = @response.results[selection.row + 1][0]
                     description += row
+
                     # Replace `%category` in PathQueries.
-                    resultsPq = resultsPq.replace "%category", row ; quickPq = quickPq.replace "%category"
+                    resultsPq = resultsPq.replace "%category", row ; quickPq = quickPq.replace "%category", row
+
                     # Replace `%series` in PathQuery.
                     if selection.column?
                         column = @response.results[0][selection.column]
