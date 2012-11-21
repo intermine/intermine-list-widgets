@@ -22,6 +22,7 @@ class TableView extends Backbone.View
             "title":       if @options.title then @response.title else ""
             "description": if @options.description then @response.description else ""
             "notAnalysed": @response.notAnalysed
+            "type": @response.type
 
         # Results?
         if @response.results.length > 0

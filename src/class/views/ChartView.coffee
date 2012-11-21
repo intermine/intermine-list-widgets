@@ -50,6 +50,7 @@ class ChartView extends Backbone.View
             "title":       if @options.title then @response.title else ""
             "description": if @options.description then @response.description else ""
             "notAnalysed": @response.notAnalysed
+            "type": @response.type
 
         # View all results btn.
 

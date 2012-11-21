@@ -2,7 +2,7 @@
     <h3><%= @title if @title %></h3>
     <p><%- @description if @description %></p>
     <% if @notAnalysed: %>
-        <p>Number of Genes in this list not analysed in this widget: <a><%= @notAnalysed %></a></p>
+        <p>Number of <%= @type %>s in this list not analysed in this widget: <a><%= @notAnalysed %></a></p>
     <% else: %>
         <p>All items in your list have been analysed.</p>
     <% end %>

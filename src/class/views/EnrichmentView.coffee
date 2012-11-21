@@ -23,6 +23,7 @@ class EnrichmentView extends Backbone.View
             "title":       if @options.title then @response.title else ""
             "description": if @options.description then @response.description else ""
             "notAnalysed": @response.notAnalysed
+            "type": @response.type
 
         # Form options.
         $(@el).find("div.form").html @template "enrichment.form",
