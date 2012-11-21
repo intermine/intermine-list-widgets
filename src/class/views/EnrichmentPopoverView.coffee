@@ -41,7 +41,7 @@ class EnrichmentPopoverView extends Backbone.View
                     value = do (object) ->
                         # Show the first available identifier, start @ end because PQ has a View constraint in [0].
                         for column in object.reverse()
-                            return column if column.length > 0
+                            if column and column.length > 0 then return column
                     
                     # Filter out duplicates by saving to a dict.
                     values.push value unless value in values

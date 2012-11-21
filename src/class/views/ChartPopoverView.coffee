@@ -33,7 +33,7 @@ class ChartPopoverView extends Backbone.View
                 for object in response
                     values.push do (object) ->
                         for column in object
-                            return column if column.length > 0
+                            return column if column and column.length > 0
 
                 @renderValues values
         )
