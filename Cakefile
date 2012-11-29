@@ -4,6 +4,7 @@ cs = require 'coffee-script' # take a guess
 eco = require "eco" # templating
 crypto = require "crypto" # md5 hashing
 exec = require('child_process').exec # execute custom commands
+uglify = require('uglify-js') # minify JS code
 
 
 # --------------------------------------------
@@ -68,7 +69,7 @@ task "compile:main", "compile widgets library and templates together", (options)
 # Compile tests.
 task "compile:tests", "compile tests so we can run them in the browser", (options) ->
     console.log "#{COLORS.BOLD}Compiling tests in #{TESTS.INPUT}#{COLORS.DEFAULT}"
-    
+
     # Compile the test runner.
     source = cs.compile fs.readFileSync(TESTS.RUNNER, "utf-8")
     write [ TESTS.OUTPUT, TESTS.RUNNER.split('/').pop().replace '.coffee', '.js' ].join('/'), source
@@ -88,7 +89,7 @@ task "compile:tests", "compile tests so we can run them in the browser", (option
                 # Save the path to JSON output.
                 tests.push "\"#{name}\""
 
-            # Write JSON so we can reference all tests. 
+            # Write JSON so we can reference all tests.
             write [ TESTS.OUTPUT, 'tests.json' ].join('/'), "[#{tests.join(',')}]"
 
     # That's it.
@@ -125,7 +126,7 @@ main = (callback) ->
                         # Read in, precompile & compress.
                         js = eco.precompile fs.readFileSync file, "utf-8"
                         name = file.split('/').pop()
-                        tmpl.push uglify "JST['#{name}'] = #{js}"
+                        tmpl.push (uglify.minify("JST['#{name}'] = #{js}", 'fromString': true)).code
                 cb tmpl
 
     # Compile utils in any order.
@@ -158,7 +159,7 @@ main = (callback) ->
                     else classes.push source
                     # Get the class name (it better match).
                     names.push file.split('/').pop().split('.')[0]
-                
+
                 # Create a closing return statement exposing all classes.
                 classes.push "  return {\n"
                 classes.push ( "    \"#{name}\": #{name}" for name in names ).join(",\n")
@@ -182,10 +183,10 @@ main = (callback) ->
         for result in results
             for index, item of result
                 if item instanceof Array then output.push sub for sub in item else output.push item
-        
+
         # Write them all at once
         write MAIN.OUTPUT, output.join "\n"
-        
+
         # We are done.
         console.log "#{COLORS.GREEN}Done#{COLORS.DEFAULT}"
 
@@ -216,12 +217,12 @@ walk = (path, callback) ->
     fs.readdir path, (err, list) ->
         # Problems?
         return callback err if err
-        
+
         # Get listing length.
         pending = list.length
-        
+
         return callback null, results unless pending # Done already?
-        
+
         # Traverse.
         list.forEach (file) ->
             # Form path
@@ -244,18 +245,11 @@ write = (path, text, mode = "w") ->
         if e then throw new Error(e)
         fs.write id, text, null, "utf8"
 
-# Compress using `uglify-js`.
-uglify = (input) ->
-    jsp = require("uglify-js").parser
-    pro = require("uglify-js").uglify
-
-    pro.gen_code pro.ast_squeeze pro.ast_mangle jsp.parse input
-
 # Does the target path exist?
 exist = (path, type = "file") ->
     # Dir or file?
     if type is 'dir' then path = npath.dirname path
-    
+
     try
         fs.lstatSync path
     catch e

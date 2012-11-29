@@ -30,7 +30,7 @@ class EnrichmentRowView extends Backbone.View
             @popoverView.delegateEvents()
 
     # Show matches.
-    toggleMatchesAction: =>
+    toggleMatchesAction: (e) =>
         if not @popoverView?
             $(@el).find('td.matches a.count').after (@popoverView = new EnrichmentPopoverView(
                 "matches":     @model.get "matches"
@@ -42,5 +42,6 @@ class EnrichmentRowView extends Backbone.View
                 "listCb":      @callbacks.listCb
                 "response":    @response
                 "imService":   @imService
+                "size":        $(e.target).text() # get the number of matches we clicked on
             )).el
         else @popoverView.toggle()

@@ -57,6 +57,7 @@ class TablePopoverView extends Backbone.View
             'values':      values
             'type':        @type
             'valuesLimit': @valuesLimit
+            'size':        @size # size is the number of matches count we clicked on
 
     # Onclick the individual match, execute the callback.
     matchAction: (e) =>

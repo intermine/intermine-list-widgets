@@ -46,6 +46,7 @@ class ChartPopoverView extends Backbone.View
             'values':      values
             'type':        @type
             'valuesLimit': @valuesLimit
+            'size':        values.length # size will be what quick pq gives us
 
     # Onclick the individual match, execute the callback.
     matchAction: (e) =>
