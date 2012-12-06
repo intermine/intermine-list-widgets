@@ -6,11 +6,11 @@ class EnrichmentWidget extends InterMineWidget
     widgetOptions:
         "title":       true
         "description": true
-        matchCb:       (id, type) ->
+        matchCb:          (id, type) ->
             console?.log id, type
-        resultsCb:     (pq) ->
+        resultsCb:        (pq) ->
             console?.log pq
-        listCb:        (pq) ->
+        listCb:           (pq) ->
             console?.log pq
 
     errorCorrections: [ "Holm-Bonferroni", "Benjamini Hochberg", "Bonferroni", "None" ]
@@ -19,27 +19,30 @@ class EnrichmentWidget extends InterMineWidget
     # Spec for a successful and correct JSON response.
     spec:
         response:
-            "title":               type.isString
-            "description":         type.isString
-            "pathQuery":           type.isJSON
-            "pathConstraint":      type.isString
-            "error":               type.isNull
-            "list":                type.isString
-            "notAnalysed":         type.isInteger
-            "requestedAt":         type.isString
-            "results":             type.isArray
-            "label":               type.isString
-            "statusCode":          type.isHTTPSuccess
-            "type":                type.isString
-            "wasSuccessful":       type.isBoolean
-            "filters":             type.isString
-            "filterLabel":         type.isString
-            "filterSelectedValue": type.isString
-            "externalLink":        type.isString
-            "pathQueryForMatches": type.isString
-            "is_logged":           type.isBoolean
-            "current_population":  type.isStringOrNull
-            "message":             type.isString
+            "title":                           type.isString
+            "description":                     type.isString
+            "pathQuery":                       type.isJSON
+            "pathConstraint":                  type.isString
+            "error":                           type.isNull
+            "list":                            type.isString
+            "notAnalysed":                     type.isInteger
+            "requestedAt":                     type.isString
+            "results":                         type.isArray
+            "label":                           type.isString
+            "statusCode":                      type.isHTTPSuccess
+            "type":                            type.isString
+            "wasSuccessful":                   type.isBoolean
+            "filters":                         type.isString
+            "filterLabel":                     type.isString
+            "filterSelectedValue":             type.isString
+            "externalLink":                    type.isString
+            "pathQueryForMatches":             type.isString
+            "is_logged":                       type.isBoolean
+            "current_population":              type.isStringOrNull
+            "message":                         type.isString
+            "percentage_gene_length_not_null": type.isStringOrNull
+            "gene_length_correction":          type.isBooleanOrNull
+            "pathQueryGeneLengthNull":         type.isStringOrNull
 
     ###
     Set the params on us and render.
@@ -82,7 +85,7 @@ class EnrichmentWidget extends InterMineWidget
         # An extra form filter?
         for key, value of @formOptions
             # This should be handled better...
-            if key not in [ 'errorCorrection', 'pValue', 'current_population', 'remember_population' ] then key = 'filter'
+            if key not in [ 'errorCorrection', 'pValue', 'current_population', 'remember_population', 'gene_length_correction' ] then key = 'filter'
             data[key] = value
 
         # Request new data.

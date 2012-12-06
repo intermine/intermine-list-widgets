@@ -26,6 +26,11 @@ class type.isBoolean extends type.Root
     expected: "Boolean true"
     constructor: (@actual) -> @result = typeof actual is 'boolean'
 
+#### Boolean or Null
+class type.isBooleanOrNull extends type.Root
+    expected: "Boolean or Null"
+    constructor: (@actual) -> @result = actual is null or typeof actual is 'boolean'
+
 #### Null
 class type.isNull extends type.Root
     expected: "Null"

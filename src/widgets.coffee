@@ -37,6 +37,9 @@ class Widgets
     ,
         path:  "http://cdn.intermine.org/js/intermine/imjs/latest/imjs.js"
         type:  "js"
+    ,
+        path:  "http://cdn.intermine.org/css/bootstrap/2.0.4/js/bootstrap.min.js"
+        type:  "js"
     ]
 
     ###
