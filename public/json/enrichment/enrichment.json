@@ -1,0 +1,3261 @@
+{
+    "pathConstraint": "Gene.publications.pubMedId",
+    "list": "gene24List",
+    "label": "Publication",
+    "type": "Gene",
+    "notAnalysed": 7,
+    "extraAttribute": "{\"gene_length\":{\"percentage_gene_length_not_null\":\"22.58%\",\"gene_length_correction\":\"false\",\"pathQueryGeneLengthNull\":\"{\\\"model\\\":{\\\"name\\\":\\\"genomic\\\"},\\\"select\\\":[\\\"Gene.secondaryIdentifier\\\",\\\"Gene.symbol\\\",\\\"Gene.primaryIdentifier\\\",\\\"Gene.organism.name\\\"],\\\"constraintLogic\\\":\\\"A and B\\\",\\\"where\\\":[{\\\"path\\\":\\\"Gene\\\",\\\"op\\\":\\\"IN\\\",\\\"code\\\":\\\"A\\\",\\\"value\\\":\\\"gene24List\\\"},{\\\"path\\\":\\\"Gene.length\\\",\\\"op\\\":\\\"IS NULL\\\",\\\"code\\\":\\\"B\\\",\\\"value\\\":\\\"IS NULL\\\"}]}\"}}",
+    "title": "Publication Enrichment",
+    "current_population": null,
+    "description": "Publications enriched for genes in this list.",
+    "is_logged": false,
+    "pathQuery": "{\"model\":{\"name\":\"genomic\"},\"select\":[\"Gene.secondaryIdentifier\",\"Gene.symbol\",\"Gene.organism.name\",\"Gene.publications.title\",\"Gene.publications.firstAuthor\",\"Gene.publications.journal\",\"Gene.publications.year\",\"Gene.publications.pubMedId\"],\"where\":[{\"path\":\"Gene\",\"op\":\"IN\",\"code\":\"A\",\"value\":\"gene24List\"}]}",
+    "requestedAt": "19 Dec 2012 18:34:07 GMT",
+    "pathQueryForMatches": "{\"model\":{\"name\":\"genomic\"},\"select\":[\"Gene.publications.pubMedId\",\"Gene.primaryIdentifier\"],\"orderBy\":[{\"Gene.publications.pubMedId\":\"ASC\"}],\"where\":[{\"path\":\"Gene\",\"op\":\"IN\",\"code\":\"A\",\"value\":\"gene24List\"}]}",
+    "externalLink": "http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=PubMed&dopt=Abstract&list_uids=",
+    "results": [
+        {
+            "p-value": 6.44687863851221e-22,
+            "matches": 13,
+            "description": "Fine-tuning enhancer models to predict transcriptional targets across multiple genomes.",
+            "identifier": "17973026"
+        },
+        {
+            "p-value": 3.245678049619211e-19,
+            "matches": 10,
+            "description": "Developmental roles of 21 Drosophila transcription factors are determined by quantitative differences in binding to an overlapping set of thousands of genomic regions.",
+            "identifier": "19627575"
+        },
+        {
+            "p-value": 3.245678049619211e-19,
+            "matches": 10,
+            "description": "The role of chromatin accessibility in directing the widespread, overlapping patterns of Drosophila transcription factor binding.",
+            "identifier": "21473766"
+        },
+        {
+            "p-value": 1.6614914397680446e-18,
+            "matches": 12,
+            "description": "A cis-regulatory map of the Drosophila genome.",
+            "identifier": "21430782"
+        },
+        {
+            "p-value": 1.3033062917741697e-16,
+            "matches": 11,
+            "description": "Mutual interaction in network motifs robustly sharpens gene expression in developmental processes.",
+            "identifier": "18342890"
+        },
+        {
+            "p-value": 1.356449739544806e-15,
+            "matches": 8,
+            "description": "Characterization of the Drosophila segment determination morphome.",
+            "identifier": "18067886"
+        },
+        {
+            "p-value": 2.9037696411880363e-15,
+            "matches": 8,
+            "description": "Extraction of functional binding sites from unique regulatory regions: the Drosophila early developmental enhancers.",
+            "identifier": "11875036"
+        },
+        {
+            "p-value": 2.9037696411880363e-15,
+            "matches": 8,
+            "description": "Pipeline for acquisition of quantitative data on segmentation gene expression from confocal images.",
+            "identifier": "18820476"
+        },
+        {
+            "p-value": 2.9037696411880363e-15,
+            "matches": 8,
+            "description": "FlyEx, the quantitative atlas on segmentation gene expression at cellular resolution.",
+            "identifier": "18953041"
+        },
+        {
+            "p-value": 2.9037696411880363e-15,
+            "matches": 8,
+            "description": "Rapid preparation of a panel of polyclonal antibodies to Drosophila segmentation proteins.",
+            "identifier": "9683745"
+        },
+        {
+            "p-value": 5.8011980114274304e-15,
+            "matches": 8,
+            "description": "Nonparametric variable selection and modeling for spatial and temporal regulatory networks.",
+            "identifier": "22482952"
+        },
+        {
+            "p-value": 3.39687440002819e-14,
+            "matches": 8,
+            "description": "Nucleotide compositional constraints on genomes generate alanine-, glycine-, and proline-rich structures in transcription factors.",
+            "identifier": "9335144"
+        },
+        {
+            "p-value": 4.551275888631956e-14,
+            "matches": 9,
+            "description": "Prediction of similarly acting cis-regulatory modules by subsequence profiling and comparative genomics in Drosophila melanogaster and D.pseudoobscura.",
+            "identifier": "15145800"
+        },
+        {
+            "p-value": 4.687739632339778e-14,
+            "matches": 7,
+            "description": "Zebra patterns in fly embryos: activation of stripes or repression of interstripes?",
+            "identifier": "2403844"
+        },
+        {
+            "p-value": 1.2877814089484185e-13,
+            "matches": 7,
+            "description": "Disperse versus compact elements for the regulation of runt stripes in Drosophila.",
+            "identifier": "8660878"
+        },
+        {
+            "p-value": 2.1948042406164653e-13,
+            "matches": 8,
+            "description": "Quantitative models of the mechanisms that control genome-wide patterns of transcription factor binding during early Drosophila development.",
+            "identifier": "21304941"
+        },
+        {
+            "p-value": 3.192302176045672e-13,
+            "matches": 6,
+            "description": "Estimation of errors introduced by confocal imaging into the data on segmentation gene expression in Drosophila.",
+            "identifier": "19052059"
+        },
+        {
+            "p-value": 1.3350984637517934e-12,
+            "matches": 7,
+            "description": "Gap genes and gradients--the logic behind the gaps.",
+            "identifier": "1679987"
+        },
+        {
+            "p-value": 1.3350984637517934e-12,
+            "matches": 7,
+            "description": "Statistical lower bounds on protein copy number from fluorescence expression images.",
+            "identifier": "19574287"
+        },
+        {
+            "p-value": 1.909907308820445e-12,
+            "matches": 8,
+            "description": "BEST: a novel computational approach for comparing gene expression patterns from early stages of Drosophila melanogaster development.",
+            "identifier": "12524369"
+        },
+        {
+            "p-value": 1.909907308820445e-12,
+            "matches": 8,
+            "description": "HOT regions function as patterned developmental enhancers and have a distinct cis-regulatory signature.",
+            "identifier": "22499593"
+        },
+        {
+            "p-value": 1.909907308820445e-12,
+            "matches": 8,
+            "description": "Programming the Drosophila embryo.",
+            "identifier": "9367733"
+        },
+        {
+            "p-value": 2.601652684537037e-12,
+            "matches": 8,
+            "description": "Cell intercalation during Drosophila germband extension and its regulation by pair-rule segmentation genes.",
+            "identifier": "7600960"
+        },
+        {
+            "p-value": 4.440489879971037e-12,
+            "matches": 7,
+            "description": "Distance preferences in the arrangement of binding motifs and hierarchical levels in organization of transcription regulatory information.",
+            "identifier": "14530449"
+        },
+        {
+            "p-value": 4.666074658032514e-12,
+            "matches": 8,
+            "description": "Transcriptional regulation of cytoskeletal functions and segmentation by a novel maternal pair-rule gene, lilliputian.",
+            "identifier": "11171404"
+        },
+        {
+            "p-value": 8.038483094074239e-12,
+            "matches": 8,
+            "description": "Automatic annotation of spatial expression patterns via sparse Bayesian factor models.",
+            "identifier": "21814502"
+        },
+        {
+            "p-value": 8.038483094074239e-12,
+            "matches": 8,
+            "description": "Transcriptional cascades in Drosophila.",
+            "identifier": "8352969"
+        },
+        {
+            "p-value": 8.916660328631669e-12,
+            "matches": 6,
+            "description": "A quantitative spatiotemporal atlas of gene expression in the Drosophila blastoderm.",
+            "identifier": "18423206"
+        },
+        {
+            "p-value": 8.916660328631669e-12,
+            "matches": 6,
+            "description": "Visual exploration of three-dimensional gene expression using physical views and linked abstract views.",
+            "identifier": "19407353"
+        },
+        {
+            "p-value": 1.0408867759087536e-11,
+            "matches": 8,
+            "description": "A systematic characterization of factors that regulate Drosophila segmentation via a bacterial one-hybrid system.",
+            "identifier": "18332042"
+        },
+        {
+            "p-value": 1.2324949284733939e-11,
+            "matches": 7,
+            "description": "miR-184 has multiple roles in Drosophila female germline development.",
+            "identifier": "19619497"
+        },
+        {
+            "p-value": 1.739533230982305e-11,
+            "matches": 9,
+            "description": "A systematic analysis of Tinman function reveals Eya and JAK-STAT signaling as essential regulators of muscle development.",
+            "identifier": "19217429"
+        },
+        {
+            "p-value": 1.9493511170329063e-11,
+            "matches": 7,
+            "description": "Complementary patterns of even-skipped and fushi tarazu expression involve their differential regulation by a common set of segmentation genes in Drosophila.",
+            "identifier": "2892761"
+        },
+        {
+            "p-value": 2.9958668381335444e-11,
+            "matches": 7,
+            "description": "Inference of gene regulatory networks based on a universal minimum description length.",
+            "identifier": "18437238"
+        },
+        {
+            "p-value": 2.9958668381335444e-11,
+            "matches": 7,
+            "description": "Gene and epigene networks: two levels in organizing the hereditary system.",
+            "identifier": "19358855"
+        },
+        {
+            "p-value": 2.9958668381335444e-11,
+            "matches": 7,
+            "description": "Organization of developmental enhancers in the Drosophila embryo.",
+            "identifier": "19651877"
+        },
+        {
+            "p-value": 2.9958668381335444e-11,
+            "matches": 7,
+            "description": "Trans- and cis-acting requirements for blastodermal expression of the head gap gene buttonhead.",
+            "identifier": "8562425"
+        },
+        {
+            "p-value": 6.671397296958879e-11,
+            "matches": 6,
+            "description": "The initiation of pair-rule stripes in the Drosophila blastoderm.",
+            "identifier": "1822273"
+        },
+        {
+            "p-value": 6.671397296958879e-11,
+            "matches": 6,
+            "description": "Making stripes in the Drosophila embryo.",
+            "identifier": "2238086"
+        },
+        {
+            "p-value": 9.443882557597478e-11,
+            "matches": 7,
+            "description": "Arthropod segmentation: beyond the Drosophila paradigm.",
+            "identifier": "16341071"
+        },
+        {
+            "p-value": 9.443882557597478e-11,
+            "matches": 7,
+            "description": "Morphogens, compartments, and pattern: lessons from drosophila?",
+            "identifier": "8674123"
+        },
+        {
+            "p-value": 1.3318194960435248e-10,
+            "matches": 7,
+            "description": "Transcriptional control in the segmentation gene network of Drosophila.",
+            "identifier": "15340490"
+        },
+        {
+            "p-value": 2.526022519053588e-10,
+            "matches": 7,
+            "description": "Predicting expression patterns from regulatory sequence in Drosophila segmentation.",
+            "identifier": "18172436"
+        },
+        {
+            "p-value": 2.526022519053588e-10,
+            "matches": 7,
+            "description": "Identification and characterization of autosomal genes that interact with glass in the developing Drosophila eye.",
+            "identifier": "8846898"
+        },
+        {
+            "p-value": 2.9286158953026503e-10,
+            "matches": 6,
+            "description": "Spatio-temporal registration of the expression patterns of Drosophila segmentation genes.",
+            "identifier": "10786302"
+        },
+        {
+            "p-value": 2.9286158953026503e-10,
+            "matches": 6,
+            "description": "Gap gene properties of the pair-rule gene runt during Drosophila segmentation.",
+            "identifier": "8050373"
+        },
+        {
+            "p-value": 2.9286158953026503e-10,
+            "matches": 6,
+            "description": "Asymmetric localization of Drosophila pair-rule transcripts from displaced nuclei: evidence for directional nuclear export.",
+            "identifier": "8599947"
+        },
+        {
+            "p-value": 3.406149220900304e-10,
+            "matches": 7,
+            "description": "Identifying spatially similar gene expression patterns in early stage fruit fly embryo images: binary feature versus invariant moment digital representations.",
+            "identifier": "15603586"
+        },
+        {
+            "p-value": 4.5147045111038764e-10,
+            "matches": 8,
+            "description": "Regulation of proboscipedia in Drosophila by homeotic selector genes.",
+            "identifier": "10978284"
+        },
+        {
+            "p-value": 5.432306893523129e-10,
+            "matches": 6,
+            "description": "A conserved developmental patterning network produces quantitatively different output in multiple species of Drosophila.",
+            "identifier": "22046143"
+        },
+        {
+            "p-value": 5.432306893523129e-10,
+            "matches": 6,
+            "description": "Spatial harmonics and pattern specification in early Drosophila development. Part II. The four colour wheels model.",
+            "identifier": "2395375"
+        },
+        {
+            "p-value": 5.97368713292354e-10,
+            "matches": 7,
+            "description": "Structure of the insect head in ontogeny and phylogeny: a view from Drosophila.",
+            "identifier": "9161005"
+        },
+        {
+            "p-value": 7.783617377881014e-10,
+            "matches": 7,
+            "description": "Regulation of runt transcription by Drosophila segmentation genes.",
+            "identifier": "8240970"
+        },
+        {
+            "p-value": 9.495375260722354e-10,
+            "matches": 6,
+            "description": "Analysis of an even-skipped rescue transgene reveals both composite and discrete neuronal and early blastoderm enhancers, and multi-stripe positioning by gap gene repressor gradients.",
+            "identifier": "10226011"
+        },
+        {
+            "p-value": 9.495375260722354e-10,
+            "matches": 6,
+            "description": "Segmentation.",
+            "identifier": "15363406"
+        },
+        {
+            "p-value": 9.495375260722354e-10,
+            "matches": 6,
+            "description": "Drosophila 5-HT2 serotonin receptor: coexpression with fushi-tarazu during segmentation.",
+            "identifier": "7777527"
+        },
+        {
+            "p-value": 9.495375260722354e-10,
+            "matches": 6,
+            "description": "Segmentation: painting stripes from flies to vertebrates.",
+            "identifier": "9706689"
+        },
+        {
+            "p-value": 9.572564263692843e-10,
+            "matches": 8,
+            "description": "Segmentation of the Drosophila embryo.",
+            "identifier": "8241770"
+        },
+        {
+            "p-value": 1.455282676708579e-9,
+            "matches": 8,
+            "description": "wimp, a dominant maternal-effect mutation, reduces transcription of a specific subset of segmentation genes in Drosophila.",
+            "identifier": "2001838"
+        },
+        {
+            "p-value": 2.52631129307434e-9,
+            "matches": 6,
+            "description": "Evolutionary origins of transcription factor binding site clusters.",
+            "identifier": "22075113"
+        },
+        {
+            "p-value": 3.171456584007408e-9,
+            "matches": 7,
+            "description": "From genes to individuals: developmental genes and the generation of the phenotype.",
+            "identifier": "9533124"
+        },
+        {
+            "p-value": 3.5741549858234263e-9,
+            "matches": 8,
+            "description": "Computational identification of microRNA targets.",
+            "identifier": "15013811"
+        },
+        {
+            "p-value": 3.8998335172231395e-9,
+            "matches": 6,
+            "description": "A comparison of homologous developmental genes from Drosophila and Tribolium reveals major differences in length and trinucleotide repeat content.",
+            "identifier": "10552037"
+        },
+        {
+            "p-value": 3.8998335172231395e-9,
+            "matches": 6,
+            "description": "New tools, resources for gene regulatory analysis in Drosophila.",
+            "identifier": "19378457"
+        },
+        {
+            "p-value": 5.156289649823553e-9,
+            "matches": 5,
+            "description": "A closer look at the eve stripe 2 enhancers of Drosophila and Themira.",
+            "identifier": "19043578"
+        },
+        {
+            "p-value": 5.824860809856238e-9,
+            "matches": 7,
+            "description": "Transcriptional regulation of string (cdc25): a link between developmental programming and the cell cycle.",
+            "identifier": "7720557"
+        },
+        {
+            "p-value": 5.842880764543857e-9,
+            "matches": 6,
+            "description": "The Drosophila dead ringer gene is required for early embryonic patterning through regulation of argos and buttonhead expression.",
+            "identifier": "10477301"
+        },
+        {
+            "p-value": 5.842880764543857e-9,
+            "matches": 6,
+            "description": "The evolution of arthropod segmentation mechanisms.",
+            "identifier": "15382142"
+        },
+        {
+            "p-value": 5.842880764543857e-9,
+            "matches": 6,
+            "description": "Zygotically active genes that affect the spatial expression of the fushi tarazu segmentation gene during early Drosophila embryogenesis.",
+            "identifier": "3082519"
+        },
+        {
+            "p-value": 5.842880764543857e-9,
+            "matches": 6,
+            "description": "A functional homologue of goosecoid in Drosophila.",
+            "identifier": "8625850"
+        },
+        {
+            "p-value": 1.2152116223940313e-8,
+            "matches": 7,
+            "description": "On combining protein sequences and nucleic acid sequences in phylogenetic analysis: the homeobox protein case.",
+            "identifier": "11541749"
+        },
+        {
+            "p-value": 1.3732328204450002e-8,
+            "matches": 5,
+            "description": "Dynamical analysis of regulatory interactions in the gap gene system of Drosophila melanogaster.",
+            "identifier": "15342511"
+        },
+        {
+            "p-value": 1.3732328204450002e-8,
+            "matches": 5,
+            "description": "Quantitative and predictive model of transcriptional control of the Drosophila melanogaster even skipped gene.",
+            "identifier": "16980977"
+        },
+        {
+            "p-value": 1.3732328204450002e-8,
+            "matches": 5,
+            "description": "Three-dimensional morphology and gene expression in the Drosophila blastoderm at cellular resolution I: data acquisition pipeline.",
+            "identifier": "17184546"
+        },
+        {
+            "p-value": 1.3732328204450002e-8,
+            "matches": 5,
+            "description": "Three-dimensional morphology and gene expression in the Drosophila blastoderm at cellular resolution II: dynamics.",
+            "identifier": "17184547"
+        },
+        {
+            "p-value": 1.3732328204450002e-8,
+            "matches": 5,
+            "description": "Repression of Drosophila pair-rule segmentation genes by ectopic expression of tramtrack.",
+            "identifier": "8223261"
+        },
+        {
+            "p-value": 1.702012425598575e-8,
+            "matches": 6,
+            "description": "Drosophila atrophin homolog functions as a transcriptional corepressor in multiple developmental processes.",
+            "identifier": "11792320"
+        },
+        {
+            "p-value": 1.702012425598575e-8,
+            "matches": 6,
+            "description": "Individual stripe regulatory elements in the Drosophila hairy promoter respond to maternal, gap, and pair-rule genes.",
+            "identifier": "1902805"
+        },
+        {
+            "p-value": 1.702012425598575e-8,
+            "matches": 6,
+            "description": "Role of gap genes in early Drosophila development.",
+            "identifier": "1971985"
+        },
+        {
+            "p-value": 1.702012425598575e-8,
+            "matches": 6,
+            "description": "Spatial regulation of segment polarity gene expression in the anterior terminal region of the Drosophila blastoderm embryo.",
+            "identifier": "7619727"
+        },
+        {
+            "p-value": 2.3375183569800756e-8,
+            "matches": 6,
+            "description": "Anterior-posterior positional information in the absence of a strong Bicoid gradient.",
+            "identifier": "19237583"
+        },
+        {
+            "p-value": 3.085496303671324e-8,
+            "matches": 5,
+            "description": "Transcriptional control by the TGF-beta/Smad signaling system.",
+            "identifier": "10775259"
+        },
+        {
+            "p-value": 3.085496303671324e-8,
+            "matches": 5,
+            "description": "Efficient reverse-engineering of a developmental gene regulatory network.",
+            "identifier": "22807664"
+        },
+        {
+            "p-value": 3.085496303671324e-8,
+            "matches": 5,
+            "description": "Early and late periodic patterns of even skipped expression are controlled by distinct regulatory elements that respond to different spatial cues.",
+            "identifier": "2720776"
+        },
+        {
+            "p-value": 3.085496303671324e-8,
+            "matches": 5,
+            "description": "Concentration-dependent patterning by an ectopic expression domain of the Drosophila gap gene knirps.",
+            "identifier": "9118805"
+        },
+        {
+            "p-value": 5.529942014671354e-8,
+            "matches": 6,
+            "description": "Orthodenticle regulation during embryonic head development in Drosophila.",
+            "identifier": "8798143"
+        },
+        {
+            "p-value": 6.163389383447517e-8,
+            "matches": 5,
+            "description": "Homotypic regulatory clusters in Drosophila.",
+            "identifier": "12670999"
+        },
+        {
+            "p-value": 6.163389383447517e-8,
+            "matches": 5,
+            "description": "Turnover of binding sites for transcription factors involved in early Drosophila development.",
+            "identifier": "12801649"
+        },
+        {
+            "p-value": 6.163389383447517e-8,
+            "matches": 5,
+            "description": "The Drosophila gap gene network is composed of two parallel toggle switches.",
+            "identifier": "21747931"
+        },
+        {
+            "p-value": 6.163389383447517e-8,
+            "matches": 5,
+            "description": "Spatial control of hairy protein expression during embryogenesis.",
+            "identifier": "2612375"
+        },
+        {
+            "p-value": 6.163389383447517e-8,
+            "matches": 5,
+            "description": "Chip, a widely expressed chromosomal protein required for segmentation and activity of a remote wing margin enhancer in Drosophila.",
+            "identifier": "9334334"
+        },
+        {
+            "p-value": 1.1285624535037938e-7,
+            "matches": 5,
+            "description": "Sepsid even-skipped enhancers are functionally conserved in Drosophila despite lack of sequence conservation.",
+            "identifier": "18584029"
+        },
+        {
+            "p-value": 1.1285624535037938e-7,
+            "matches": 5,
+            "description": "Huckebein is part of a combinatorial repression code in the anterior blastoderm.",
+            "identifier": "22027434"
+        },
+        {
+            "p-value": 1.1285624535037938e-7,
+            "matches": 5,
+            "description": "Spatial harmonics and pattern specification in early Drosophila development. Part I. Bifurcation sequences and gene expression.",
+            "identifier": "2395374"
+        },
+        {
+            "p-value": 1.1723358097078311e-7,
+            "matches": 6,
+            "description": "Organ formation in Drosophila: specification and morphogenesis of the salivary gland.",
+            "identifier": "11598957"
+        },
+        {
+            "p-value": 1.264790922573391e-7,
+            "matches": 7,
+            "description": "Synonymous codon usage in Drosophila melanogaster: natural selection and translational accuracy.",
+            "identifier": "8005445"
+        },
+        {
+            "p-value": 1.932294586976813e-7,
+            "matches": 5,
+            "description": "Establishment of cell fate during early Drosophila embryogenesis requires transcriptional Mediator subunit dMED31.",
+            "identifier": "18083158"
+        },
+        {
+            "p-value": 1.932294586976813e-7,
+            "matches": 5,
+            "description": "Extraction and comparison of gene expression patterns from 2D RNA in situ hybridization images.",
+            "identifier": "19942587"
+        },
+        {
+            "p-value": 1.932294586976813e-7,
+            "matches": 5,
+            "description": "Hairless is a cofactor for Runt-dependent transcriptional regulation.",
+            "identifier": "21325629"
+        },
+        {
+            "p-value": 1.932294586976813e-7,
+            "matches": 5,
+            "description": "Response to the BMP gradient requires highly combinatorial inputs from multiple patterning systems in the Drosophila embryo.",
+            "identifier": "22513375"
+        },
+        {
+            "p-value": 1.932294586976813e-7,
+            "matches": 5,
+            "description": "Transcriptional control and signal transduction: of soap-operas and reductionism.",
+            "identifier": "8101670"
+        },
+        {
+            "p-value": 1.932294586976813e-7,
+            "matches": 5,
+            "description": "Regulation of expression domains and effects of ectopic expression reveal gap gene-like properties of the linked pdm genes of Drosophila.",
+            "identifier": "8518192"
+        },
+        {
+            "p-value": 1.932294586976813e-7,
+            "matches": 5,
+            "description": "Pair-rule gene runt restricts orthodenticle expression to the presumptive head of the Drosophila embryo.",
+            "identifier": "9706692"
+        },
+        {
+            "p-value": 2.8072498532018435e-7,
+            "matches": 6,
+            "description": "Transcriptional regulators of Drosophila embryogenesis.",
+            "identifier": "1457465"
+        },
+        {
+            "p-value": 2.8072498532018435e-7,
+            "matches": 6,
+            "description": "The molecular genetics of head development in Drosophila melanogaster.",
+            "identifier": "1682131"
+        },
+        {
+            "p-value": 3.1357263357965005e-7,
+            "matches": 5,
+            "description": "Transgenic analysis of the Smad family of TGF-beta signal transducers in Drosophila melanogaster suggests new roles and new interactions between family members.",
+            "identifier": "11290719"
+        },
+        {
+            "p-value": 3.1357263357965005e-7,
+            "matches": 5,
+            "description": "Small bristles, the Drosophila ortholog of NXF-1, is essential for mRNA export throughout development.",
+            "identifier": "11780634"
+        },
+        {
+            "p-value": 3.1357263357965005e-7,
+            "matches": 5,
+            "description": "Differing strategies for the establishment and maintenance of teashirt and homothorax repression in the Drosophila wing.",
+            "identifier": "15509768"
+        },
+        {
+            "p-value": 3.1357263357965005e-7,
+            "matches": 5,
+            "description": "Molecular recognition of transcriptional repressor motifs by the WD domain of the Groucho/TLE corepressor.",
+            "identifier": "16762837"
+        },
+        {
+            "p-value": 3.1357263357965005e-7,
+            "matches": 5,
+            "description": "Control of the initiation of homeotic gene expression by the gap genes giant and tailless in Drosophila.",
+            "identifier": "1972684"
+        },
+        {
+            "p-value": 3.1357263357965005e-7,
+            "matches": 5,
+            "description": "Dual-functioning transcription factors in the developmental gene network of Drosophila melanogaster.",
+            "identifier": "20594356"
+        },
+        {
+            "p-value": 3.1357263357965005e-7,
+            "matches": 5,
+            "description": "Positional information and pattern formation in development.",
+            "identifier": "7834908"
+        },
+        {
+            "p-value": 3.1357263357965005e-7,
+            "matches": 5,
+            "description": "Complex regulation of early paired expression: initial activation by gap genes and pattern modulation by pair-rule genes.",
+            "identifier": "8330531"
+        },
+        {
+            "p-value": 4.871339007023095e-7,
+            "matches": 5,
+            "description": "Pan-neural Prospero terminates cell proliferation during Drosophila neurogenesis.",
+            "identifier": "10652268"
+        },
+        {
+            "p-value": 4.871339007023095e-7,
+            "matches": 5,
+            "description": "The role of binding site cluster strength in Bicoid-dependent patterning in Drosophila.",
+            "identifier": "15793007"
+        },
+        {
+            "p-value": 4.871339007023095e-7,
+            "matches": 5,
+            "description": "Regulation of two pair-rule stripes by a single enhancer in the Drosophila embryo.",
+            "identifier": "8626035"
+        },
+        {
+            "p-value": 4.871339007023095e-7,
+            "matches": 5,
+            "description": "Implications of the spatial and temporal regulation of Hox genes on development and evolution.",
+            "identifier": "9654029"
+        },
+        {
+            "p-value": 6.006027439476578e-7,
+            "matches": 6,
+            "description": "Early steps in building the insect brain: neuroblast formation and segmental patterning in the developing brain of different insect species.",
+            "identifier": "18088998"
+        },
+        {
+            "p-value": 7.2980034382281e-7,
+            "matches": 5,
+            "description": "cis-Regulatory control circuits in development.",
+            "identifier": "15196954"
+        },
+        {
+            "p-value": 7.2980034382281e-7,
+            "matches": 5,
+            "description": "Drosophila headlines.",
+            "identifier": "1685270"
+        },
+        {
+            "p-value": 8.998093897627869e-7,
+            "matches": 4,
+            "description": "Bicoid cooperative DNA binding is critical for embryonic patterning in Drosophila.",
+            "identifier": "16150708"
+        },
+        {
+            "p-value": 8.998093897627869e-7,
+            "matches": 4,
+            "description": "Diffusion and scaling during early embryonic pattern formation.",
+            "identifier": "16352710"
+        },
+        {
+            "p-value": 8.998093897627869e-7,
+            "matches": 4,
+            "description": "Regulation of a segmentation stripe by overlapping activators and repressors in the Drosophila embryo.",
+            "identifier": "1683715"
+        },
+        {
+            "p-value": 8.998093897627869e-7,
+            "matches": 4,
+            "description": "Pre-steady-state decoding of the Bicoid morphogen gradient.",
+            "identifier": "17298180"
+        },
+        {
+            "p-value": 8.998093897627869e-7,
+            "matches": 4,
+            "description": "Precision and scaling in morphogen gradient read-out.",
+            "identifier": "20212523"
+        },
+        {
+            "p-value": 8.998093897627869e-7,
+            "matches": 4,
+            "description": "Transcriptional regulation of a pair-rule stripe in Drosophila.",
+            "identifier": "2026328"
+        },
+        {
+            "p-value": 8.998093897627869e-7,
+            "matches": 4,
+            "description": "Investigating giant (Gt) repression in the formation of partially overlapping pair-rule stripes.",
+            "identifier": "20925117"
+        },
+        {
+            "p-value": 8.998093897627869e-7,
+            "matches": 4,
+            "description": "The eve stripe 2 enhancer employs multiple modes of transcriptional synergy.",
+            "identifier": "8565831"
+        },
+        {
+            "p-value": 8.998093897627869e-7,
+            "matches": 4,
+            "description": "Two distinct mechanisms for differential positioning of gene expression borders involving the Drosophila gap protein giant.",
+            "identifier": "9729485"
+        },
+        {
+            "p-value": 0.0000010600250853461312,
+            "matches": 5,
+            "description": "Exploiting transcription factor binding site clustering to identify cis-regulatory modules involved in pattern formation in the Drosophila genome.",
+            "identifier": "11805330"
+        },
+        {
+            "p-value": 0.0000011781199594318243,
+            "matches": 6,
+            "description": "Neuroblast formation and patterning during early brain development in Drosophila.",
+            "identifier": "15221856"
+        },
+        {
+            "p-value": 0.0000013785875374306138,
+            "matches": 6,
+            "description": "Modulating Hox gene functions during animal body patterning.",
+            "identifier": "16341070"
+        },
+        {
+            "p-value": 0.0000014999430315726565,
+            "matches": 5,
+            "description": "Keeping an eye on the fly genome.",
+            "identifier": "15893305"
+        },
+        {
+            "p-value": 0.0000014999430315726565,
+            "matches": 5,
+            "description": "RNA localization.",
+            "identifier": "16155250"
+        },
+        {
+            "p-value": 0.0000020744746165618052,
+            "matches": 5,
+            "description": "CtBP, an unconventional transcriptional corepressor in development and oncogenesis.",
+            "identifier": "11864595"
+        },
+        {
+            "p-value": 0.0000020744746165618052,
+            "matches": 5,
+            "description": "EZ-Retrieve: a web-server for batch retrieval of coordinate-specified human DNA sequences and underscoring putative transcription factor-binding sites.",
+            "identifier": "12409480"
+        },
+        {
+            "p-value": 0.0000020744746165618052,
+            "matches": 5,
+            "description": "Characterization of dSnoN and its relationship to Decapentaplegic signaling in Drosophila.",
+            "identifier": "17434471"
+        },
+        {
+            "p-value": 0.0000020744746165618052,
+            "matches": 5,
+            "description": "Analysis of twin of eyeless regulation during early embryogenesis in Drosophila melanogaster.",
+            "identifier": "18586115"
+        },
+        {
+            "p-value": 0.0000020744746165618052,
+            "matches": 5,
+            "description": "A cascade of transcriptional control leading to axis determination in Drosophila.",
+            "identifier": "9365516"
+        },
+        {
+            "p-value": 0.0000026949179100436203,
+            "matches": 4,
+            "description": "Regulation of even-skipped stripe 2 in the Drosophila embryo.",
+            "identifier": "1327756"
+        },
+        {
+            "p-value": 0.0000026949179100436203,
+            "matches": 4,
+            "description": "Evolutionary mirages: selection on binding site composition creates the illusion of conserved grammars in Drosophila enhancers.",
+            "identifier": "20107516"
+        },
+        {
+            "p-value": 0.0000026949179100436203,
+            "matches": 4,
+            "description": "Nonparametric identification of regulatory interactions from spatial and temporal gene expression data.",
+            "identifier": "20684787"
+        },
+        {
+            "p-value": 0.0000026949179100436203,
+            "matches": 4,
+            "description": "Mechanism of eve stripe formation.",
+            "identifier": "7748785"
+        },
+        {
+            "p-value": 0.0000026949179100436203,
+            "matches": 4,
+            "description": "Evolution of segmentation genes in insects.",
+            "identifier": "7900191"
+        },
+        {
+            "p-value": 0.0000026949179100436203,
+            "matches": 4,
+            "description": "Stripe forming architecture of the gap gene system.",
+            "identifier": "9706690"
+        },
+        {
+            "p-value": 0.0000028113723039657682,
+            "matches": 5,
+            "description": "Evolution of transcription factor function.",
+            "identifier": "12672498"
+        },
+        {
+            "p-value": 0.0000037443337512270887,
+            "matches": 5,
+            "description": "Morphogen gradients: new insights from DPP.",
+            "identifier": "10498935"
+        },
+        {
+            "p-value": 0.0000037443337512270887,
+            "matches": 5,
+            "description": "Regulation of BMP/Dpp signaling during embryonic development.",
+            "identifier": "10950309"
+        },
+        {
+            "p-value": 0.0000037443337512270887,
+            "matches": 5,
+            "description": "Establishment of the Deformed expression stripe requires the combinatorial action of coordinate, gap and pair-rule proteins.",
+            "identifier": "2323337"
+        },
+        {
+            "p-value": 0.000004908680201881928,
+            "matches": 5,
+            "description": "TGF-beta family signal transduction in Drosophila development: from Mad to Smads.",
+            "identifier": "10357889"
+        },
+        {
+            "p-value": 0.000004908680201881928,
+            "matches": 5,
+            "description": "Patterned gene expression directs bipolar planar polarity in Drosophila.",
+            "identifier": "15030758"
+        },
+        {
+            "p-value": 0.000004908680201881928,
+            "matches": 5,
+            "description": "The Bin3 RNA methyltransferase is required for repression of caudal translation in the Drosophila embryo.",
+            "identifier": "21262214"
+        },
+        {
+            "p-value": 0.000005460273579273263,
+            "matches": 6,
+            "description": "Homeobox gene clusters and the human paralogy map.",
+            "identifier": "11240134"
+        },
+        {
+            "p-value": 0.000005460273579273263,
+            "matches": 6,
+            "description": "Analysis of conserved noncoding DNA in Drosophila reveals similar constraints in intergenic and intronic sequences.",
+            "identifier": "11483574"
+        },
+        {
+            "p-value": 0.000005460273579273263,
+            "matches": 6,
+            "description": "Genomic regulatory networks and animal development.",
+            "identifier": "16198288"
+        },
+        {
+            "p-value": 0.000006278209433226422,
+            "matches": 4,
+            "description": "A transcription unit at the ken and barbie gene locus encodes a novel Drosophila zinc finger protein.",
+            "identifier": "10349629"
+        },
+        {
+            "p-value": 0.000006278209433226422,
+            "matches": 4,
+            "description": "Evolution: hox genes and the cellared wine principle.",
+            "identifier": "10873798"
+        },
+        {
+            "p-value": 0.000006278209433226422,
+            "matches": 4,
+            "description": "How genomic and developmental dynamics affect evolutionary processes.",
+            "identifier": "11084631"
+        },
+        {
+            "p-value": 0.000006278209433226422,
+            "matches": 4,
+            "description": "Sharp borders from fuzzy gradients.",
+            "identifier": "12142000"
+        },
+        {
+            "p-value": 0.000006278209433226422,
+            "matches": 4,
+            "description": "Histone deacetylase dHDAC4 is involved in segmentation of the Drosophila embryo and is regulated by gap and pair-rule genes.",
+            "identifier": "12481296"
+        },
+        {
+            "p-value": 0.000006278209433226422,
+            "matches": 4,
+            "description": "Canalization of gene expression and domain shifts in the Drosophila blastoderm by dynamical attractors.",
+            "identifier": "19282965"
+        },
+        {
+            "p-value": 0.000006278209433226422,
+            "matches": 4,
+            "description": "Alignment and prediction of cis-regulatory modules based on a probabilistic model of evolution.",
+            "identifier": "19293946"
+        },
+        {
+            "p-value": 0.000006278209433226422,
+            "matches": 4,
+            "description": "Canalization of gene expression in the Drosophila blastoderm by gap gene cross regulation.",
+            "identifier": "19750121"
+        },
+        {
+            "p-value": 0.000006278209433226422,
+            "matches": 4,
+            "description": "Inferring Drosophila gap gene regulatory network: a parameter sensitivity and perturbation analysis.",
+            "identifier": "19769791"
+        },
+        {
+            "p-value": 0.000006278209433226422,
+            "matches": 4,
+            "description": "Functional evolution of cis-regulatory modules at a homeotic gene in Drosophila.",
+            "identifier": "19893611"
+        },
+        {
+            "p-value": 0.000006278209433226422,
+            "matches": 4,
+            "description": "Inferring Drosophila gap gene regulatory network: pattern analysis of simulated gene expression profiles and stability analysis.",
+            "identifier": "20015372"
+        },
+        {
+            "p-value": 0.000006278209433226422,
+            "matches": 4,
+            "description": "Non-additive interactions involving two distinct elements mediate sloppy-paired regulation by pair-rule transcription factors.",
+            "identifier": "20435028"
+        },
+        {
+            "p-value": 0.000006278209433226422,
+            "matches": 4,
+            "description": "Mechanisms of gap gene expression canalization in the Drosophila blastoderm.",
+            "identifier": "21794172"
+        },
+        {
+            "p-value": 0.000006278209433226422,
+            "matches": 4,
+            "description": "Modeling the Drosophila pair-rule pattern by reaction-diffusion: gap input and pattern control in a 4-morphogen system.",
+            "identifier": "2197508"
+        },
+        {
+            "p-value": 0.000006278209433226422,
+            "matches": 4,
+            "description": "Analysis of gap gene regulation in a 3D organism-scale model of the Drosophila melanogaster embryo.",
+            "identifier": "22110594"
+        },
+        {
+            "p-value": 0.000006278209433226422,
+            "matches": 4,
+            "description": "Smad proteins act in combination with synergistic and antagonistic regulators to target Dpp responses to the Drosophila mesoderm.",
+            "identifier": "9694800"
+        },
+        {
+            "p-value": 0.000006341279137889524,
+            "matches": 5,
+            "description": "Dynamic regulation by polycomb group protein complexes controls pattern formation and the cell cycle in Drosophila.",
+            "identifier": "18993116"
+        },
+        {
+            "p-value": 0.000006341279137889524,
+            "matches": 5,
+            "description": "End of the line? Tramtrack and cell fate determination in Drosophila.",
+            "identifier": "9077440"
+        },
+        {
+            "p-value": 0.000007800773243345604,
+            "matches": 6,
+            "description": "Mutations that alter the morphology of the malpighian tubules in Drosophila.",
+            "identifier": "10502111"
+        },
+        {
+            "p-value": 0.000007800773243345604,
+            "matches": 6,
+            "description": "Wingless signaling in the Drosophila embryo: zygotic requirements and the role of the frizzled genes.",
+            "identifier": "9876186"
+        },
+        {
+            "p-value": 0.00000809300345571719,
+            "matches": 5,
+            "description": "Decoding cis-regulatory DNAs in the Drosophila genome.",
+            "identifier": "12200166"
+        },
+        {
+            "p-value": 0.00001021138749594768,
+            "matches": 5,
+            "description": "Mutations in some Polycomb group genes of Drosophila interfere with regulation of segmentation genes.",
+            "identifier": "7915818"
+        },
+        {
+            "p-value": 0.00001253428011022358,
+            "matches": 4,
+            "description": "The HMG-box protein Lilliputian is required for Runt-dependent activation of the pair-rule gene fushi-tarazu.",
+            "identifier": "17137570"
+        },
+        {
+            "p-value": 0.00001253428011022358,
+            "matches": 4,
+            "description": "Network of interactions among pair-rule genes regulating paired expression during primordial segmentation of Drosophila.",
+            "identifier": "1982920"
+        },
+        {
+            "p-value": 0.00001253428011022358,
+            "matches": 4,
+            "description": "Gene circuit analysis of the terminal gap gene huckebein.",
+            "identifier": "19876378"
+        },
+        {
+            "p-value": 0.00001253428011022358,
+            "matches": 4,
+            "description": "Whole-embryo modeling of early segmentation in Drosophila identifies robust and fragile expression domains.",
+            "identifier": "21767480"
+        },
+        {
+            "p-value": 0.00001253428011022358,
+            "matches": 4,
+            "description": "Drosophila segmentation: supercomputer simulation of prepattern hierarchy.",
+            "identifier": "2232822"
+        },
+        {
+            "p-value": 0.00001253428011022358,
+            "matches": 4,
+            "description": "Activation of posterior gap gene expression in the Drosophila blastoderm.",
+            "identifier": "7617036"
+        },
+        {
+            "p-value": 0.00001253428011022358,
+            "matches": 4,
+            "description": "Segmentation in insects: how singular is Drosophila?",
+            "identifier": "7915902"
+        },
+        {
+            "p-value": 0.000012747325392805794,
+            "matches": 5,
+            "description": "Evolution of development in closely related species of flies and worms.",
+            "identifier": "12459721"
+        },
+        {
+            "p-value": 0.00001576487334757442,
+            "matches": 5,
+            "description": "The torso pathway in Drosophila: lessons on receptor tyrosine kinase signaling and pattern formation.",
+            "identifier": "7813764"
+        },
+        {
+            "p-value": 0.000019326308912218895,
+            "matches": 5,
+            "description": "Functional analysis of conserved sequences within a temporally restricted neural precursor cell enhancer.",
+            "identifier": "21315151"
+        },
+        {
+            "p-value": 0.000019326308912218895,
+            "matches": 5,
+            "description": "Three maternal coordinate systems cooperate in the patterning of the Drosophila head.",
+            "identifier": "7720559"
+        },
+        {
+            "p-value": 0.000022529503381692667,
+            "matches": 4,
+            "description": "A logical analysis of the Drosophila gap-gene system.",
+            "identifier": "11419955"
+        },
+        {
+            "p-value": 0.000022529503381692667,
+            "matches": 4,
+            "description": "Grunge, related to human Atrophin-like proteins, has multiple functions in Drosophila development.",
+            "identifier": "11874908"
+        },
+        {
+            "p-value": 0.000022529503381692667,
+            "matches": 4,
+            "description": "Drawing lines in the sand: even skipped et al. and parasegment boundaries.",
+            "identifier": "15110723"
+        },
+        {
+            "p-value": 0.000022529503381692667,
+            "matches": 4,
+            "description": "On the dynamic nature of positional information.",
+            "identifier": "17041900"
+        },
+        {
+            "p-value": 0.000022529503381692667,
+            "matches": 4,
+            "description": "Synthetic oligonucleotides recreate Drosophila fushi tarazu zebra-stripe expression.",
+            "identifier": "1851122"
+        },
+        {
+            "p-value": 0.000022529503381692667,
+            "matches": 4,
+            "description": "Drosophila long-chain acyl-CoA synthetase acts like a gap gene in embryonic segmentation.",
+            "identifier": "21385576"
+        },
+        {
+            "p-value": 0.000022529503381692667,
+            "matches": 4,
+            "description": "How to make stripes: deciphering the transition from non-periodic to periodic patterns in Drosophila segmentation.",
+            "identifier": "21693522"
+        },
+        {
+            "p-value": 0.000022529503381692667,
+            "matches": 4,
+            "description": "Gene activities and segmental patterning in Drosophila: analysis of odd-skipped and pair-rule double mutants.",
+            "identifier": "3240861"
+        },
+        {
+            "p-value": 0.00002835920912891082,
+            "matches": 5,
+            "description": "Drosophila ptip is essential for anterior/posterior patterning in development and interacts with the PcG and trxG pathways.",
+            "identifier": "19429789"
+        },
+        {
+            "p-value": 0.00003749787339872328,
+            "matches": 4,
+            "description": "Mechanisms regulating target gene selection by the homeodomain-containing protein Fushi tarazu.",
+            "identifier": "10851140"
+        },
+        {
+            "p-value": 0.00003749787339872328,
+            "matches": 4,
+            "description": "Nuclear integration of positive Dpp signals, antagonistic Wg inputs and mesodermal competence factors during Drosophila visceral mesoderm induction.",
+            "identifier": "15750188"
+        },
+        {
+            "p-value": 0.00003749787339872328,
+            "matches": 4,
+            "description": "TGFbeta receptor saxophone non-autonomously regulates germline proliferation in a Smox/dSmad2-dependent manner in Drosophila testis.",
+            "identifier": "17651718"
+        },
+        {
+            "p-value": 0.00003749787339872328,
+            "matches": 4,
+            "description": "Spatial regulation of the gap gene giant during Drosophila development.",
+            "identifier": "1893877"
+        },
+        {
+            "p-value": 0.00003749787339872328,
+            "matches": 4,
+            "description": "Establishment and refinement of segmental pattern in the Drosophila embryo: spatial control of engrailed expression by pair-rule genes.",
+            "identifier": "3123316"
+        },
+        {
+            "p-value": 0.00003749787339872328,
+            "matches": 4,
+            "description": "Both the paired domain and homeodomain are required for in vivo function of Drosophila Paired.",
+            "identifier": "8787745"
+        },
+        {
+            "p-value": 0.0000404791869060064,
+            "matches": 5,
+            "description": "Developmental genetics of the Drosophila gut: specification of primordia, subdivision and overt-differentiation.",
+            "identifier": "10512197"
+        },
+        {
+            "p-value": 0.00005641852766666697,
+            "matches": 5,
+            "description": "Conservation and divergence in molecular mechanisms of axis formation.",
+            "identifier": "11700289"
+        },
+        {
+            "p-value": 0.000058846525007713815,
+            "matches": 4,
+            "description": "Regulation of Smad signalling by protein associations and signalling crosstalk.",
+            "identifier": "10370243"
+        },
+        {
+            "p-value": 0.000058846525007713815,
+            "matches": 4,
+            "description": "Insect segmentation: Genes, stripes and segments in \"Hoppers\".",
+            "identifier": "11719236"
+        },
+        {
+            "p-value": 0.000058846525007713815,
+            "matches": 4,
+            "description": "Distinct in vivo requirements for establishment versus maintenance of transcriptional repression.",
+            "identifier": "12145660"
+        },
+        {
+            "p-value": 0.000058846525007713815,
+            "matches": 4,
+            "description": "Segmenting the fly embryo: a logical analysis of the pair-rule cross-regulatory module.",
+            "identifier": "12957124"
+        },
+        {
+            "p-value": 0.000058846525007713815,
+            "matches": 4,
+            "description": "Groucho-dependent repression by sloppy-paired 1 differentially positions anterior pair-rule stripes in the Drosophila embryo.",
+            "identifier": "15581884"
+        },
+        {
+            "p-value": 0.000058846525007713815,
+            "matches": 4,
+            "description": "Conservation patterns in different functional sequence categories of divergent Drosophila species.",
+            "identifier": "16697139"
+        },
+        {
+            "p-value": 0.000058846525007713815,
+            "matches": 4,
+            "description": "A network model of developmental gene hierarchy.",
+            "identifier": "7643603"
+        },
+        {
+            "p-value": 0.000058846525007713815,
+            "matches": 4,
+            "description": "Localized expression of sloppy paired protein maintains the polarity of Drosophila parasegments.",
+            "identifier": "7926775"
+        },
+        {
+            "p-value": 0.000058846525007713815,
+            "matches": 4,
+            "description": "Early even-skipped stripes act as morphogenetic gradients at the single cell level to establish engrailed expression.",
+            "identifier": "8575337"
+        },
+        {
+            "p-value": 0.000058846525007713815,
+            "matches": 4,
+            "description": "The Dichaete gene of Drosophila melanogaster encodes a SOX-domain protein required for embryonic segmentation.",
+            "identifier": "8951082"
+        },
+        {
+            "p-value": 0.000058846525007713815,
+            "matches": 4,
+            "description": "Drosophila mef2 expression during mesoderm development is controlled by a complex array of cis-acting regulatory modules.",
+            "identifier": "9882489"
+        },
+        {
+            "p-value": 0.00006443146660738863,
+            "matches": 6,
+            "description": "Versatile P[acman] BAC libraries for transgenesis studies in Drosophila melanogaster.",
+            "identifier": "19465919"
+        },
+        {
+            "p-value": 0.00007697284600057075,
+            "matches": 5,
+            "description": "Identification of genes controlling germ cell migration and embryonic gonad formation in Drosophila.",
+            "identifier": "9435287"
+        },
+        {
+            "p-value": 0.00008813837409743097,
+            "matches": 4,
+            "description": "Kinetic analysis of segmentation gene interactions in Drosophila embryos.",
+            "identifier": "10068644"
+        },
+        {
+            "p-value": 0.00008813837409743097,
+            "matches": 4,
+            "description": "Transcription factors bind thousands of active and inactive regions in the Drosophila blastoderm.",
+            "identifier": "18271625"
+        },
+        {
+            "p-value": 0.00008813837409743097,
+            "matches": 4,
+            "description": "Phosphorylation of Mad controls competition between wingless and BMP signaling.",
+            "identifier": "21990430"
+        },
+        {
+            "p-value": 0.00008813837409743097,
+            "matches": 4,
+            "description": "Dynamic changes in the functions of Odd-skipped during early Drosophila embryogenesis.",
+            "identifier": "9806933"
+        },
+        {
+            "p-value": 0.00008927756169645066,
+            "matches": 5,
+            "description": "Molecular markers for identified neuroblasts in the developing brain of Drosophila.",
+            "identifier": "12835380"
+        },
+        {
+            "p-value": 0.0001031124890805524,
+            "matches": 5,
+            "description": "Whole-genome analysis of Drosophila gastrulation.",
+            "identifier": "15380237"
+        },
+        {
+            "p-value": 0.00011876200741760044,
+            "matches": 6,
+            "description": "Design and function of transcriptional switches in Drosophila.",
+            "identifier": "12225917"
+        },
+        {
+            "p-value": 0.00012544112425370236,
+            "matches": 3,
+            "description": "Coevolution in bicoid-dependent promoters and the inception of regulatory incompatibilities among species of higher Diptera.",
+            "identifier": "12168619"
+        },
+        {
+            "p-value": 0.00012544112425370236,
+            "matches": 3,
+            "description": "Making the body plan: precision in the genetic hierarchy of Drosophila embryo segmentation.",
+            "identifier": "12762849"
+        },
+        {
+            "p-value": 0.00012544112425370236,
+            "matches": 3,
+            "description": "Ectopic expression of the Drosophila tramtrack gene results in multiple embryonic defects, including repression of even-skipped and fushi tarazu.",
+            "identifier": "1457380"
+        },
+        {
+            "p-value": 0.00012544112425370236,
+            "matches": 3,
+            "description": "Flexible interaction of Drosophila Smad complexes with bipartite binding sites.",
+            "identifier": "17610966"
+        },
+        {
+            "p-value": 0.00012544112425370236,
+            "matches": 3,
+            "description": "Statistical tests for natural selection on regulatory regions based on the strength of transcription factor binding sites.",
+            "identifier": "19995462"
+        },
+        {
+            "p-value": 0.0001271253242883836,
+            "matches": 4,
+            "description": "Persistence of Hunchback in the terminal region of the Drosophila blastoderm embryo impairs anterior development.",
+            "identifier": "10725234"
+        },
+        {
+            "p-value": 0.0001271253242883836,
+            "matches": 4,
+            "description": "Analysis of Drosophila salivary gland, epidermis and CNS development suggests an additional function of brinker in anterior-posterior cell fate specification.",
+            "identifier": "10727857"
+        },
+        {
+            "p-value": 0.0001271253242883836,
+            "matches": 4,
+            "description": "Stopping transcription in its tracks.",
+            "identifier": "12145661"
+        },
+        {
+            "p-value": 0.0001271253242883836,
+            "matches": 4,
+            "description": "Identification of sparsely distributed clusters of cis-regulatory elements in sets of co-expressed genes.",
+            "identifier": "15155858"
+        },
+        {
+            "p-value": 0.0001271253242883836,
+            "matches": 4,
+            "description": "Antagonistic action of Bicoid and the repressor Capicua determines the spatial limits of Drosophila head gene expression domains.",
+            "identifier": "19959668"
+        },
+        {
+            "p-value": 0.0001271253242883836,
+            "matches": 4,
+            "description": "Gene regulation in the Drosophila embryo.",
+            "identifier": "8735281"
+        },
+        {
+            "p-value": 0.0001271253242883836,
+            "matches": 4,
+            "description": "Different levels of Ras activity can specify distinct transcriptional and morphological consequences in early Drosophila embryos.",
+            "identifier": "9428424"
+        },
+        {
+            "p-value": 0.0001271253242883836,
+            "matches": 4,
+            "description": "Cell fate specification in the Drosophila salivary gland: the integration of homeotic gene function with the DPP signaling cascade.",
+            "identifier": "9882494"
+        },
+        {
+            "p-value": 0.0001764258066402603,
+            "matches": 5,
+            "description": "Stability and dynamics of polycomb target sites in Drosophila development.",
+            "identifier": "18773083"
+        },
+        {
+            "p-value": 0.0001764258066402603,
+            "matches": 5,
+            "description": "A class act: conservation of homeodomain protein functions.",
+            "identifier": "7579525"
+        },
+        {
+            "p-value": 0.00017772678458478363,
+            "matches": 4,
+            "description": "A comparison of in vivo and in vitro DNA-binding specificities suggests a new model for homeoprotein DNA binding in Drosophila embryos.",
+            "identifier": "10075930"
+        },
+        {
+            "p-value": 0.00017772678458478363,
+            "matches": 4,
+            "description": "Transcribed genes are localized according to chromosomal position within polarized Drosophila embryonic nuclei.",
+            "identifier": "10556096"
+        },
+        {
+            "p-value": 0.00017772678458478363,
+            "matches": 4,
+            "description": "Wnts as morphogens? The view from the wing of Drosophila.",
+            "identifier": "12671654"
+        },
+        {
+            "p-value": 0.00017772678458478363,
+            "matches": 4,
+            "description": "Interactions of the Drosophila gap gene giant with maternal and zygotic pattern-forming genes.",
+            "identifier": "1716553"
+        },
+        {
+            "p-value": 0.00017772678458478363,
+            "matches": 4,
+            "description": "Sequence analysis of the cis-regulatory regions of the bithorax complex of Drosophila.",
+            "identifier": "7667302"
+        },
+        {
+            "p-value": 0.00022608002006615333,
+            "matches": 5,
+            "description": "Transcriptional regulation and spatial patterning in Drosophila.",
+            "identifier": "8241768"
+        },
+        {
+            "p-value": 0.00024204576126285045,
+            "matches": 4,
+            "description": "Quantitative analysis of gene function in the Drosophila embryo.",
+            "identifier": "10628987"
+        },
+        {
+            "p-value": 0.00024204576126285045,
+            "matches": 4,
+            "description": "Anterior repression of a Drosophila stripe enhancer requires three position-specific mechanisms.",
+            "identifier": "12397102"
+        },
+        {
+            "p-value": 0.00024204576126285045,
+            "matches": 4,
+            "description": "Wingless promotes cell survival but constrains growth during Drosophila wing development.",
+            "identifier": "12942089"
+        },
+        {
+            "p-value": 0.00024204576126285045,
+            "matches": 4,
+            "description": "What determines the specificity of action of Drosophila homeodomain proteins?",
+            "identifier": "1979524"
+        },
+        {
+            "p-value": 0.00024204576126285045,
+            "matches": 4,
+            "description": "Messenger RNA transport and localization.",
+            "identifier": "2099800"
+        },
+        {
+            "p-value": 0.00024204576126285045,
+            "matches": 4,
+            "description": "Identical transacting factor requirement for knirps and knirps-related Gene expression in the anterior but not in the posterior region of the Drosophila embryo.",
+            "identifier": "7918102"
+        },
+        {
+            "p-value": 0.00024204576126285045,
+            "matches": 4,
+            "description": "Regulation of segmentation and segmental identity by Drosophila homeoproteins: the role of DNA binding in functional activity and specificity.",
+            "identifier": "9409661"
+        },
+        {
+            "p-value": 0.0003208199759183955,
+            "matches": 5,
+            "description": "Drosophila Mediator complex is broadly utilized by diverse gene-specific transcription factors at different types of core promoters.",
+            "identifier": "11259581"
+        },
+        {
+            "p-value": 0.00032229648583936865,
+            "matches": 4,
+            "description": "Ras pathway specificity is determined by the integration of multiple signal-activated and tissue-restricted transcription factors.",
+            "identifier": "11051548"
+        },
+        {
+            "p-value": 0.00032229648583936865,
+            "matches": 4,
+            "description": "Subdivision and developmental fate of the head mesoderm in Drosophila melanogaster.",
+            "identifier": "16249873"
+        },
+        {
+            "p-value": 0.00032229648583936865,
+            "matches": 4,
+            "description": "The Drosophila gap gene giant has an anterior segment identity function mediated through disconnected and teashirt.",
+            "identifier": "18493063"
+        },
+        {
+            "p-value": 0.00032229648583936865,
+            "matches": 4,
+            "description": "Antagonistic function of Lmd and Zfh1 fine tunes cell fate decisions in the Twi and Tin positive mesoderm of Drosophila melanogaster.",
+            "identifier": "19028484"
+        },
+        {
+            "p-value": 0.00032229648583936865,
+            "matches": 4,
+            "description": "An essential role of even-skipped for homeotic gene expression in the Drosophila visceral mesoderm.",
+            "identifier": "2573527"
+        },
+        {
+            "p-value": 0.00032229648583936865,
+            "matches": 4,
+            "description": "Colinearity and functional hierarchy among genes of the homeotic complexes.",
+            "identifier": "7985240"
+        },
+        {
+            "p-value": 0.00032229648583936865,
+            "matches": 4,
+            "description": "Activation of transcription in Drosophila embryos is a gradual process mediated by the nucleocytoplasmic ratio.",
+            "identifier": "8654928"
+        },
+        {
+            "p-value": 0.00038557691218417303,
+            "matches": 6,
+            "description": "Prospero acts as a binary switch between self-renewal and differentiation in Drosophila neural stem cells.",
+            "identifier": "17141154"
+        },
+        {
+            "p-value": 0.0004209014867565004,
+            "matches": 4,
+            "description": "Sectorial gene repression in the control of development.",
+            "identifier": "10571002"
+        },
+        {
+            "p-value": 0.0004209014867565004,
+            "matches": 4,
+            "description": "Drosophila: flying high in Zürich.",
+            "identifier": "10684591"
+        },
+        {
+            "p-value": 0.0004209014867565004,
+            "matches": 4,
+            "description": "The JAK/STAT pathway and Drosophila development.",
+            "identifier": "11746233"
+        },
+        {
+            "p-value": 0.0004209014867565004,
+            "matches": 4,
+            "description": "The homeodomain: a new face for the helix-turn-helix?",
+            "identifier": "1350195"
+        },
+        {
+            "p-value": 0.0004209014867565004,
+            "matches": 4,
+            "description": "Gradients and thresholds: BMP response gradients unveiled in Drosophila embryos.",
+            "identifier": "14642751"
+        },
+        {
+            "p-value": 0.0004446626815817472,
+            "matches": 5,
+            "description": "Regulation of the Drosophila Enhancer of split and invected-engrailed gene complexes by sister chromatid cohesion proteins.",
+            "identifier": "19587787"
+        },
+        {
+            "p-value": 0.0005005649949164002,
+            "matches": 3,
+            "description": "DPP on the brinker.",
+            "identifier": "10203822"
+        },
+        {
+            "p-value": 0.0005005649949164002,
+            "matches": 3,
+            "description": "Computation-based discovery of cis-regulatory modules by hidden Markov model.",
+            "identifier": "18333759"
+        },
+        {
+            "p-value": 0.0005005649949164002,
+            "matches": 3,
+            "description": "Mis-regulating segmentation gene expression in Drosophila.",
+            "identifier": "1879354"
+        },
+        {
+            "p-value": 0.0005005649949164002,
+            "matches": 3,
+            "description": "Drosophila Smad2 opposes Mad signaling during wing vein development.",
+            "identifier": "20442782"
+        },
+        {
+            "p-value": 0.0005005649949164002,
+            "matches": 3,
+            "description": "A software tool to model genetic regulatory networks. Applications to the modeling of threshold phenomena and of spatial patterning in Drosophila.",
+            "identifier": "20523731"
+        },
+        {
+            "p-value": 0.0005005649949164002,
+            "matches": 3,
+            "description": "A genetic switch, based on negative regulation, sharpens stripes in Drosophila embryos.",
+            "identifier": "2500279"
+        },
+        {
+            "p-value": 0.0005005649949164002,
+            "matches": 3,
+            "description": "Non-periodic cues generate seven ftz stripes in the Drosophila embryo.",
+            "identifier": "7619728"
+        },
+        {
+            "p-value": 0.0005005649949164002,
+            "matches": 3,
+            "description": "Control of segmental asymmetry in Drosophila embryos.",
+            "identifier": "7915670"
+        },
+        {
+            "p-value": 0.0005005649949164002,
+            "matches": 3,
+            "description": "Modelling the activity of the Ultrabithorax parasegment-specific regulatory domains around their anterior boundaries.",
+            "identifier": "9278718"
+        },
+        {
+            "p-value": 0.0005403197938431586,
+            "matches": 4,
+            "description": "Boundaries and fields in early embryos.",
+            "identifier": "1346367"
+        },
+        {
+            "p-value": 0.0005403197938431586,
+            "matches": 4,
+            "description": "The generation of cell diversity during early neurogenesis in Drosophila.",
+            "identifier": "1451665"
+        },
+        {
+            "p-value": 0.0005403197938431586,
+            "matches": 4,
+            "description": "The Dorsocross T-box genes are key components of the regulatory network controlling early cardiogenesis in Drosophila.",
+            "identifier": "16221729"
+        },
+        {
+            "p-value": 0.0006038424960433397,
+            "matches": 5,
+            "description": "Assembly of the Drosophila germ plasm.",
+            "identifier": "11131516"
+        },
+        {
+            "p-value": 0.0006835744273700268,
+            "matches": 4,
+            "description": "The roles of the Drosophila JAK/STAT pathway.",
+            "identifier": "10851058"
+        },
+        {
+            "p-value": 0.0006835744273700268,
+            "matches": 4,
+            "description": "Dpp and Hh signaling in the Drosophila embryonic eye field.",
+            "identifier": "11731450"
+        },
+        {
+            "p-value": 0.0006835744273700268,
+            "matches": 4,
+            "description": "Conserved signals and machinery for RNA transport in Drosophila oogenesis and embryogenesis.",
+            "identifier": "11740552"
+        },
+        {
+            "p-value": 0.0006835744273700268,
+            "matches": 4,
+            "description": "The origins of the Drosophila leg revealed by the cis-regulatory architecture of the Distalless gene.",
+            "identifier": "19036798"
+        },
+        {
+            "p-value": 0.0006835744273700268,
+            "matches": 4,
+            "description": "Sexually dimorphic shaping of interneuron dendrites involves the hunchback transcription factor.",
+            "identifier": "21471381"
+        },
+        {
+            "p-value": 0.0007330550173806216,
+            "matches": 5,
+            "description": "A mosaic genetic screen reveals distinct roles for trithorax and polycomb group genes in Drosophila eye development.",
+            "identifier": "15020417"
+        },
+        {
+            "p-value": 0.0007330550173806216,
+            "matches": 5,
+            "description": "Gene regulatory networks for development.",
+            "identifier": "15788537"
+        },
+        {
+            "p-value": 0.0008054393884972538,
+            "matches": 5,
+            "description": "Control of cardiac development by an evolutionarily conserved transcriptional network.",
+            "identifier": "12027431"
+        },
+        {
+            "p-value": 0.0008054393884972538,
+            "matches": 5,
+            "description": "An F1 genetic screen for maternal-effect mutations affecting embryonic pattern formation in Drosophila melanogaster.",
+            "identifier": "15166158"
+        },
+        {
+            "p-value": 0.00085329990198036,
+            "matches": 4,
+            "description": "Receptor tyrosine kinases: specific outcomes from general signals.",
+            "identifier": "11051543"
+        },
+        {
+            "p-value": 0.00085329990198036,
+            "matches": 4,
+            "description": "The role of Wingless signaling in establishing the anteroposterior and dorsoventral axes of the eye disc.",
+            "identifier": "11290291"
+        },
+        {
+            "p-value": 0.00085329990198036,
+            "matches": 4,
+            "description": "Integrating transcriptional and signalling networks during muscle development.",
+            "identifier": "15261649"
+        },
+        {
+            "p-value": 0.00085329990198036,
+            "matches": 4,
+            "description": "Embryonic development of the Drosophila corpus cardiacum, a neuroendocrine gland with similarity to the vertebrate pituitary, is controlled by sine oculis and glass.",
+            "identifier": "15385159"
+        },
+        {
+            "p-value": 0.00085329990198036,
+            "matches": 4,
+            "description": "Continuity versus split and reconstitution: exploring the molecular developmental corollaries of insect eye primordium evolution.",
+            "identifier": "16973149"
+        },
+        {
+            "p-value": 0.00085329990198036,
+            "matches": 4,
+            "description": "Developmental evolution: insights from studies of insect segmentation.",
+            "identifier": "7939712"
+        },
+        {
+            "p-value": 0.0008832309005307028,
+            "matches": 5,
+            "description": "Rates and patterns of chromosomal evolution in Drosophila pseudoobscura and D. miranda.",
+            "identifier": "16547107"
+        },
+        {
+            "p-value": 0.001052699932140773,
+            "matches": 4,
+            "description": "Mutations in the Rho1 small GTPase disrupt morphogenesis and segmentation during early Drosophila development.",
+            "identifier": "10556060"
+        },
+        {
+            "p-value": 0.001052699932140773,
+            "matches": 4,
+            "description": "Localized RNAs and their functions.",
+            "identifier": "7506023"
+        },
+        {
+            "p-value": 0.001052699932140773,
+            "matches": 4,
+            "description": "Drosophila CtBP: a Hairy-interacting protein required for embryonic segmentation and hairy-mediated transcriptional repression.",
+            "identifier": "9524128"
+        },
+        {
+            "p-value": 0.001052699932140773,
+            "matches": 4,
+            "description": "Shaping animal body plans in development and evolution by modulation of Hox expression patterns.",
+            "identifier": "9631657"
+        },
+        {
+            "p-value": 0.001052699932140773,
+            "matches": 4,
+            "description": "Groucho proteins: transcriptional corepressors for specific subsets of DNA-binding transcription factors in vertebrates and invertebrates.",
+            "identifier": "9649497"
+        },
+        {
+            "p-value": 0.001248764124315353,
+            "matches": 3,
+            "description": "A double interaction screen identifies positive and negative ftz gene regulators and ftz-interacting proteins.",
+            "identifier": "10381570"
+        },
+        {
+            "p-value": 0.001248764124315353,
+            "matches": 3,
+            "description": "Sharp anterior boundary of homeotic gene expression conferred by the fushi tarazu protein.",
+            "identifier": "1356761"
+        },
+        {
+            "p-value": 0.001248764124315353,
+            "matches": 3,
+            "description": "The 3' untranslated region of localized maternal messages contains a conserved motif involved in mRNA localization.",
+            "identifier": "1496011"
+        },
+        {
+            "p-value": 0.001248764124315353,
+            "matches": 3,
+            "description": "Dynamic control of positional information in the early Drosophila embryo.",
+            "identifier": "15254541"
+        },
+        {
+            "p-value": 0.001248764124315353,
+            "matches": 3,
+            "description": "Apical localization of pair-rule transcripts requires 3' sequences and limits protein diffusion in the Drosophila blastoderm embryo.",
+            "identifier": "1959136"
+        },
+        {
+            "p-value": 0.001248764124315353,
+            "matches": 3,
+            "description": "Homeodomain proteins and the regulation of gene expression.",
+            "identifier": "1974141"
+        },
+        {
+            "p-value": 0.001248764124315353,
+            "matches": 3,
+            "description": "The DNA binding specificity of the Drosophila fushi tarazu protein: a possible role for DNA bending in homeodomain recognition.",
+            "identifier": "1982071"
+        },
+        {
+            "p-value": 0.001248764124315353,
+            "matches": 3,
+            "description": "When it pays to rush: interpreting morphogen gradients prior to steady-state.",
+            "identifier": "19940351"
+        },
+        {
+            "p-value": 0.001248764124315353,
+            "matches": 3,
+            "description": "The tramtrack gene encodes a Drosophila finger protein that interacts with the ftz transcriptional regulatory region and shows a novel embryonic expression pattern.",
+            "identifier": "2104801"
+        },
+        {
+            "p-value": 0.001248764124315353,
+            "matches": 3,
+            "description": "SMAD signaling drives heart and muscle dysfunction in a Drosophila model of muscular dystrophy.",
+            "identifier": "21138941"
+        },
+        {
+            "p-value": 0.001248764124315353,
+            "matches": 3,
+            "description": "Calibration and validation of a genetic regulatory network model describing the production of the protein Hunchback in Drosophila early development.",
+            "identifier": "21146133"
+        },
+        {
+            "p-value": 0.001248764124315353,
+            "matches": 3,
+            "description": "The Drosophila segmentation gene runt encodes a novel nuclear regulatory protein that is also expressed in the developing nervous system.",
+            "identifier": "2249771"
+        },
+        {
+            "p-value": 0.001248764124315353,
+            "matches": 3,
+            "description": "Pattern formation in the Drosophila embryo: allocation of cells to parasegments by even-skipped and fushi tarazu.",
+            "identifier": "2598812"
+        },
+        {
+            "p-value": 0.001248764124315353,
+            "matches": 3,
+            "description": "Mechanisms of intracellular transcript localization and export in early Drosophila embryos.",
+            "identifier": "7525150"
+        },
+        {
+            "p-value": 0.001248764124315353,
+            "matches": 3,
+            "description": "Conservation and function of the transcriptional regulatory protein Runt.",
+            "identifier": "7568078"
+        },
+        {
+            "p-value": 0.001248764124315353,
+            "matches": 3,
+            "description": "Model for cooperative control of positional information in Drosophila by bicoid and maternal hunchback.",
+            "identifier": "7852948"
+        },
+        {
+            "p-value": 0.0012844002295085083,
+            "matches": 4,
+            "description": "Transcriptional repression: the long and the short of it.",
+            "identifier": "11691830"
+        },
+        {
+            "p-value": 0.0012844002295085083,
+            "matches": 4,
+            "description": "The establishment and interpretation of transcription factor gradients in the Drosophila embryo.",
+            "identifier": "7893745"
+        },
+        {
+            "p-value": 0.001553008443584775,
+            "matches": 4,
+            "description": "Head versus trunk patterning in the Drosophila embryo; collier requirement for formation of the intercalary segment.",
+            "identifier": "10477305"
+        },
+        {
+            "p-value": 0.001553008443584775,
+            "matches": 4,
+            "description": "Homeobox genes and axial patterning.",
+            "identifier": "1346368"
+        },
+        {
+            "p-value": 0.001553008443584775,
+            "matches": 4,
+            "description": "Neural fate specification in Drosophila.",
+            "identifier": "8241772"
+        },
+        {
+            "p-value": 0.001553008443584775,
+            "matches": 4,
+            "description": "Muscle patterning and specification in Drosophila.",
+            "identifier": "9654010"
+        },
+        {
+            "p-value": 0.001889748876629373,
+            "matches": 5,
+            "description": "Robust target gene discovery through transcriptome perturbations and genome-wide enhancer predictions in Drosophila uncovers a regulatory basis for sensory specification.",
+            "identifier": "20668662"
+        },
+        {
+            "p-value": 0.0022134046392425335,
+            "matches": 4,
+            "description": "Moving towards the next generation.",
+            "identifier": "11429277"
+        },
+        {
+            "p-value": 0.0024930067353469837,
+            "matches": 3,
+            "description": "Drosophila dSmad2 and Atr-I transmit activin/TGFbeta signals.",
+            "identifier": "10320478"
+        },
+        {
+            "p-value": 0.0024930067353469837,
+            "matches": 3,
+            "description": "Translational repression: a duet of Nanos and Pumilio.",
+            "identifier": "10662662"
+        },
+        {
+            "p-value": 0.0024930067353469837,
+            "matches": 3,
+            "description": "Chip interacts with diverse homeodomain proteins and potentiates bicoid activity in vivo.",
+            "identifier": "10688916"
+        },
+        {
+            "p-value": 0.0024930067353469837,
+            "matches": 3,
+            "description": "Evolution of transcriptional regulation.",
+            "identifier": "10980438"
+        },
+        {
+            "p-value": 0.0024930067353469837,
+            "matches": 3,
+            "description": "Transcriptional regulation of the Drosophila gene zen by competing Smad and Brinker inputs.",
+            "identifier": "11159914"
+        },
+        {
+            "p-value": 0.0024930067353469837,
+            "matches": 3,
+            "description": "FlyMove--a new way to look at development of Drosophila.",
+            "identifier": "12801722"
+        },
+        {
+            "p-value": 0.0024930067353469837,
+            "matches": 3,
+            "description": "Quantitative contributions of CtBP-dependent and -independent repression activities of Knirps.",
+            "identifier": "15128671"
+        },
+        {
+            "p-value": 0.0024930067353469837,
+            "matches": 3,
+            "description": "The co-activator CREB-binding protein participates in enhancer-dependent activities of bicoid.",
+            "identifier": "15358774"
+        },
+        {
+            "p-value": 0.0024930067353469837,
+            "matches": 3,
+            "description": "Engineering gene networks to emulate Drosophila embryonic pattern formation.",
+            "identifier": "15736977"
+        },
+        {
+            "p-value": 0.0024930067353469837,
+            "matches": 3,
+            "description": "Nanos downregulates transcription and modulates CTD phosphorylation in the soma of early Drosophila embryos.",
+            "identifier": "15817222"
+        },
+        {
+            "p-value": 0.0024930067353469837,
+            "matches": 3,
+            "description": "Interplay between positive and negative activities that influence the role of Bicoid in transcription.",
+            "identifier": "16030350"
+        },
+        {
+            "p-value": 0.0024930067353469837,
+            "matches": 3,
+            "description": "How technique is changing science.",
+            "identifier": "1631556"
+        },
+        {
+            "p-value": 0.0024930067353469837,
+            "matches": 3,
+            "description": "Genome-wide prediction of mammalian enhancers based on analysis of transcription-factor binding affinity.",
+            "identifier": "16413481"
+        },
+        {
+            "p-value": 0.0024930067353469837,
+            "matches": 3,
+            "description": "Decapentaplegic-responsive silencers contain overlapping mad-binding sites.",
+            "identifier": "16829514"
+        },
+        {
+            "p-value": 0.0024930067353469837,
+            "matches": 3,
+            "description": "Parameter estimation and determinability analysis applied to Drosophila gap gene circuits.",
+            "identifier": "18817540"
+        },
+        {
+            "p-value": 0.0024930067353469837,
+            "matches": 3,
+            "description": "Refining transcriptional regulatory networks using network evolutionary models and gene histories.",
+            "identifier": "20047657"
+        },
+        {
+            "p-value": 0.0024930067353469837,
+            "matches": 3,
+            "description": "Binding site turnover produces pervasive quantitative changes in transcription factor binding between closely related Drosophila species.",
+            "identifier": "20351773"
+        },
+        {
+            "p-value": 0.0024930067353469837,
+            "matches": 3,
+            "description": "Thermodynamics-based models of transcriptional regulation by enhancers: the roles of synergistic activation, cooperative binding and short-range repression.",
+            "identifier": "20862354"
+        },
+        {
+            "p-value": 0.0024930067353469837,
+            "matches": 3,
+            "description": "Dose-dependent regulation of pair-rule stripes by gap proteins and the initiation of segment polarity.",
+            "identifier": "2088718"
+        },
+        {
+            "p-value": 0.0024930067353469837,
+            "matches": 3,
+            "description": "Mutations affecting the stability of the fushi tarazu protein of Drosophila.",
+            "identifier": "2276626"
+        },
+        {
+            "p-value": 0.0024930067353469837,
+            "matches": 3,
+            "description": "Differential regulation of the two transcripts from the Drosophila gap segmentation gene hunchback.",
+            "identifier": "2846287"
+        },
+        {
+            "p-value": 0.0024930067353469837,
+            "matches": 3,
+            "description": "Regulation and function of the Drosophila segmentation gene fushi tarazu.",
+            "identifier": "2887293"
+        },
+        {
+            "p-value": 0.0024930067353469837,
+            "matches": 3,
+            "description": "Expression, function, and regulation of the hairy segmentation protein in the Drosophila embryo.",
+            "identifier": "3209072"
+        },
+        {
+            "p-value": 0.0024930067353469837,
+            "matches": 3,
+            "description": "Egg ligation alters the Bcd protein gradient and segmentation gene expression in embryos of Drosophila.",
+            "identifier": "8369226"
+        },
+        {
+            "p-value": 0.0024930067353469837,
+            "matches": 3,
+            "description": "Neuroblast specification and formation regulated by wingless in the Drosophila CNS.",
+            "identifier": "8372355"
+        },
+        {
+            "p-value": 0.0024930067353469837,
+            "matches": 3,
+            "description": "Neither the homeodomain nor the activation domain of Bicoid is specifically required for its down-regulation by the Torso receptor tyrosine kinase cascade.",
+            "identifier": "8951065"
+        },
+        {
+            "p-value": 0.0024930067353469837,
+            "matches": 3,
+            "description": "DNA-replication checkpoint control at the Drosophila midblastula transition.",
+            "identifier": "9214509"
+        },
+        {
+            "p-value": 0.0024930067353469837,
+            "matches": 3,
+            "description": "Staufen-dependent localization of prospero mRNA contributes to neuroblast daughter-cell fate.",
+            "identifier": "9486649"
+        },
+        {
+            "p-value": 0.0024930067353469837,
+            "matches": 3,
+            "description": "Identification of a novel Drosophila SMAD on the X chromosome.",
+            "identifier": "9813169"
+        },
+        {
+            "p-value": 0.0024930067353469837,
+            "matches": 3,
+            "description": "The Drosophila semushi mutation blocks nuclear import of bicoid during embryogenesis.",
+            "identifier": "9822580"
+        },
+        {
+            "p-value": 0.002610496784624716,
+            "matches": 4,
+            "description": "Pattern formation during animal development.",
+            "identifier": "1672778"
+        },
+        {
+            "p-value": 0.0030610583978262604,
+            "matches": 4,
+            "description": "Seeing is believing: the bicoid morphogen gradient matures.",
+            "identifier": "14744427"
+        },
+        {
+            "p-value": 0.00340326721809674,
+            "matches": 5,
+            "description": "MetaHox gene clusters.",
+            "identifier": "11144283"
+        },
+        {
+            "p-value": 0.0035671186405383444,
+            "matches": 4,
+            "description": "Runt and Lozenge function in Drosophila development.",
+            "identifier": "11105896"
+        },
+        {
+            "p-value": 0.0041332155618483595,
+            "matches": 4,
+            "description": "Drosophila Hox complex downstream targets and the function of homeotic genes.",
+            "identifier": "9174403"
+        },
+        {
+            "p-value": 0.0041332155618483595,
+            "matches": 4,
+            "description": "Myogenesis: a view from Drosophila.",
+            "identifier": "9635422"
+        },
+        {
+            "p-value": 0.004353252876647212,
+            "matches": 3,
+            "description": "The Rpd3 histone deacetylase is required for segmentation of the Drosophila embryo.",
+            "identifier": "10359792"
+        },
+        {
+            "p-value": 0.004353252876647212,
+            "matches": 3,
+            "description": "Novel functions of nanos in downregulating mitosis and transcription during the development of the Drosophila germline.",
+            "identifier": "10555143"
+        },
+        {
+            "p-value": 0.004353252876647212,
+            "matches": 3,
+            "description": "Pair-rule genes cooperate to activate en stripe 15 and refine its margins during germ band elongation in the D. melanogaster embryo.",
+            "identifier": "10906481"
+        },
+        {
+            "p-value": 0.004353252876647212,
+            "matches": 3,
+            "description": "Olfaction in Drosophila.",
+            "identifier": "10981620"
+        },
+        {
+            "p-value": 0.004353252876647212,
+            "matches": 3,
+            "description": "dSmurf selectively degrades decapentaplegic-activated MAD, and its overexpression disrupts imaginal disc development.",
+            "identifier": "12754252"
+        },
+        {
+            "p-value": 0.004353252876647212,
+            "matches": 3,
+            "description": "The Drosophila sloppy paired locus encodes two proteins involved in segmentation that show homology to mammalian transcription factors.",
+            "identifier": "1317319"
+        },
+        {
+            "p-value": 0.004353252876647212,
+            "matches": 3,
+            "description": "Regulation of neuroblast competence in Drosophila.",
+            "identifier": "14534589"
+        },
+        {
+            "p-value": 0.004353252876647212,
+            "matches": 3,
+            "description": "Control of neuronal phenotype: what targets tell the cell bodies.",
+            "identifier": "15271496"
+        },
+        {
+            "p-value": 0.004353252876647212,
+            "matches": 3,
+            "description": "A simple molecular complex mediates widespread BMP-induced repression during Drosophila development.",
+            "identifier": "15296719"
+        },
+        {
+            "p-value": 0.004353252876647212,
+            "matches": 3,
+            "description": "Different combinations of gap repressors for common stripes in Anopheles and Drosophila embryos.",
+            "identifier": "15501229"
+        },
+        {
+            "p-value": 0.004353252876647212,
+            "matches": 3,
+            "description": "Regulation of neuroblast competence: multiple temporal identity factors specify distinct neuronal fates within a single early competence window.",
+            "identifier": "16481472"
+        },
+        {
+            "p-value": 0.004353252876647212,
+            "matches": 3,
+            "description": "Schnurri transcription factors from Drosophila and vertebrates can mediate Bmp signaling through a phylogenetically conserved mechanism.",
+            "identifier": "17008448"
+        },
+        {
+            "p-value": 0.004353252876647212,
+            "matches": 3,
+            "description": "Collaboration between Smads and a Hox protein in target gene repression.",
+            "identifier": "17855427"
+        },
+        {
+            "p-value": 0.004353252876647212,
+            "matches": 3,
+            "description": "Direct control of the proneural gene atonal by retinal determination factors during Drosophila eye development.",
+            "identifier": "18083159"
+        },
+        {
+            "p-value": 0.004353252876647212,
+            "matches": 3,
+            "description": "Specification and positioning of parasegment grooves in Drosophila.",
+            "identifier": "18692780"
+        },
+        {
+            "p-value": 0.004353252876647212,
+            "matches": 3,
+            "description": "Mutually repressive interactions between the gap genes giant and Krüppel define middle body regions of the Drosophila embryo.",
+            "identifier": "1893878"
+        },
+        {
+            "p-value": 0.004353252876647212,
+            "matches": 3,
+            "description": "The bx region enhancer, a distant cis-control element of the Drosophila Ubx gene and its regulation by hunchback and other segmentation genes.",
+            "identifier": "1902784"
+        },
+        {
+            "p-value": 0.004353252876647212,
+            "matches": 3,
+            "description": "Evolution of regulatory sequences in 12 Drosophila species.",
+            "identifier": "19132088"
+        },
+        {
+            "p-value": 0.004353252876647212,
+            "matches": 3,
+            "description": "Distinct contributions of conserved modules to Runt transcription factor activity.",
+            "identifier": "20462957"
+        },
+        {
+            "p-value": 0.004353252876647212,
+            "matches": 3,
+            "description": "Fates-shifted is an F-box protein that targets Bicoid for degradation and regulates developmental fate determination in Drosophila embryos.",
+            "identifier": "21170036"
+        },
+        {
+            "p-value": 0.004353252876647212,
+            "matches": 3,
+            "description": "Pattern formation under the control of the terminal system in the Drosophila embryo.",
+            "identifier": "2133557"
+        },
+        {
+            "p-value": 0.004353252876647212,
+            "matches": 3,
+            "description": "Segmental polarity and identity in the abdomen of Drosophila is controlled by the relative position of gap gene expression.",
+            "identifier": "2636137"
+        },
+        {
+            "p-value": 0.004353252876647212,
+            "matches": 3,
+            "description": "Zygotic caudal regulation by hunchback and its role in abdominal segment formation of the Drosophila embryo.",
+            "identifier": "7743918"
+        },
+        {
+            "p-value": 0.004353252876647212,
+            "matches": 3,
+            "description": "Insect segmentation. A glance posterior.",
+            "identifier": "7865024"
+        },
+        {
+            "p-value": 0.004353252876647212,
+            "matches": 3,
+            "description": "Synergy between the hunchback and bicoid morphogens is required for anterior patterning in Drosophila.",
+            "identifier": "8087852"
+        },
+        {
+            "p-value": 0.004353252876647212,
+            "matches": 3,
+            "description": "Down-regulation of the Drosophila morphogen bicoid by the torso receptor-mediated signal transduction cascade.",
+            "identifier": "8343961"
+        },
+        {
+            "p-value": 0.004353252876647212,
+            "matches": 3,
+            "description": "Molecular mechanisms of pattern formation by the BRE enhancer of the Ubx gene.",
+            "identifier": "8404855"
+        },
+        {
+            "p-value": 0.004353252876647212,
+            "matches": 3,
+            "description": "Segmental patterning of heart precursors in Drosophila.",
+            "identifier": "8575330"
+        },
+        {
+            "p-value": 0.004353252876647212,
+            "matches": 3,
+            "description": "The JAK-STAT pathway in Drosophila.",
+            "identifier": "9066269"
+        },
+        {
+            "p-value": 0.004353252876647212,
+            "matches": 3,
+            "description": "Drosophila unpaired encodes a secreted protein that activates the JAK signaling pathway.",
+            "identifier": "9784499"
+        },
+        {
+            "p-value": 0.004759198204908537,
+            "matches": 4,
+            "description": "Conservation of the segmented germband stage: robustness or pleiotropy?",
+            "identifier": "12350339"
+        },
+        {
+            "p-value": 0.005458134212487173,
+            "matches": 4,
+            "description": "The Jak/STAT pathway in model organisms: emerging roles in cell movement.",
+            "identifier": "12479803"
+        },
+        {
+            "p-value": 0.006230869288345671,
+            "matches": 4,
+            "description": "Groucho/TLE family proteins and transcriptional repression.",
+            "identifier": "10831834"
+        },
+        {
+            "p-value": 0.006230869288345671,
+            "matches": 4,
+            "description": "A global in vivo Drosophila RNAi screen identifies NOT3 as a conserved regulator of heart function.",
+            "identifier": "20371351"
+        },
+        {
+            "p-value": 0.006950443516121997,
+            "matches": 3,
+            "description": "Repression of dpp targets by binding of brinker to mad sites.",
+            "identifier": "11262410"
+        },
+        {
+            "p-value": 0.006950443516121997,
+            "matches": 3,
+            "description": "Drosophila wingless and pair-rule transcripts localize apically by dynein-mediated transport of RNA particles.",
+            "identifier": "11336671"
+        },
+        {
+            "p-value": 0.006950443516121997,
+            "matches": 3,
+            "description": "The role of TGF beta signaling in the formation of the dorsal nervous system is conserved between Drosophila and chordates.",
+            "identifier": "12117808"
+        },
+        {
+            "p-value": 0.006950443516121997,
+            "matches": 3,
+            "description": "fruitless gene is required to maintain neuronal identity in evenskipped-expressing neurons in the embryonic CNS of Drosophila.",
+            "identifier": "12672012"
+        },
+        {
+            "p-value": 0.006950443516121997,
+            "matches": 3,
+            "description": "Conversion of an extracellular Dpp/BMP morphogen gradient into an inverse transcriptional gradient.",
+            "identifier": "12705870"
+        },
+        {
+            "p-value": 0.006950443516121997,
+            "matches": 3,
+            "description": "Playing by pair-rules?",
+            "identifier": "12717812"
+        },
+        {
+            "p-value": 0.006950443516121997,
+            "matches": 3,
+            "description": "Concentration-dependent activities of the even-skipped protein in Drosophila embryos.",
+            "identifier": "1355458"
+        },
+        {
+            "p-value": 0.006950443516121997,
+            "matches": 3,
+            "description": "The homeobox in perspective.",
+            "identifier": "1357790"
+        },
+        {
+            "p-value": 0.006950443516121997,
+            "matches": 3,
+            "description": "Differential cytoplasmic mRNA localisation adjusts pair-rule transcription factor activity to cytoarchitecture in dipteran evolution.",
+            "identifier": "15280214"
+        },
+        {
+            "p-value": 0.006950443516121997,
+            "matches": 3,
+            "description": "Molecular evolution of sex-biased genes in Drosophila.",
+            "identifier": "15282334"
+        },
+        {
+            "p-value": 0.006950443516121997,
+            "matches": 3,
+            "description": "Sequence elements in cis influence heterochromatic silencing in trans.",
+            "identifier": "15601858"
+        },
+        {
+            "p-value": 0.006950443516121997,
+            "matches": 3,
+            "description": "Dpp-responsive silencers are bound by a trimeric Mad-Medea complex.",
+            "identifier": "16109720"
+        },
+        {
+            "p-value": 0.006950443516121997,
+            "matches": 3,
+            "description": "corkscrew encodes a putative protein tyrosine phosphatase that functions to transduce the terminal signal from the receptor tyrosine kinase torso.",
+            "identifier": "1638629"
+        },
+        {
+            "p-value": 0.006950443516121997,
+            "matches": 3,
+            "description": "Regulation of decapentaplegic expression during Drosophila wing veins pupal development.",
+            "identifier": "16423512"
+        },
+        {
+            "p-value": 0.006950443516121997,
+            "matches": 3,
+            "description": "Positive and negative control of the Antennapedia promoter P2.",
+            "identifier": "1683801"
+        },
+        {
+            "p-value": 0.006950443516121997,
+            "matches": 3,
+            "description": "The ATP-sensitive potassium (KATP) channel-encoded dSUR gene is required for Drosophila heart function and is regulated by tinman.",
+            "identifier": "16882722"
+        },
+        {
+            "p-value": 0.006950443516121997,
+            "matches": 3,
+            "description": "Pdm and Castor specify late-born motor neuron identity in the NB7-1 lineage.",
+            "identifier": "16980589"
+        },
+        {
+            "p-value": 0.006950443516121997,
+            "matches": 3,
+            "description": "Drosophila brakeless interacts with atrophin and is required for tailless-mediated transcriptional repression in early embryos.",
+            "identifier": "17503969"
+        },
+        {
+            "p-value": 0.006950443516121997,
+            "matches": 3,
+            "description": "MEF2: a central regulator of diverse developmental programs.",
+            "identifier": "17959722"
+        },
+        {
+            "p-value": 0.006950443516121997,
+            "matches": 3,
+            "description": "Multiple modular promoter elements drive graded brinker expression in response to the Dpp morphogen gradient.",
+            "identifier": "18506030"
+        },
+        {
+            "p-value": 0.006950443516121997,
+            "matches": 3,
+            "description": "Precise registration of gene expression boundaries by a repressive morphogen in Drosophila.",
+            "identifier": "18571415"
+        },
+        {
+            "p-value": 0.006950443516121997,
+            "matches": 3,
+            "description": "The structure of the homeodomain and its functional implications.",
+            "identifier": "1980756"
+        },
+        {
+            "p-value": 0.006950443516121997,
+            "matches": 3,
+            "description": "Nemo phosphorylates Even-skipped and promotes Eve-mediated repression of odd-skipped in even parasegments during Drosophila embryogenesis.",
+            "identifier": "20398650"
+        },
+        {
+            "p-value": 0.006950443516121997,
+            "matches": 3,
+            "description": "Long- and short-range transcriptional repressors induce distinct chromatin states on repressed genes.",
+            "identifier": "21353562"
+        },
+        {
+            "p-value": 0.006950443516121997,
+            "matches": 3,
+            "description": "The expression and regulation of Sex combs reduced protein in Drosophila embryos.",
+            "identifier": "2892760"
+        },
+        {
+            "p-value": 0.006950443516121997,
+            "matches": 3,
+            "description": "Regulation of the infraabdominal regions of the bithorax complex of Drosophila by gap genes.",
+            "identifier": "7600999"
+        },
+        {
+            "p-value": 0.006950443516121997,
+            "matches": 3,
+            "description": "Silencers in abdominal-B, a homeotic Drosophila gene.",
+            "identifier": "8096812"
+        },
+        {
+            "p-value": 0.006950443516121997,
+            "matches": 3,
+            "description": "A two-step mode of stripe formation in the Drosophila blastoderm requires interactions among primary pair rule genes.",
+            "identifier": "8186146"
+        },
+        {
+            "p-value": 0.006950443516121997,
+            "matches": 3,
+            "description": "Specification of the wing by localized expression of wingless protein.",
+            "identifier": "8692268"
+        },
+        {
+            "p-value": 0.006950443516121997,
+            "matches": 3,
+            "description": "Segmentation (and eve) in very odd insect embryos.",
+            "identifier": "8787531"
+        },
+        {
+            "p-value": 0.006950443516121997,
+            "matches": 3,
+            "description": "In vivo interactions of the Drosophila Hairy and Runt transcriptional repressors with target promoters.",
+            "identifier": "9003784"
+        },
+        {
+            "p-value": 0.006950443516121997,
+            "matches": 3,
+            "description": "Drosophila embryonic pattern repair: how embryos respond to bicoid dosage alteration.",
+            "identifier": "9118810"
+        },
+        {
+            "p-value": 0.006950443516121997,
+            "matches": 3,
+            "description": "Dorsoventral patterning in the Drosophila central nervous system: the intermediate neuroblasts defective homeobox gene specifies intermediate column identity.",
+            "identifier": "9832510"
+        },
+        {
+            "p-value": 0.008714308783094276,
+            "matches": 5,
+            "description": "A core transcriptional network for early mesoderm development in Drosophila melanogaster.",
+            "identifier": "17322403"
+        },
+        {
+            "p-value": 0.00903283499967873,
+            "matches": 4,
+            "description": "Characterization of Drosophila mini-me, a gene required for cell proliferation and survival.",
+            "identifier": "16547096"
+        },
+        {
+            "p-value": 0.009222458848590269,
+            "matches": 5,
+            "description": "A temporal map of transcription factor activity: mef2 directly regulates target genes at all stages of muscle development.",
+            "identifier": "16740481"
+        },
+        {
+            "p-value": 0.010402917400539398,
+            "matches": 3,
+            "description": "Functional analysis of repressor binding sites in the iab-2 regulatory region of the abdominal-A homeotic gene.",
+            "identifier": "10644409"
+        },
+        {
+            "p-value": 0.010402917400539398,
+            "matches": 3,
+            "description": "A screen for modifiers of decapentaplegic mutant phenotypes identifies lilliputian, the only member of the Fragile-X/Burkitt's Lymphoma family of transcription factors in Drosophila melanogaster.",
+            "identifier": "11156991"
+        },
+        {
+            "p-value": 0.010402917400539398,
+            "matches": 3,
+            "description": "Interaction of gap genes in the Drosophila head: tailless regulates expression of empty spiracles in early embryonic patterning and brain development.",
+            "identifier": "11731230"
+        },
+        {
+            "p-value": 0.010402917400539398,
+            "matches": 3,
+            "description": "Perturbing nuclear transport in Drosophila eye imaginal discs causes specific cell adhesion and axon guidance defects.",
+            "identifier": "11784066"
+        },
+        {
+            "p-value": 0.010402917400539398,
+            "matches": 3,
+            "description": "Enhancer trapping with a red fluorescent protein reporter in Drosophila.",
+            "identifier": "15906373"
+        },
+        {
+            "p-value": 0.010402917400539398,
+            "matches": 3,
+            "description": "Baboon/dSmad2 TGF-beta signaling is required during late larval stage for development of adult-specific neurons.",
+            "identifier": "16437159"
+        },
+        {
+            "p-value": 0.010402917400539398,
+            "matches": 3,
+            "description": "Recombineering Hunchback identifies two conserved domains required to maintain neuroblast competence and specify early-born neuronal identity.",
+            "identifier": "20335359"
+        },
+        {
+            "p-value": 0.010402917400539398,
+            "matches": 3,
+            "description": "Substrate-dependent control of MAPK phosphorylation in vivo.",
+            "identifier": "21283143"
+        },
+        {
+            "p-value": 0.010402917400539398,
+            "matches": 3,
+            "description": "A novel spatial transcription pattern associated with the segmentation gene, giant, of Drosophila.",
+            "identifier": "2504582"
+        },
+        {
+            "p-value": 0.010402917400539398,
+            "matches": 3,
+            "description": "huckebein specifies aspects of CNS precursor identity required for motoneuron axon pathfinding.",
+            "identifier": "7576648"
+        },
+        {
+            "p-value": 0.010402917400539398,
+            "matches": 3,
+            "description": "Multiple response elements in the Sex-lethal early promoter ensure its female-specific expression pattern.",
+            "identifier": "7823955"
+        },
+        {
+            "p-value": 0.010402917400539398,
+            "matches": 3,
+            "description": "Differential regulation of target genes by different alleles of the segmentation gene hunchback in Drosophila.",
+            "identifier": "8001780"
+        },
+        {
+            "p-value": 0.010402917400539398,
+            "matches": 3,
+            "description": "Stripe-specific regulation of pair-rule genes by hopscotch, a putative Jak family tyrosine kinase in Drosophila.",
+            "identifier": "8314084"
+        },
+        {
+            "p-value": 0.010402917400539398,
+            "matches": 3,
+            "description": "The Drosophila Medea gene is required downstream of dpp and encodes a functional homolog of human Smad4.",
+            "identifier": "9502722"
+        },
+        {
+            "p-value": 0.010402917400539398,
+            "matches": 3,
+            "description": "Medea is a Drosophila Smad4 homolog that is differentially required to potentiate DPP responses.",
+            "identifier": "9502724"
+        },
+        {
+            "p-value": 0.010402917400539398,
+            "matches": 3,
+            "description": "Use of dsRNA-mediated genetic interference to demonstrate that frizzled and frizzled 2 act in the wingless pathway.",
+            "identifier": "9875855"
+        },
+        {
+            "p-value": 0.01136252434008612,
+            "matches": 4,
+            "description": "Intracellular mRNA localization: motors move messages.",
+            "identifier": "12446149"
+        },
+        {
+            "p-value": 0.01136252434008612,
+            "matches": 4,
+            "description": "Whole-genome ChIP-chip analysis of Dorsal, Twist, and Snail suggests integration of diverse patterning processes in the Drosophila embryo.",
+            "identifier": "17322397"
+        },
+        {
+            "p-value": 0.01268465118459012,
+            "matches": 4,
+            "description": "Genetic control of Drosophila nerve cord development.",
+            "identifier": "12593977"
+        },
+        {
+            "p-value": 0.01483665308230655,
+            "matches": 3,
+            "description": "Sloppy paired acts as the downstream target of wingless in the Drosophila CNS and interaction between sloppy paired and gooseberry inhibits sloppy paired during neurogenesis.",
+            "identifier": "10631185"
+        },
+        {
+            "p-value": 0.01483665308230655,
+            "matches": 3,
+            "description": "Smads as transcriptional co-modulators.",
+            "identifier": "10712925"
+        },
+        {
+            "p-value": 0.01483665308230655,
+            "matches": 3,
+            "description": "Notch signalling and the initiation of neural development in the Drosophila eye.",
+            "identifier": "11641214"
+        },
+        {
+            "p-value": 0.01483665308230655,
+            "matches": 3,
+            "description": "Distinct functions of homothorax in leg development in Drosophila.",
+            "identifier": "12385754"
+        },
+        {
+            "p-value": 0.01483665308230655,
+            "matches": 3,
+            "description": "Localization of nanos RNA controls embryonic polarity.",
+            "identifier": "1423595"
+        },
+        {
+            "p-value": 0.01483665308230655,
+            "matches": 3,
+            "description": "Ftz modulates Runt-dependent activation and repression of segment-polarity gene transcription.",
+            "identifier": "15102703"
+        },
+        {
+            "p-value": 0.01483665308230655,
+            "matches": 3,
+            "description": "seven-up Controls switching of transcription factors that specify temporal identities of Drosophila neuroblasts.",
+            "identifier": "15691762"
+        },
+        {
+            "p-value": 0.01483665308230655,
+            "matches": 3,
+            "description": "Dual function of the Drosophila Alk1/Alk2 ortholog Saxophone shapes the Bmp activity gradient in the wing imaginal disc.",
+            "identifier": "16887821"
+        },
+        {
+            "p-value": 0.01483665308230655,
+            "matches": 3,
+            "description": "Control and function of terminal gap gene activity in the posterior pole region of the Drosophila embryo.",
+            "identifier": "1768621"
+        },
+        {
+            "p-value": 0.01483665308230655,
+            "matches": 3,
+            "description": "Organism-scale modeling of early Drosophila patterning via bone morphogenetic proteins.",
+            "identifier": "20159596"
+        },
+        {
+            "p-value": 0.01483665308230655,
+            "matches": 3,
+            "description": "Regulation of ocellar specification and size by twin of eyeless and homothorax.",
+            "identifier": "21104743"
+        },
+        {
+            "p-value": 0.01483665308230655,
+            "matches": 3,
+            "description": "Regulation, function and potential origin of the Drosophila gene spalt adjacent, which encodes a secreted protein expressed in the early embryo.",
+            "identifier": "8601339"
+        },
+        {
+            "p-value": 0.01483665308230655,
+            "matches": 3,
+            "description": "The achaete-scute complex proneural genes contribute to neural precursor specification in the Drosophila CNS.",
+            "identifier": "8805374"
+        },
+        {
+            "p-value": 0.01483665308230655,
+            "matches": 3,
+            "description": "Visualization of gene expression in living adult Drosophila.",
+            "identifier": "8824191"
+        },
+        {
+            "p-value": 0.01483665308230655,
+            "matches": 3,
+            "description": "Krüppel, a Drosophila segmentation gene, participates in the specification of neurons and glial cells.",
+            "identifier": "9025064"
+        },
+        {
+            "p-value": 0.01483665308230655,
+            "matches": 3,
+            "description": "Mechanism and Bicoid-dependent control of hairy stripe 7 expression in the posterior region of the Drosophila embryo.",
+            "identifier": "9250684"
+        },
+        {
+            "p-value": 0.01483665308230655,
+            "matches": 3,
+            "description": "Embryonic expression and characterization of a Ptx1 homolog in Drosophila.",
+            "identifier": "9431811"
+        },
+        {
+            "p-value": 0.01483665308230655,
+            "matches": 3,
+            "description": "Regulation of zygotic gene expression in Drosophila primordial germ cells.",
+            "identifier": "9501989"
+        },
+        {
+            "p-value": 0.01483665308230655,
+            "matches": 3,
+            "description": "Activity regulation of a Hox protein and a role for the homeodomain in inhibiting transcriptional activation.",
+            "identifier": "9878063"
+        },
+        {
+            "p-value": 0.020366543564106016,
+            "matches": 3,
+            "description": "\"Alien\" wasps and evolution of development.",
+            "identifier": "10984718"
+        },
+        {
+            "p-value": 0.020366543564106016,
+            "matches": 3,
+            "description": "pygopus Encodes a nuclear protein essential for wingless/Wnt signaling.",
+            "identifier": "12163411"
+        },
+        {
+            "p-value": 0.020366543564106016,
+            "matches": 3,
+            "description": "Gata factor Pannier is required to establish competence for heart progenitor formation.",
+            "identifier": "12756184"
+        },
+        {
+            "p-value": 0.020366543564106016,
+            "matches": 3,
+            "description": "Overlapping mechanisms function to establish transcriptional quiescence in the embryonic Drosophila germline.",
+            "identifier": "14960492"
+        },
+        {
+            "p-value": 0.020366543564106016,
+            "matches": 3,
+            "description": "The bicoid morphogen papers (II): account from Wolfgang Driever.",
+            "identifier": "15055574"
+        },
+        {
+            "p-value": 0.020366543564106016,
+            "matches": 3,
+            "description": "Control of Drosophila body pattern by the hunchback morphogen gradient.",
+            "identifier": "1568245"
+        },
+        {
+            "p-value": 0.020366543564106016,
+            "matches": 3,
+            "description": "Differential in vivo requirements for oligomerization during Groucho-mediated repression.",
+            "identifier": "18034187"
+        },
+        {
+            "p-value": 0.020366543564106016,
+            "matches": 3,
+            "description": "NELF potentiates gene transcription in the Drosophila embryo.",
+            "identifier": "20634899"
+        },
+        {
+            "p-value": 0.020366543564106016,
+            "matches": 3,
+            "description": "Zelda binding in the early Drosophila melanogaster embryo marks regions subsequently activated at the maternal-to-zygotic transition.",
+            "identifier": "22028662"
+        },
+        {
+            "p-value": 0.020366543564106016,
+            "matches": 3,
+            "description": "Exploring the homeobox.",
+            "identifier": "7903947"
+        },
+        {
+            "p-value": 0.020366543564106016,
+            "matches": 3,
+            "description": "Control of neural precursor specification by proneural proteins in the CNS of Drosophila.",
+            "identifier": "8978666"
+        },
+        {
+            "p-value": 0.020366543564106016,
+            "matches": 3,
+            "description": "The spalt gene links the A/P compartment boundary to a linear adult structure in the Drosophila wing.",
+            "identifier": "9006064"
+        },
+        {
+            "p-value": 0.020366543564106016,
+            "matches": 3,
+            "description": "Drosophila development. Delimiting patterns by repression.",
+            "identifier": "9162494"
+        },
+        {
+            "p-value": 0.020366543564106016,
+            "matches": 3,
+            "description": "Asymmetric cell division.",
+            "identifier": "9572136"
+        },
+        {
+            "p-value": 0.02312658416020476,
+            "matches": 5,
+            "description": "The organization of Drosophila genes.",
+            "identifier": "7841458"
+        },
+        {
+            "p-value": 0.027113669973730662,
+            "matches": 3,
+            "description": "The Drosophila ATM homologue Mei-41 has an essential checkpoint function at the midblastula transition.",
+            "identifier": "10209095"
+        },
+        {
+            "p-value": 0.027113669973730662,
+            "matches": 3,
+            "description": "Drosophila development: Scalloped and Vestigial take wing.",
+            "identifier": "10209108"
+        },
+        {
+            "p-value": 0.027113669973730662,
+            "matches": 3,
+            "description": "The control of cell fate in the embryonic visual system by atonal, tailless and EGFR signaling.",
+            "identifier": "10357938"
+        },
+        {
+            "p-value": 0.027113669973730662,
+            "matches": 3,
+            "description": "Caudal is the Hox gene that specifies the most posterior Drosophile segment.",
+            "identifier": "10476966"
+        },
+        {
+            "p-value": 0.027113669973730662,
+            "matches": 3,
+            "description": "Transforming growth factor beta signaling mediators and modulators.",
+            "identifier": "10831835"
+        },
+        {
+            "p-value": 0.027113669973730662,
+            "matches": 3,
+            "description": "Wingless effects mesoderm patterning and ectoderm segmentation events via induction of its downstream target sloppy paired.",
+            "identifier": "11076769"
+        },
+        {
+            "p-value": 0.027113669973730662,
+            "matches": 3,
+            "description": "Dpp gradient formation in the Drosophila wing imaginal disc.",
+            "identifier": "11136981"
+        },
+        {
+            "p-value": 0.027113669973730662,
+            "matches": 3,
+            "description": "Drosophila development: novel signal elicits visceral response.",
+            "identifier": "11839291"
+        },
+        {
+            "p-value": 0.027113669973730662,
+            "matches": 3,
+            "description": "Establishment of developmental precision and proportions in the early Drosophila embryo.",
+            "identifier": "11845210"
+        },
+        {
+            "p-value": 0.027113669973730662,
+            "matches": 3,
+            "description": "Combinatorial control of Drosophila eye development by eyeless, homothorax, and teashirt.",
+            "identifier": "12231630"
+        },
+        {
+            "p-value": 0.027113669973730662,
+            "matches": 3,
+            "description": "CREB binding protein functions during successive stages of eye development in Drosophila.",
+            "identifier": "15514061"
+        },
+        {
+            "p-value": 0.027113669973730662,
+            "matches": 3,
+            "description": "Restricted teashirt expression confers eye-specific responsiveness to Dpp and Wg signals during eye specification in Drosophila.",
+            "identifier": "16221726"
+        },
+        {
+            "p-value": 0.027113669973730662,
+            "matches": 3,
+            "description": "Genetic control of dorsoventral patterning and neuroblast specification in the Drosophila Central Nervous System.",
+            "identifier": "17294361"
+        },
+        {
+            "p-value": 0.027113669973730662,
+            "matches": 3,
+            "description": "Pattern formation by dynamically interacting network motifs.",
+            "identifier": "19218441"
+        },
+        {
+            "p-value": 0.027113669973730662,
+            "matches": 3,
+            "description": "Cooperative regulation of growth by Yorkie and Mad through bantam.",
+            "identifier": "21238929"
+        },
+        {
+            "p-value": 0.027113669973730662,
+            "matches": 3,
+            "description": "Gene regulation by MAPK substrate competition.",
+            "identifier": "21664584"
+        },
+        {
+            "p-value": 0.027113669973730662,
+            "matches": 3,
+            "description": "Automated protein-DNA interaction screening of Drosophila regulatory elements.",
+            "identifier": "22037703"
+        },
+        {
+            "p-value": 0.027113669973730662,
+            "matches": 3,
+            "description": "The unconserved groucho central region is essential for viability and modulates target gene specificity.",
+            "identifier": "22319573"
+        },
+        {
+            "p-value": 0.027113669973730662,
+            "matches": 3,
+            "description": "Genetic factors controlling the expression of the abdominal-A gene of Drosophila within its domain.",
+            "identifier": "7915130"
+        },
+        {
+            "p-value": 0.027113669973730662,
+            "matches": 3,
+            "description": "Asymmetry and cell fate in the Drosophila embryonic CNS.",
+            "identifier": "9654022"
+        },
+        {
+            "p-value": 0.03029966498701153,
+            "matches": 4,
+            "description": "EGF receptor and Notch signaling act upstream of Eyeless/Pax6 to control eye specification.",
+            "identifier": "11257223"
+        },
+        {
+            "p-value": 0.03518708069176977,
+            "matches": 3,
+            "description": "Microtubules, motors, and mRNA localization mechanisms: watching fluorescent messages move.",
+            "identifier": "11747806"
+        },
+        {
+            "p-value": 0.03518708069176977,
+            "matches": 3,
+            "description": "COP9 signalosome subunits 4 and 5 regulate multiple pleiotropic pathways in Drosophila melanogaster.",
+            "identifier": "12223399"
+        },
+        {
+            "p-value": 0.03518708069176977,
+            "matches": 3,
+            "description": "Molecular mechanisms of determination in Drosophila.",
+            "identifier": "1485964"
+        },
+        {
+            "p-value": 0.03518708069176977,
+            "matches": 3,
+            "description": "Transcription elongation controls cell fate specification in the Drosophila embryo.",
+            "identifier": "17473169"
+        },
+        {
+            "p-value": 0.03518708069176977,
+            "matches": 3,
+            "description": "The molecular genetics of tail development in Drosophila melanogaster.",
+            "identifier": "1768804"
+        },
+        {
+            "p-value": 0.03518708069176977,
+            "matches": 3,
+            "description": "Drosophila Follistatin exhibits unique structural modifications and interacts with several TGF-beta family members.",
+            "identifier": "18077144"
+        },
+        {
+            "p-value": 0.03518708069176977,
+            "matches": 3,
+            "description": "Molecular integration of wingless, decapentaplegic, and autoregulatory inputs into Distalless during Drosophila leg development.",
+            "identifier": "18194655"
+        },
+        {
+            "p-value": 0.03518708069176977,
+            "matches": 3,
+            "description": "Molecular recognition of histone lysine methylation by the Polycomb group repressor dSfmbt.",
+            "identifier": "19494831"
+        },
+        {
+            "p-value": 0.03518708069176977,
+            "matches": 3,
+            "description": "A series of mutations in the D-MEF2 transcription factor reveal multiple functions in larval and adult myogenesis in Drosophila.",
+            "identifier": "7556894"
+        },
+        {
+            "p-value": 0.03518708069176977,
+            "matches": 3,
+            "description": "A novel homeobox nkch4 gene from the Drosophila 93E region.",
+            "identifier": "8099053"
+        },
+        {
+            "p-value": 0.03518708069176977,
+            "matches": 3,
+            "description": "The polar coordinate model goes molecular.",
+            "identifier": "8424169"
+        },
+        {
+            "p-value": 0.03518708069176977,
+            "matches": 3,
+            "description": "Hunchback-independent silencing of late Ubx enhancers by a Polycomb Group Response Element.",
+            "identifier": "8887562"
+        },
+        {
+            "p-value": 0.04224963237010271,
+            "matches": 4,
+            "description": "Dorsal gradient networks in the Drosophila embryo.",
+            "identifier": "12027434"
+        },
+        {
+            "p-value": 0.04224963237010271,
+            "matches": 4,
+            "description": "Single-cell mapping of neural and glial gene expression in the developing Drosophila CNS midline cells.",
+            "identifier": "16631157"
+        },
+        {
+            "p-value": 0.044716113959455225,
+            "matches": 3,
+            "description": "A conserved blueprint for the eye?",
+            "identifier": "10497334"
+        },
+        {
+            "p-value": 0.044716113959455225,
+            "matches": 3,
+            "description": "Transcriptional mechanisms in the development of motor control.",
+            "identifier": "10679434"
+        },
+        {
+            "p-value": 0.044716113959455225,
+            "matches": 3,
+            "description": "Transcriptional regulation of atonal required for Drosophila larval eye development by concerted action of eyes absent, sine oculis and hedgehog signaling independent of fused kinase and cubitus interruptus.",
+            "identifier": "10704398"
+        },
+        {
+            "p-value": 0.044716113959455225,
+            "matches": 3,
+            "description": "Phenotypic suppression of empty spiracles is prevented by buttonhead.",
+            "identifier": "10830964"
+        },
+        {
+            "p-value": 0.044716113959455225,
+            "matches": 3,
+            "description": "EGF receptor attenuates Dpp signaling and helps to distinguish the wing and leg cell fates in Drosophila.",
+            "identifier": "10934021"
+        },
+        {
+            "p-value": 0.044716113959455225,
+            "matches": 3,
+            "description": "Selector and signalling molecules cooperate in organ patterning.",
+            "identifier": "11875444"
+        },
+        {
+            "p-value": 0.044716113959455225,
+            "matches": 3,
+            "description": "A screen for genes expressed in Drosophila imaginal discs.",
+            "identifier": "11902680"
+        },
+        {
+            "p-value": 0.044716113959455225,
+            "matches": 3,
+            "description": "Translational repressors in Drosophila.",
+            "identifier": "12414187"
+        },
+        {
+            "p-value": 0.044716113959455225,
+            "matches": 3,
+            "description": "Developmental potential.",
+            "identifier": "1346608"
+        },
+        {
+            "p-value": 0.044716113959455225,
+            "matches": 3,
+            "description": "The ladybird homeobox genes are essential for the specification of a subpopulation of neural cells.",
+            "identifier": "15136145"
+        },
+        {
+            "p-value": 0.044716113959455225,
+            "matches": 3,
+            "description": "Independent roles of the dachshund and eyes absent genes in BMP signaling, axon pathfinding and neuronal specification.",
+            "identifier": "15525669"
+        },
+        {
+            "p-value": 0.044716113959455225,
+            "matches": 3,
+            "description": "Dynein anchors its mRNA cargo after apical transport in the Drosophila blastoderm embryo.",
+            "identifier": "16009136"
+        },
+        {
+            "p-value": 0.044716113959455225,
+            "matches": 3,
+            "description": "Zfh1, a somatic motor neuron transcription factor, regulates axon exit from the CNS.",
+            "identifier": "16458285"
+        },
+        {
+            "p-value": 0.044716113959455225,
+            "matches": 3,
+            "description": "Gene regulatory networks and the evolution of animal body plans.",
+            "identifier": "16469913"
+        },
+        {
+            "p-value": 0.044716113959455225,
+            "matches": 3,
+            "description": "The role of Dpp and its inhibitors during eggshell patterning in Drosophila.",
+            "identifier": "17507396"
+        },
+        {
+            "p-value": 0.044716113959455225,
+            "matches": 3,
+            "description": "Defective decapentaplegic signaling results in heart overgrowth and reduced cardiac output in Drosophila.",
+            "identifier": "17507674"
+        },
+        {
+            "p-value": 0.044716113959455225,
+            "matches": 3,
+            "description": "The evolving role of Hox genes in arthropods.",
+            "identifier": "7579521"
+        },
+        {
+            "p-value": 0.044716113959455225,
+            "matches": 3,
+            "description": "Homeobox genes: their function in Drosophila segmentation and pattern formation.",
+            "identifier": "7913879"
+        },
+        {
+            "p-value": 0.044716113959455225,
+            "matches": 3,
+            "description": "Control of cell fates and segmentation in the Drosophila mesoderm.",
+            "identifier": "9247334"
+        },
+        {
+            "p-value": 0.044716113959455225,
+            "matches": 3,
+            "description": "Regulation of Drosophila spalt gene expression.",
+            "identifier": "9376314"
+        }
+    ],
+    "wasSuccessful": true,
+    "error": null,
+    "statusCode": 200
+}

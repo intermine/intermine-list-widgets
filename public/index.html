@@ -39,28 +39,18 @@
                 <h2>Example List Widgets</h2>
             </div>
 
-            <div class="row">
-                <div id="one" class="widget span6"></div>
-                <div id="two" class="widget span6"></div>
-            </div>
-            <div id="widgets-genes" class="row"></div>
-            <div id="widgets-proteins" class="row"></div>
+            <div id="dummies" class="row"></div>
 
             <script type="text/javascript">
             (function() {
                 /* A test of having $ not be jQuery. */
                 window.$ = 'I am an evil library!';
 
-                /* InterMine root URL. */
-                var mine = 'http://frog:8080/flymine-widgets';
-
                 /* New Widgets client. */
-                var ListWidgets = new intermine.widgets({'root':  mine + '/service/'});
+                var ListWidgets = new intermine.widgets({'root': '/'});
 
                 /* Give us all available widgets. */
-                //ListWidgets.all('Gene', 'gene24List', '#widgets-genes');
-                ListWidgets.enrichment('publication_enrichment', 'gene24List', '#one');
-                ListWidgets.enrichment('bdgp_enrichment', 'gene24List', '#two');
+                ListWidgets.all('Dummy', 'dummy', '#dummies');
             })();
             </script>
 

@@ -1,18 +1,21 @@
 {
     "name": "intermine-list-widgets",
     "author": "Radek <rs676@cam.ac.uk>",
-    "version": "1.8.1",
+    "version": "1.8.1-dummy",
     "private": true,
     "dependencies": {
         "coffee-script": ">=1.3.1",
         "eco": "1.1.0-rc-3",
-        "uglify-js": "2.2.1"
+        "uglify-js": "2.2.1",
+        "flatiron": "0.2.5",
+        "union": "0.3.4",
+        "connect": "2.4.3"
     },
     "repository": {
         "type": "git",
         "url": "https://github.com/radekstepan/intermine-widget-client.git"
     },
     "scripts": {
-        "start": "python -m SimpleHTTPServer 1111"
+        "start": "start.js"
     }
 }

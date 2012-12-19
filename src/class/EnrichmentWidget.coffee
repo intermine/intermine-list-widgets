@@ -40,9 +40,7 @@ class EnrichmentWidget extends InterMineWidget
             "is_logged":                       type.isBoolean
             "current_population":              type.isStringOrNull
             "message":                         type.isString
-            "percentage_gene_length_not_null": type.isStringOrNull
-            "gene_length_correction":          type.isBooleanOrNull
-            "pathQueryGeneLengthNull":         type.isStringOrNull
+            "extraAttribute":                  type.isString
 
     ###
     Set the params on us and render.
