@@ -62,7 +62,7 @@ class TableWidget extends InterMineWidget
 
         # Get JSON response by calling the service.
         $.ajax
-            url:      "#{@service}list/table"
+            url:      "#{@service}list/table?format=json"
             dataType: "jsonp"
             data:     data
             

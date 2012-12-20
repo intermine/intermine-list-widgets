@@ -40,7 +40,7 @@ class EnrichmentWidget extends InterMineWidget
             "is_logged":                       type.isBoolean
             "current_population":              type.isStringOrNull
             "message":                         type.isString
-            "extraAttribute":                  type.isString
+            "extraAttribute":                  type.isStringOrNull
 
     ###
     Set the params on us and render.
@@ -88,7 +88,7 @@ class EnrichmentWidget extends InterMineWidget
 
         # Request new data.
         $.ajax
-            'url':      "#{@service}list/enrichment"
+            'url':      "#{@service}list/enrichment?format=json"
             'dataType': "jsonp"
             'data':     data
             

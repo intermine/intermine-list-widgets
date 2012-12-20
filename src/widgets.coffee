@@ -107,7 +107,7 @@ class Widgets
                 @wait = true
                 # Fetch/cache lists this user has access to.
                 $.ajax
-                    'url': "#{@service}lists?token=#{@token}"
+                    'url': "#{@service}lists?token=#{@token}&format=json"
                     'dataType': 'jsonp'
                     'success': (data) =>
                         # Problems?
@@ -143,7 +143,7 @@ class Widgets
         if @wait then window.setTimeout((=> @all(type, bagName, el, widgetOptions)), 0)
         else
             $.ajax
-                url:      "#{@service}widgets"
+                url:      "#{@service}widgets?format=json"
                 dataType: "jsonp"
                 
                 success: (response) =>

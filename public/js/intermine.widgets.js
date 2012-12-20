@@ -473,7 +473,7 @@ factory = function(Backbone) {
         }
       }
       return $.ajax({
-        url: "" + this.service + "list/chart",
+        url: "" + this.service + "list/chart?format=json",
         dataType: "jsonp",
         data: data,
         success: function(response) {
@@ -564,7 +564,7 @@ factory = function(Backbone) {
         "is_logged": type.isBoolean,
         "current_population": type.isStringOrNull,
         "message": type.isString,
-        "extraAttribute": type.isString
+        "extraAttribute": type.isStringOrNull
       }
     };
   
@@ -626,7 +626,7 @@ factory = function(Backbone) {
         data[key] = value;
       }
       return $.ajax({
-        'url': "" + this.service + "list/enrichment",
+        'url': "" + this.service + "list/enrichment?format=json",
         'dataType': "jsonp",
         'data': data,
         success: function(response) {
@@ -755,7 +755,7 @@ factory = function(Backbone) {
         'token': this.token
       };
       return $.ajax({
-        url: "" + this.service + "list/table",
+        url: "" + this.service + "list/table?format=json",
         dataType: "jsonp",
         data: data,
         success: function(response) {
@@ -2081,6 +2081,7 @@ factory = function(Backbone) {
     };
   
     EnrichmentView.prototype.render = function() {
+      var extraAttribute, opts;
       $(this.el).html(this.template("enrichment", {
         "title": this.options.title ? this.response.title : "",
         "description": this.options.description ? this.response.description : "",
@@ -2106,14 +2107,20 @@ factory = function(Backbone) {
         'loggedIn': this.response.is_logged,
         'widget': this
       });
-      new EnrichmentLengthCorrectionView({
-        'el': $(this.el).find('div.form form'),
-        'widget': this,
-        'gene_length_correction': this.response.gene_length_correction,
-        'percentage_gene_length_not_null': this.response.percentage_gene_length_not_null,
-        'whichDiscardedPq': this.response.pathQueryGeneLengthNull,
-        'cb': this.options.resultsCb
-      });
+      if (this.response.extraAttribute) {
+        extraAttribute = JSON.parse(this.response.extraAttribute);
+        if (extraAttribute.gene_length) {
+          opts = merge(extraAttribute.gene_length, {
+            'el': $(this.el).find('div.form form'),
+            'widget': this,
+            'gene_length_correction': this.response.gene_length_correction,
+            'percentage_gene_length_not_null': this.response.percentage_gene_length_not_null,
+            'whichDiscardedPq': this.response.pathQueryGeneLengthNull,
+            'cb': this.options.resultsCb
+          });
+          new EnrichmentLengthCorrectionView(opts);
+        }
+      }
       if (this.response.current_list != null) {
         $(this.el).addClass('customBackgroundPopulation');
       } else {
@@ -2499,7 +2506,7 @@ $ = window.jQuery || window.Zepto;
 
 Widgets = (function() {
 
-  Widgets.prototype.VERSION = '1.8.1-dummy';
+  Widgets.prototype.VERSION = '1.8.2';
 
   Widgets.prototype.wait = true;
 
@@ -2633,7 +2640,7 @@ Widgets = (function() {
       } else {
         this.wait = true;
         return $.ajax({
-          'url': "" + this.service + "lists?token=" + this.token,
+          'url': "" + this.service + "lists?token=" + this.token + "&format=json",
           'dataType': 'jsonp',
           'success': function(data) {
             if (data.statusCode !== 200 && !(data.lists != null)) {
@@ -2702,7 +2709,7 @@ Widgets = (function() {
       }), 0);
     } else {
       return $.ajax({
-        url: "" + this.service + "widgets",
+        url: "" + this.service + "widgets?format=json",
         dataType: "jsonp",
         success: function(response) {
           var widget, widgetEl, _i, _len, _ref, _results;

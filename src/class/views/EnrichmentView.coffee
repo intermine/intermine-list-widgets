@@ -46,14 +46,21 @@ class EnrichmentView extends Backbone.View
             'loggedIn': @response.is_logged
             'widget': @
 
-        # Enrichment gene length correction.
-        new EnrichmentLengthCorrectionView
-            'el': $(@el).find('div.form form')
-            'widget': @
-            'gene_length_correction': @response.gene_length_correction
-            'percentage_gene_length_not_null': @response.percentage_gene_length_not_null
-            'whichDiscardedPq': @response.pathQueryGeneLengthNull
-            'cb': @options.resultsCb
+        # Do we have extra attributes?
+        if @response.extraAttribute
+            extraAttribute = JSON.parse @response.extraAttribute
+
+            # Enrichment gene length correction.
+            if extraAttribute.gene_length
+                opts = merge extraAttribute.gene_length,
+                    'el': $(@el).find('div.form form')
+                    'widget': @
+                    'gene_length_correction': @response.gene_length_correction
+                    'percentage_gene_length_not_null': @response.percentage_gene_length_not_null
+                    'whichDiscardedPq': @response.pathQueryGeneLengthNull
+                    'cb': @options.resultsCb                    
+
+                new EnrichmentLengthCorrectionView opts
 
         # Custom bg population CSS.
         if @response.current_list?

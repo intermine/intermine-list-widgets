@@ -75,7 +75,7 @@ class ChartWidget extends InterMineWidget
 
         # Get JSON response by calling the service.
         $.ajax
-            url:      "#{@service}list/chart"
+            url:      "#{@service}list/chart?format=json"
             dataType: "jsonp"
             data:     data
             
