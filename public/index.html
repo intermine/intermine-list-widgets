@@ -39,7 +39,7 @@
                 <h2>Example List Widgets</h2>
             </div>
 
-            <div id="dummies" class="row"></div>
+            <div id="widgets" class="row"></div>
 
             <script type="text/javascript">
             (function() {
@@ -47,12 +47,10 @@
                 window.$ = 'I am an evil library!';
 
                 /* New Widgets client. */
-                //var ListWidgets = new intermine.widgets({'root': '/'});
-                var ListWidgets = new intermine.widgets({'root': 'http://frog:8080/flymine-widgets/service/'});
+                var ListWidgets = new intermine.widgets({'root': 'http://beta.flymine.org/beta/service/'});
 
                 /* Give us all available widgets. */
-                //ListWidgets.all('Dummy', 'dummy', '#dummies');
-                ListWidgets.all('Gene', 'gene24List', '#dummies');
+                ListWidgets.all('Gene', 'demo-genes', '#widgets');
             })();
             </script>
 
