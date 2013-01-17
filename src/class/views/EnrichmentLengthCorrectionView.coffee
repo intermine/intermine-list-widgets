@@ -40,7 +40,7 @@ class EnrichmentLengthCorrectionView extends Backbone.View
     # Will throw an exception when PQ not valid.
     seeWhich: (e) =>
         # Parse JSON.
-        pq = JSON.parse @whichDiscardedPq
+        pq = JSON.parse @pathQueryGeneLengthNull
         @cb pq
         # Stop it.
         e.preventDefault()

@@ -55,9 +55,6 @@ class EnrichmentView extends Backbone.View
                 opts = merge extraAttribute.gene_length,
                     'el': $(@el).find('div.form form')
                     'widget': @
-                    'gene_length_correction': @response.gene_length_correction
-                    'percentage_gene_length_not_null': @response.percentage_gene_length_not_null
-                    'whichDiscardedPq': @response.pathQueryGeneLengthNull
                     'cb': @options.resultsCb                    
 
                 new EnrichmentLengthCorrectionView opts

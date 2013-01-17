@@ -1030,7 +1030,7 @@ factory = function(Backbone) {
   
     EnrichmentLengthCorrectionView.prototype.seeWhich = function(e) {
       var pq;
-      pq = JSON.parse(this.whichDiscardedPq);
+      pq = JSON.parse(this.pathQueryGeneLengthNull);
       this.cb(pq);
       return e.preventDefault();
     };
@@ -2113,9 +2113,6 @@ factory = function(Backbone) {
           opts = merge(extraAttribute.gene_length, {
             'el': $(this.el).find('div.form form'),
             'widget': this,
-            'gene_length_correction': this.response.gene_length_correction,
-            'percentage_gene_length_not_null': this.response.percentage_gene_length_not_null,
-            'whichDiscardedPq': this.response.pathQueryGeneLengthNull,
             'cb': this.options.resultsCb
           });
           new EnrichmentLengthCorrectionView(opts);
