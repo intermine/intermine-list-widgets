@@ -19,7 +19,8 @@ class InterMineWidget
     validateType: (object, spec) =>
         fails = []
         for key, value of object
-            if (r = new spec[key]?(value) or r = new type.isUndefined()) and not r.is()
+            r = new spec[key]?(value)
+            if r and not r.is()
                 fails.push @template "invalidjsonkey",
                     key:      key
                     actual:   r.is()

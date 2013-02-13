@@ -47,11 +47,10 @@
                 window.$ = 'I am an evil library!';
 
                 /* New Widgets client. */
-                //var ListWidgets = new intermine.widgets({'root': 'http://beta.flymine.org/beta/service/'});
-                var ListWidgets = new intermine.widgets({'root': 'http://frog:8080/flymine-widgets/service/'});
+                var ListWidgets = new intermine.widgets({'root': 'http://beta.flymine.org/beta/service/'});
 
                 /* Give us all available widgets. */
-                ListWidgets.all('Gene', 'gene24List', '#widgets');
+                ListWidgets.all('Gene', 'demo-genes', '#widgets');
             })();
             </script>
 
