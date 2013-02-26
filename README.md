@@ -1,32 +1,21 @@
-Client for embedding InterMine List Widgets.
+# InterMine List Widgets
 
 ![image](https://raw.github.com/radekstepan/intermine-widget-client/master/example.png)
 
-## Requirements:
+## Build:
 
-### To Run:
+```bash
+$ cake build
+```
 
-- [InterMine JavaScript API Loader](http://radekstepan.github.com/intermine-api-loader/intermine.api.js)
-
-The following vendor libraries will be fetched automatically if they are not included on a page already:
-
-- Google Visualization API
-- jQuery
-- underscore.js
-- backbone.js
-- InterMine imjs
-
-### To Compile:
-
-You can install all the following dependencies by running:
+## Demo run:
 
 ```bash
 $ npm install -d
+$ node start.js
 ```
 
-- [CoffeeScript](http://coffeescript.org/) 1.3.1+
-- [eco](https://github.com/sstephenson/eco) templating
-- [uglify-js](https://github.com/mishoo/UglifyJS) to compress templates
+Visit the port returned to you in the terminal.
 
 ## Configure:
 
@@ -68,41 +57,7 @@ Widgets.enrichment('pathway_enrichment', 'myList', '#widget-2');
 Widgets.table('interactions', 'myList', '#widget-3');
 ```
 
-## Use:
-
-Start Python's [SimpleHTTPServer](http://docs.python.org/library/simplehttpserver.html) using:
-
-```bash
-$ npm start
-```
-
-Visit [http://127.0.0.1:1111/](http://127.0.0.1:1111/).
-
-## Compile:
-
-Run the following to compile widgets and templates into one target. Check optional parameters by running `cake`.
-
-```bash
-$ cake compile:main
-```
-
-## Test:
-
-Run the following to compile tests.
-
-```bash
-$ cake compile:tests
-```
-
-Visit [http://127.0.0.1:1111/test](http://127.0.0.1:1111/test) to run the tests using [Mocha](http://visionmedia.github.com/mocha/) and [Chai](http://chaijs.com/).
-
-The tests are automatically loaded from available tests in the `test/src` directory. Libraries needed to run the tests are loaded automatically too. You can speed up their execution by including the files the `<head>` section of the `test/index.html` file.
-
 ## Q&A:
-
-### Where is documentation?
-
-Commented source code is in the `/docs` directory: [http://0.0.0.0:1111/docs/widgets.html](http://0.0.0.0:1111/docs/widgets.html).
 
 ### How do apply a CSS style to the widgets?
 

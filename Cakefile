@@ -1,25 +1,25 @@
-fs = require "fs" # I/O
-npath = require "path" # does path exist?
-cs = require 'coffee-script' # take a guess
-eco = require "eco" # templating
-crypto = require "crypto" # md5 hashing
-exec = require('child_process').exec # execute custom commands
-uglify = require('uglify-js') # minify JS code
+fs       = require 'fs' # I/O
+npath    = require 'path' # does path exist?
+cs       = require 'coffee-script' # take a guess
+eco      = require 'eco' # templating
+{ exec } = require 'child_process' # execute custom commands
+uglify   = require 'uglify-js' # minify JS code
+async    = require 'async' # control flow
+wrench   = require 'wrench' # recursive file operations
+winston  = require 'winston' # cli logging
+
+winston.cli()
 
 
 # --------------------------------------------
 
 
+# Version of the library automatic from package.json.
+VERSION = null
 # Main input/output.
 MAIN =
     INPUT: "src/widgets.coffee"
     OUTPUT: "public/js/intermine.widgets.js"
-
-# Tests input/output and runner.
-TESTS =
-    INPUT:  "test/src"
-    OUTPUT: "test/js"
-    RUNNER: "test/runner.coffee"
 
 # Templates dir.
 TEMPLATES = "src/templates"
@@ -27,236 +27,216 @@ TEMPLATES = "src/templates"
 UTILS = "src/utils"
 # Classes dir.
 CLASSES = "src/class"
-# Which folders to watch for changes?
-WATCH = [ "src", "src/templates", "src/utils", "src/class" ]
 
-# Path to InterMine SVN output.
-INTERMINE =
-    ROOT: "/home/rs676/svn/ws_widgets"
-    OUTPUT: "intermine/webapp/main/resources/webapp/js/intermine.widgets.js"
-
-# ANSI Terminal colors.
-COLORS =
-  BOLD:    '\u001b[0;1m'
-  RED:     '\u001b[0;31m'
-  GREEN:   '\u001b[0;32m'
-  BLUE:    '\u001b[0;34m'
-  YELLOW:  '\u001b[0;33m'
-  DEFAULT: '\u001b[0m'
 
 # --------------------------------------------
 
-
-option '-w', '--watch', 'should we watch source directories for changes?'
-option '-c', '--commit [MESSAGE]', 'make an SVN commit in InterMine passing the message'
 
 # Compile widgets.coffee and .eco templates into one output. Do not use globals for JST.
-task "compile:main", "compile widgets library and templates together", (options) ->
-    main ->
-
-    # Watch for changes?
-    if options.watch
-        done = true # Have we finished with main compilation step?
-        for dir in WATCH
-            console.log "#{COLORS.BOLD}Watching #{dir}#{COLORS.DEFAULT}"
-            fs.watch dir, (event, file) ->
-                if event in [ "rename", "change" ]
-                    console.log "#{COLORS.BLUE}Change detected in #{file}#{COLORS.DEFAULT}"
-                    if done
-                        done = false
-                        main -> done = true
-
-# Compile tests.
-task "compile:tests", "compile tests so we can run them in the browser", (options) ->
-    console.log "#{COLORS.BOLD}Compiling tests in #{TESTS.INPUT}#{COLORS.DEFAULT}"
-
-    # Compile the test runner.
-    source = cs.compile fs.readFileSync(TESTS.RUNNER, "utf-8")
-    write [ TESTS.OUTPUT, TESTS.RUNNER.split('/').pop().replace '.coffee', '.js' ].join('/'), source
-
-    # Compile tests in test/src/ to test/js/tests/.
-    walk TESTS.INPUT, (err, files) ->
-        if err then throw new Error('problem walking tests')
-        else
-            tests = []
-            for file in files
-                # Read in, compile.
-                source = cs.compile fs.readFileSync(file, "utf-8")
-                # Get the filename wo/ extension.
-                name = file.split('/').pop().replace '.coffee', ''
-                # Write to equivalent JS file
-                write [ TESTS.OUTPUT, "tests", "#{name}.js" ].join('/'), source
-                # Save the path to JSON output.
-                tests.push "\"#{name}\""
-
-            # Write JSON so we can reference all tests.
-            write [ TESTS.OUTPUT, 'tests.json' ].join('/'), "[#{tests.join(',')}]"
-
-    # That's it.
-    console.log "#{COLORS.GREEN}Done#{COLORS.DEFAULT}"
-
-
-# --------------------------------------------
-
-
-main = (callback) ->
-    #@+VERSION
-    VERSION = JSON.parse(fs.readFileSync('./package.json')).version
-
-    console.log "#{COLORS.BOLD}Compiling version #{VERSION}#{COLORS.DEFAULT}"
-
-    # Head.
-    head = (cb) -> cb "(function() {\nvar o = {};\n"
+task 'build', 'compile widgets library and templates together', (options) ->
+    async.waterfall [ (cb) ->
+        #@+VERSION
+        fs.readFile './package.json', 'utf8', (err, file) ->
+            if err then cb err
+            else
+                VERSION = (JSON.parse(file)).version
+                winston.info "Compiling version #{VERSION}"
+                cb null, [], []
 
     # Compile templates.
-    templates = (cb) ->
-        tmpl = [ "var JST = {};" ]
-        walk TEMPLATES, (err, files) ->
-            if err then throw new Error('problem walking templates')
+    , (JS, CS, cb) ->
+        winston.debug 'Compiling templates'
+
+        JS.push 'var JST = {};'
+
+        # If there are no more jobs then continue.
+        jobs = 0
+        exit = -> if jobs is 0 then cb null, JS, CS
+
+        # Keep calling back on newly discovered files
+        # Assume it takes less time then reading a file and compressing it.
+        wrench.readdirRecursive TEMPLATES, (err, files) ->
+            if err then cb err
             else
-                # Only take eco files.
-                match = /\.eco$/
-                for file in files
-                    if file.match match
-                        console.log file
-                        # Read in, precompile & compress.
-                        js = eco.precompile fs.readFileSync file, "utf-8"
-                        name = file.split('/').pop()
-                        tmpl.push (uglify.minify("JST['#{name}'] = #{js}", 'fromString': true)).code
-                cb tmpl
-
-    # Compile utils in any order.
-    utils = (cb) ->
-        utils = []
-        walk UTILS, (err, files) ->
-            if err then throw new Error('problem walking utils')
-            else
-                for file in files
-                    console.log file
-                    # Read in, compile.
-                    utils.push cs.compile fs.readFileSync(file, "utf-8"), bare: "on"
-                cb utils
-
-    # Compile the main classes in any order (access through factory).
-    classes = (cb) ->
-        classes = [ "var factory;\nfactory = function(Backbone) {\n" ]
-        walk CLASSES, (err, files) ->
-            if err then throw new Error('problem walking classes')
-            else
-                names = []
-                for file in files
-                    console.log file
-                    # Read in, compile.
-                    source = cs.compile fs.readFileSync(file, "utf-8"), bare: "on"
-                    # Insert spaces as we are inside the factory function (nicety).
-                    source = ( "  #{line}\n" for line in source.split("\n") ).join('')
-                    # `InterMineWidget.coffee` needs to go first...
-                    if file.match /InterMineWidget\.coffee$/ then classes.splice 1, 0, source
-                    else classes.push source
-                    # Get the class name (it better match).
-                    names.push file.split('/').pop().split('.')[0]
-
-                # Create a closing return statement exposing all classes.
-                classes.push "  return {\n"
-                classes.push ( "    \"#{name}\": #{name}" for name in names ).join(",\n")
-                classes.push "  };\n};"
-
-                cb classes
-
-    # Compile the public library.
-    widgets = (cb) ->
-        console.log MAIN.INPUT
-        compiled = cs.compile fs.readFileSync(MAIN.INPUT, "utf-8").replace('#@+VERSION', "'#{VERSION}'"), bare: "on"
-        cb compiled
-
-    # Close.
-    close = (cb) -> cb "}).call(this);"
-
-    done = (results) ->
-        output = []
-
-        # Combine them all.
-        for result in results
-            for index, item of result
-                if item instanceof Array then output.push sub for sub in item else output.push item
-
-        # Write them all at once
-        write MAIN.OUTPUT, output.join "\n"
-
-        # We are done.
-        console.log "#{COLORS.GREEN}Done#{COLORS.DEFAULT}"
-
-    # This is the queue order.
-    queue [ head, templates, utils, classes, widgets, close ], done
-
-# A serial queue that waits until all resources have returned and then calls back.
-queue = (calls, callback) ->
-    make = (index) ->
-      ->
-        counter--
-        all[index] = arguments
-        callback(all) unless counter
-
-    # How many do we have?
-    counter = calls.length
-    # Store results here.
-    all = []
-
-    i = 0
-    for call in calls
-        call make i++
-
-# Traverse a directory and return a list of files (async, recursive).
-walk = (path, callback) ->
-    results = []
-    # Read directory.
-    fs.readdir path, (err, list) ->
-        # Problems?
-        return callback err if err
-
-        # Get listing length.
-        pending = list.length
-
-        return callback null, results unless pending # Done already?
-
-        # Traverse.
-        list.forEach (file) ->
-            # Form path
-            file = "#{path}/#{file}"
-            fs.stat file, (err, stat) ->
-                # Subdirectory.
-                if stat and stat.isDirectory()
-                    walk file, (err, res) ->
-                        # Append result from sub.
-                        results = results.concat(res)
-                        callback null, results unless --pending # Done yet?
-                # A file.
+                # Are we done?
+                unless files then exit()
                 else
-                    results.push file
-                    callback null, results unless --pending # Done yet?
+                    # Stack async functions and add a new job.
+                    jobs++ ; fns = []
+                    for file in files then do (file) ->
+                        # Only take eco files.
+                        if file.match /\.eco$/
+                            fns.push (_cb) ->
+                                winston.data file
+                                # Read in file.
+                                fs.readFile TEMPLATES + '/' + file, 'utf8', (err, data) ->
+                                    if err then cb err
+                                    else
+                                        # Precompile.
+                                        js = eco.precompile data
+                                        # Get the name to save under.
+                                        name = file.split('/').pop()
+                                        # Compress.
+                                        JS.push (uglify.minify("JST['#{name}'] = #{js}", 'fromString': true)).code
+                                        # This one is done.
+                                        _cb null
 
-# Append to existing file.
-write = (path, text, mode = "w") ->
-    fs.open path, mode, 0o0666, (e, id) ->
-        if e then throw new Error(e)
-        fs.write id, text, null, "utf8"
+                    # Run all of them in parallel.
+                    async.parallel fns, (err) ->
+                        if err then cb err
+                        else
+                            # One more thing done.
+                            jobs--
+                            # Exit?
+                            exit()
 
-# Does the target path exist?
-exist = (path, type = "file") ->
-    # Dir or file?
-    if type is 'dir' then path = npath.dirname path
+    # Compile utils.
+    , (JS, CS, cb) ->
+        winston.debug 'Compiling utils'
 
-    try
-        fs.lstatSync path
-    catch e
-        console.log [ COLORS.RED, "Path #{path} does not exist", COLORS.DEFAULT ].join ''
-        throw new Error e
+        # If there are no more jobs then continue.
+        jobs = 0
+        exit = -> if jobs is 0 then cb null, JS, CS
 
-    return true
+        # Keep calling back on newly discovered files
+        # Assume it takes less time then reading a file and compressing it.
+        wrench.readdirRecursive UTILS, (err, files) ->
+            if err then cb err
+            else
+                # Are we done?
+                unless files then exit()
+                else
+                    # Stack async functions and add a new job.
+                    jobs++ ; fns = []
+                    for file in files then do (file) ->
+                        # Only take coffee files.
+                        if file.match /\.coffee$/
+                            fns.push (_cb) ->
+                                winston.data file
+                                # Read in file.
+                                fs.readFile UTILS + '/' + file, 'utf8', (err, data) ->
+                                    if err then cb err
+                                    else
+                                        CS.push data
+                                        # This one is done.
+                                        _cb null
 
-# Will give an MD5 of a file and fail silently.
-md5 = (path) ->
-    try
-        file = fs.readFileSync path, "utf-8"
-        return crypto.createHash('md5').update(file).digest('hex')
-    catch e
+                    # Run all of them in parallel.
+                    async.parallel fns, (err) ->
+                        if err then cb err
+                        else
+                            # One more thing done.
+                            jobs--
+                            # Exit?
+                            exit()
+
+    # Compile the main classes (access through factory).
+    , (JS, CS, cb) ->
+        winston.debug 'Compiling main classes'
+
+        classes = [ 'factory = (Backbone) ->\n' ] ; names = []
+
+        # If there are no more jobs then continue.
+        jobs = 0
+        exit = ->
+            if jobs is 0
+                # Create a closing return statement exposing all classes.
+                classes.push ( "  '#{name}': #{name}" for name in names ).join(',\n')
+                CS.push classes
+
+                cb null, JS, CS
+
+        # Keep calling back on newly discovered files
+        # Assume it takes less time then reading a file and compressing it.
+        wrench.readdirRecursive CLASSES, (err, files) ->
+            if err then cb err
+            else
+                # Are we done?
+                unless files then exit()
+                else
+                    # Stack async functions and add a new job.
+                    jobs++ ; fns = []
+                    for file in files then do (file) ->
+                        # Only take coffee files.
+                        if file.match /\.coffee$/
+                            fns.push (_cb) ->
+                                winston.data file
+                                # Read in file.
+                                fs.readFile CLASSES + '/' + file, 'utf8', (err, source) ->
+                                    if err then cb err
+                                    else
+                                        # Insert spaces as we are inside the factory function.
+                                        source = ( "  #{line}\n" for line in source.split('\n') ).join('')
+                                        
+                                        # `InterMineWidget.coffee` needs to go first...
+                                        if file.match /InterMineWidget\.coffee$/
+                                            classes.splice 1, 0, source
+                                        else
+                                            classes.push source
+                                        
+                                        # Get the class name (it better match).
+                                        names.push file.split('/').pop().split('.')[0]
+
+                                        # This one is done.
+                                        _cb null
+
+                    # Run all of them in parallel.
+                    async.parallel fns, (err) ->
+                        if err then cb err
+                        else
+                            # One more thing done.
+                            jobs--
+                            # Exit?
+                            exit()
+
+    # Compile the public interface.
+    , (JS, CS, cb) ->
+        winston.debug 'Compiling public interface'
+
+        winston.data MAIN.INPUT
+        fs.readFile MAIN.INPUT, 'utf8', (err, file) ->
+            if err then cb err
+            else
+                # Inject the version.
+                CS.push file.replace '#@+VERSION', "'#{VERSION}'"
+
+                cb null, JS, CS
+
+    # Write output.
+    , (JS, CS, cb) ->
+        winston.debug 'Writing output'
+
+        flatten = (input) ->
+            output = []
+            # Traverse.
+            for item in input
+                if item instanceof Array
+                    output = output.concat flatten(item)
+                else
+                    output.push item
+            output
+
+        indent = (input) -> ( "  #{row}" for row in input.split('\n') ).join('\n')
+
+        # Flatten JS.
+        JS = flatten JS
+
+        # Compile CoffeeScript to JavaScript.
+        JS.push cs.compile flatten(CS).join('\n'), 'bare': 'on'
+
+        # Combine JavaScript together, wrap in a fn & join on newlines.
+        code = indent flatten(JS).join('\n')
+        output = "(function() {\n  var o = {};\n#{code}\n}).call(this);"
+
+        # Create file if it does not exist.
+        fs.open MAIN.OUTPUT, 'w', 0o0666, (err) ->
+            if err then cb err
+            else
+                # Append to existing file.
+                fs.writeFile MAIN.OUTPUT, output, (err) ->
+                    if err then cb err
+                    else cb null
+
+    ], (err) ->
+        if err then winston.error error
+        else winston.info 'Done'
