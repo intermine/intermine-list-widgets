@@ -50,8 +50,8 @@ task 'build', 'compile widgets library and templates together', (options) ->
         JS.push 'var JST = {};'
 
         # If there are no more jobs then continue.
-        jobs = 0
-        exit = -> if jobs is 0 then cb null, JS, CS
+        jobs = 0 ; canExit = false
+        exit = -> if jobs is 0 and canExit then cb null, JS, CS
 
         # Keep calling back on newly discovered files
         # Assume it takes less time then reading a file and compressing it.
@@ -59,7 +59,9 @@ task 'build', 'compile widgets library and templates together', (options) ->
             if err then cb err
             else
                 # Are we done?
-                unless files then exit()
+                unless files
+                    canExit = true
+                    exit()
                 else
                     # Stack async functions and add a new job.
                     jobs++ ; fns = []
@@ -95,8 +97,8 @@ task 'build', 'compile widgets library and templates together', (options) ->
         winston.debug 'Compiling utils'
 
         # If there are no more jobs then continue.
-        jobs = 0
-        exit = -> if jobs is 0 then cb null, JS, CS
+        jobs = 0 ; canExit = false
+        exit = -> if jobs is 0 and canExit then cb null, JS, CS
 
         # Keep calling back on newly discovered files
         # Assume it takes less time then reading a file and compressing it.
@@ -104,7 +106,9 @@ task 'build', 'compile widgets library and templates together', (options) ->
             if err then cb err
             else
                 # Are we done?
-                unless files then exit()
+                unless files
+                    canExit = true
+                    exit()
                 else
                     # Stack async functions and add a new job.
                     jobs++ ; fns = []
@@ -137,9 +141,9 @@ task 'build', 'compile widgets library and templates together', (options) ->
         classes = [ 'factory = (Backbone) ->\n' ] ; names = []
 
         # If there are no more jobs then continue.
-        jobs = 0
+        jobs = 0 ; canExit = false
         exit = ->
-            if jobs is 0
+            if jobs is 0 and canExit
                 # Create a closing return statement exposing all classes.
                 classes.push ( "  '#{name}': #{name}" for name in names ).join(',\n')
                 CS.push classes
@@ -152,7 +156,9 @@ task 'build', 'compile widgets library and templates together', (options) ->
             if err then cb err
             else
                 # Are we done?
-                unless files then exit()
+                unless files
+                    canExit = true
+                    exit()
                 else
                     # Stack async functions and add a new job.
                     jobs++ ; fns = []
