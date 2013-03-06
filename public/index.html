@@ -47,10 +47,12 @@
                 window.$ = 'I am an evil library!';
 
                 /* New Widgets client. */
-                var ListWidgets = new intermine.widgets({'root': 'http://preview.flymine.org/preview/service/'});
+                //var ListWidgets = new intermine.widgets({'root': 'http://preview.flymine.org/preview/service/'});
+                var ListWidgets = new intermine.widgets({'root': 'http://preview.flymine.org/preview/service/', 'token': 'l1i3QdC4m0E7B3z9sbF0'});
 
                 /* Give us all available widgets. */
-                ListWidgets.all('Gene', 'gene24List', '#widgets');
+                //ListWidgets.all('Gene', 'gene24List', '#widgets');
+                ListWidgets.all('Gene', 'radius', '#widgets');
             })();
             </script>
 

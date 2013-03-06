@@ -14,7 +14,7 @@ class EnrichmentLengthCorrectionView extends Backbone.View
     """
 
     events:
-        'click input': 'toggleCull'
+        'click input.correction': 'toggleCull'
         'click a.which': 'seeWhich'
 
     initialize: (o) ->

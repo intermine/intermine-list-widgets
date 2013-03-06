@@ -3,10 +3,10 @@
 class EnrichmentPopulationView extends Backbone.View
 
     events:
-        "click a.change": "toggleAction"
-        "click a.close":  "toggleAction"
-        "keyup input":    "filterAction"
-        "click table a":  "selectListAction"
+        "click a.change":     "toggleAction"
+        "click a.close":      "toggleAction"
+        "keyup input.filter": "filterAction"
+        "click table a":      "selectListAction"
 
     initialize: (o) ->
         @[k] = v for k, v of o

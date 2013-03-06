@@ -15,7 +15,7 @@
                     <% end %>
                 </p>
 
-                <input type="text" style="width:96%" placeholder="Filter..." />
+                <input type="text" class="filter" style="width:96%" placeholder="Filter..." />
                 
                 <div class="values" style="max-height:300px;overflow-y:auto">
                     <!-- enrichment.populationlist.eco -->
