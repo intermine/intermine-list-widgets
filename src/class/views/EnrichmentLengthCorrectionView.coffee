@@ -27,9 +27,10 @@ class EnrichmentLengthCorrectionView extends Backbone.View
         $(@el).append @widget.template "enrichment.correction", @
 
         # Init label tooltip.
-        $(@el).find('label .badge').tooltip
+        $(@el).find('label .badge').popover
             'placement': 'bottom'
-            'title': @help
+            'title': 'Description'
+            'content': @help
 
         @
 
