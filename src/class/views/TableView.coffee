@@ -102,6 +102,9 @@ class TableView extends Backbone.View
 
     # Export selected rows into a file.
     exportAction: (e) =>
+        # Are we actually enabled?
+        return if @collection.selected() is 0
+        
         # Create a tab delimited string of the table as it is.
         result = [ @response.columns.replace(/,/g, "\t") ]
         for model in @collection.selected()

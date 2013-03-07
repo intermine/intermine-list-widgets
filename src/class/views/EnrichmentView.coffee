@@ -153,6 +153,9 @@ class EnrichmentView extends Backbone.View
 
     # Export selected rows into a file.
     exportAction: (e) =>
+        # Are we actually enabled?
+        return if @collection.selected() is 0
+
         # Get column identifiers to constrain on.
         rowIdentifiers = []
         for model in @collection.selected()
