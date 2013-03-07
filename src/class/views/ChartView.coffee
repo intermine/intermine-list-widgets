@@ -172,6 +172,10 @@ class ChartView extends Backbone.View
 
                     # Replace `%series` in PathQuery.
                     if selection.column?
+                        # Issue #159.
+                        return false if @response.seriesPath is 'ActualExpectedCriteria' and selection.column is 2
+
+                        # Parse.
                         column = @response.results[0][selection.column]
                         description += ' ' + column
                         resultsPq = resultsPq.replace("%series", @translate @response, column)
