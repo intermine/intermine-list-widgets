@@ -47,12 +47,12 @@
                 window.$ = 'I am an evil library!';
 
                 /* New Widgets client. */
-                //var ListWidgets = new intermine.widgets({'root': 'http://preview.flymine.org/preview/service/'});
-                var ListWidgets = new intermine.widgets({'root': 'http://frog:8080/flymine-widgets/service/'});
+                var ListWidgets = new intermine.widgets({'root': 'http://preview.flymine.org/preview/service/'});
+                //var ListWidgets = new intermine.widgets({'root': 'http://frog:8080/flymine-widgets/service/'});
 
                 /* Give us all available widgets. */
-                //ListWidgets.all('Gene', 'gene24List', '#widgets');
-                ListWidgets.chart('chromosome_distribution_for_gene', 'gene24List', '#widgets');
+                ListWidgets.all('Gene', 'gene24List', '#widgets');
+                //ListWidgets.chart('chromosome_distribution_for_gene', 'gene24List', '#widgets');
             })();
             </script>
 

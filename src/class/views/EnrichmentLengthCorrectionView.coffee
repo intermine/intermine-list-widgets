@@ -29,7 +29,7 @@ class EnrichmentLengthCorrectionView extends Backbone.View
         # Init label tooltip.
         $(@el).find('label .badge').popover
             'placement': 'bottom'
-            'title': 'Description'
+            'title': 'What does "Normalise by length" mean?'
             'content': @help
 
         @
