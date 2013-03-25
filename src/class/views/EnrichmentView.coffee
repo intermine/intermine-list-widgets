@@ -183,19 +183,11 @@ class EnrichmentView extends Backbone.View
                 for model in @collection.selected()
                     result.push [ model.get('description'), model.get('p-value') ].join("\t") + "\t" + dict[model.get('identifier')].join(',')
 
-                if result.length # Can be empty.
-                    # Create.
-                    #try
-                    #    ex = new Exporter $(e.target), result.join("\n"), "#{@widget.bagName} #{@widget.id}.tsv"
-                    #catch TypeError
-                    #    ex = new PlainExporter $(e.target), result.join("\n")
-                    ex = new PlainExporter $(e.target), result.join("\n")
-
-                    # Cleanup.
-                    window.setTimeout (->
-                        ex.destroy()
-                    ), 5000
-
+                if result.length
+                    try
+                        new Exporter result.join("\n"), "#{@widget.bagName} #{@widget.id}.tsv"
+                    catch TypeError
+                        new PlainExporter $(e.target), result.join("\n")
         )
 
     # Selecting table rows and clicking on **View** should create an EnrichmentMatches collection of all matches ids.

@@ -2,22 +2,28 @@
 
 ![image](https://raw.github.com/radekstepan/intermine-widget-client/master/example.png)
 
-## Build:
+## Build
 
 ```bash
-$ cake build
+$ coffee build.coffee
 ```
 
-## Demo run:
+## Demo run
 
 ```bash
-$ npm install -d
-$ node start.js
+$ npm install
+$ PORT=5200 node start.js
 ```
 
-Visit the port returned to you in the terminal.
+### Development
 
-## Configure:
+Watch source files and rebuild them on changes:
+
+```bash
+$ nodemon --watch src --exec "coffee" build.coffee
+```
+
+## Configure
 
 You can either use the InterMine API Loader to always give you the latest version of the widgets:
 
@@ -57,7 +63,7 @@ Widgets.enrichment('pathway_enrichment', 'myList', '#widget-2');
 Widgets.table('interactions', 'myList', '#widget-3');
 ```
 
-## Q&A:
+## Q&A
 
 ### How do apply a CSS style to the widgets?
 
@@ -112,7 +118,7 @@ Widgets.enrichment('pathway_enrichment', 'myList', '#widget', options);
 
 Make sure you run widgets through the `http://` protocol instead of `file://`.
 
-## Browser Support:
+## Browser Support
 
 - Linux Chrome 16
 - Linux Firefox 11
@@ -132,7 +138,7 @@ Make sure you run widgets through the `http://` protocol instead of `file://`.
 
 Support of other browsers cannot be guaranteed.
 
-### Known Issues:
+### Known Issues
 
 1. Windows 7 **Internet Explorer 7** does not support `display:table-*` properties and thus faux table header is not inlined. (IE7 not supported)
 1. Linux **Opera 11.61** Google Visualization sometimes trims horizontal axis label.
