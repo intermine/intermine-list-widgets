@@ -25,6 +25,6 @@
     },
     "scripts": {
         "start": "start.js",
-        "test": "./node_modules/.bin/coffee test/runner.coffee"
+        "test": "./test/runner.sh"
     }
 }
