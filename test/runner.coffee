@@ -35,9 +35,16 @@ browser.window.addEventListener 'InterMine', (obj) ->
         when 'rendered'
             rendered++
 
-# Open the page.
+# Start the service.
 async.waterfall [ (cb) ->
-    browser.visit 'http://localhost:5200', (err) ->
+    { start } = require '../service.coffee'
+    start (err, port) ->
+        assert.ifError err
+        cb null, port
+
+# Open the page.
+(port, cb) ->
+    browser.visit "http://localhost:#{port}", (err) ->
         assert.ifError err
         cb null
 

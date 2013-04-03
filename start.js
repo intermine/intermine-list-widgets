@@ -1,3 +1,4 @@
 #!/usr/bin/env node
 require('coffee-script');
-require('./service.coffee');
+var service = require('./service.coffee');
+service.start();
