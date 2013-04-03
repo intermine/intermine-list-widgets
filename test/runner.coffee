@@ -4,6 +4,8 @@ cheerio    = require 'cheerio'
 { assert } = require 'chai'
 async      = require 'async'
 
+console.log 'Zombie running'
+
 spec = require './spec.coffee'
 
 browser = new Browser
