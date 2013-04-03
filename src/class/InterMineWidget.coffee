@@ -45,4 +45,17 @@ class InterMineWidget
         $(@el).html @template "error", opts
 
         # Throw an error so we do not process further.
-        throw new Error type
+        @fireEvent 'event': 'error', 'type': type, 'message': opts.title
+
+    # Fire a custom event (so we can capture in headless browser).
+    fireEvent: (obj) ->
+        evt = document.createEvent 'Events'
+        evt.initEvent 'InterMine', true, true
+        ( evt[key] = value for key, value of obj )
+        evt.source = 'ListWidgets'
+        evt.widget =
+            'id': @id
+            'bag': @bagName
+            'el': @el
+            'service': @service
+        window.dispatchEvent evt

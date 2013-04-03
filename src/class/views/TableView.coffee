@@ -34,6 +34,8 @@ class TableView extends Backbone.View
             $(@el).find("div.content").html $ @template "noresults",
                 'text': "No \"#{@response.title}\" with your list."
 
+        @widget.fireEvent { 'class': 'TableView', 'event': 'rendered' }
+
         @
 
     # Render the actions toolbar based on how many collection model rows are selected.

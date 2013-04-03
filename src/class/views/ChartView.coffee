@@ -120,6 +120,10 @@ class ChartView extends Backbone.View
             $(@el).find("div.content").html $ @template "noresults",
                 'text': "No \"#{@response.title}\" with your list."
 
+        @widget.fireEvent { 'class': 'ChartView', 'event': 'rendered' }
+
+        @
+
     renderToolbar: =>
         $(@el).find("div.actions").html(
             $ @template "chart.actions"

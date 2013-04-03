@@ -1,5 +1,4 @@
 #!/usr/bin/env coffee
-
 fs       = require 'fs'            # I/O
 npath    = require 'path'          # does path exist?
 cs       = require 'coffee-script' # take a guess

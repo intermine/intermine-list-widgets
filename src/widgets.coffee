@@ -112,7 +112,7 @@ class Widgets
                 $.ajax
                     'url': "#{@service}lists?token=#{@token}&format=json"
                     'dataType': 'jsonp'
-                    'success': (data) =>
+                    success: (data) =>
                         # Problems?
                         if data.statusCode isnt 200 and not data.lists?
                             $(opts[2]).html $ '<div/>',
@@ -123,6 +123,10 @@ class Widgets
                             @lists = data.lists ; @wait = false
                             # New instance of a widget.
                             new o.EnrichmentWidget(@service, @token, @lists, opts...)
+
+                    error: (xhr, opts, err) => $(el).html $ '<div/>',
+                        class: "alert alert-error"
+                        html:  "#{xhr.statusText} for <a href='#{@service}widgets'>#{@service}widgets</a>"
 
 
     ###

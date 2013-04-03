@@ -36,10 +36,14 @@
         <div class="container">
 
             <div class="row">
-                <h2>Example List Widgets</h2>
+                <h2 class="title">Example List Widgets</h2>
             </div>
 
-            <div id="widgets" class="row"></div>
+            <div class="row">
+                <div class="widget span4" id="one"></div>
+                <div class="widget span4" id="two"></div>
+                <div class="widget span4" id="three"></div>
+            </div>
 
             <script type="text/javascript">
             (function() {
@@ -47,10 +51,11 @@
                 window.$ = 'I am an evil library!';
 
                 /* New Widgets client. */
-                var ListWidgets = new intermine.widgets({'root': 'http://preview.flymine.org/preview/service/'});
+                var ListWidgets = new intermine.widgets({'root': 'http://beta.flymine.org/beta/service/'});
 
-                /* Give us all available widgets. */
-                ListWidgets.all('Gene', 'gene24List', '#widgets');
+                ListWidgets.chart('flyfish', 'demo-genes', '#one');
+                ListWidgets.enrichment('pathway_enrichment', 'demo-genes', '#two');
+                ListWidgets.table('orthologues', 'demo-genes', '#three');
             })();
             </script>
 

@@ -76,6 +76,8 @@ class EnrichmentView extends Backbone.View
             $(@el).find("div.content").html $ @template "noresults",
                 'text': @response.message or 'No enrichment found.'
 
+        @widget.fireEvent { 'class': 'EnrichmentView', 'event': 'rendered' }
+
         @
 
     # Render the actions toolbar based on how many collection model rows are selected.
