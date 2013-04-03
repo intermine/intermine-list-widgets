@@ -15,9 +15,9 @@
         "wrench": "1.4.4"
     },
     "devDependencies": {
+        "zombie": "1.4.1",
         "cheerio": "0.10.8",
-        "chai": "1.5.0",
-        "nave": "0.4.3"
+        "chai": "1.5.0"
     },
     "repository": {
         "type": "git",
@@ -25,6 +25,6 @@
     },
     "scripts": {
         "start": "start.js",
-        "test": "./test/runner.sh"
+        "test": "./node_modules/.bin/coffee test/runner.coffee"
     }
 }
