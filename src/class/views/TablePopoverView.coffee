@@ -82,7 +82,7 @@ class TablePopoverView extends Backbone.View
             head =          widget.find('div.content div.head') # table head
 
             # Adjust the negative position from top to see the popover.
-            diff =          ((parent.position().top - header.height() + head.height()) + 30 + popover.outerHeight()) - table.height()
+            diff =          ((parent.position().top - header.height() + head.height()) + popover.outerHeight()) - table.height()
             if diff > 0 then popover.css 'top', -diff
         ), 0
 

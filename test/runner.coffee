@@ -7,7 +7,7 @@ async      = require 'async'
 spec = require './spec.coffee'
 
 # Trim whitespace.
-String::trim -> @.replace /^\s+|\s+$/g, ''
+String::trim = -> @.replace(/^\s+|\s+$/g, '').replace(/\s{2,}/g, ' ')
 
 # Sync DOM validation be it after an event or outright.
 domValidator = (root, obj) ->

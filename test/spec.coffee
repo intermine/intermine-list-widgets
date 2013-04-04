@@ -37,7 +37,7 @@ module.exports =
     # DOM checks.
     "dom":
         ".header h3":
-            "text": "Pathway Enrichment"
+            "text": "Protein Domain Enrichment"
         "select[name=errorCorrection] option":
             "text": [
                 'Holm-Bonferroni'
@@ -51,12 +51,6 @@ module.exports =
                 '0.10'
                 '1.00'
             ]
-        "select[name=DataSet] option":
-            "text": [
-                'All'
-                'KEGG pathways data set'
-                'Reactome data set'
-            ]
         ".background .popover table tr td a":
             "text": [
                 'Default'
@@ -66,7 +60,14 @@ module.exports =
             ]
         "table.table tbody tr td.description":
             "text": [
-                'TGF-beta signaling pathway'
+                'Homeobox, conserved site [IPR017970]'
+                'Homeodomain [IPR001356]'
+                'Homeodomain-like [IPR009057]'
+                'MAD homology, MH1 [IPR013019]'
+                'Dwarfin [IPR013790]'
+                'MAD homology 1, Dwarfin-type [IPR003619]'
+                'SMAD domain, Dwarfin-type [IPR001132]'
+                'SMAD domain-like [IPR017855]'
             ]
     
 # Target element.

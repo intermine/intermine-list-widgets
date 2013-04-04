@@ -14,8 +14,10 @@ class EnrichmentLengthCorrectionView extends Backbone.View
     """
 
     events:
-        'click input.correction': 'toggleCull'
-        'click a.which': 'seeWhich'
+        'click .correction input.correction': 'toggleCull'
+        'click .correction a.which': 'seeWhich'
+        'hover .correction label .badge': 'showHelp'
+        'click .correction a.close': 'hideHelp'
 
     initialize: (o) ->
         @[k] = v for k, v of o
@@ -26,13 +28,14 @@ class EnrichmentLengthCorrectionView extends Backbone.View
         # The wrapper.
         $(@el).append @widget.template "enrichment.correction", @
 
-        # Init label tooltip.
-        $(@el).find('label .badge').popover
-            'placement': 'bottom'
-            'title': 'What does "Normalise by length" mean?'
-            'content': @help
-
         @
+
+    showHelp: =>
+        $(@el).find('.help').html @widget.template "popover.help",
+            "title": 'What does "Normalise by length" mean?'
+            "text":  @help
+
+    hideHelp: => $(@el).find('.help').empty()
 
     toggleCull: (e) =>
         @widget.widget.formOptions['gene_length_correction'] = $(e.target).is(':checked')

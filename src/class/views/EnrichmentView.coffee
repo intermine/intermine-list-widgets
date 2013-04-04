@@ -109,7 +109,7 @@ class EnrichmentView extends Backbone.View
         @renderTableBody table
 
         # How tall should the table be? Whole height - header - faux header.
-        height = $(@el).height() - $(@el).find('div.header').height() - $(@el).find('div.content div.head').height()
+        height = $(@el).height() - $(@el).find('div.header').height() - $(@el).find('div.content table thead').height()
         $(@el).find("div.content div.wrapper").css 'height', "#{height}px"
 
         # Determine the width of the faux head element.
