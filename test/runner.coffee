@@ -6,6 +6,34 @@ async      = require 'async'
 
 spec = require './spec.coffee'
 
+# Trim whitespace.
+String::trim -> @.replace /^\s+|\s+$/g, ''
+
+# Sync DOM validation be it after an event or outright.
+domValidator = (root, obj) ->
+    for selector, fns of obj
+        for fn, value of fns
+            # It better exist.
+            assert $(root + ' ' + selector)[0], "`#{root} #{selector}` does not exist in DOM"
+            
+            # What kind of a function is it?
+            if attr = fn.match /attr\((.*)\)/
+                # Attribute check.
+                assert $(root + ' ' + selector).attr(attr[1]), value, "`#{selector}` fail"
+            else
+                # Standard contents check.
+                assert fn in [ 'text', 'html', 'toArray' ], "unrecognized function `#{fn}`"
+
+                # Are we matching against an array?
+                if value instanceof Array
+                    # Apply the function after making into an array first.
+                    arr = ( ($(el)[fn]()).trim() for i, el of $(root + ' ' + selector).toArray() )
+                    # Do we match.
+                    assert.deepEqual arr, value, "`#{selector}` fail"
+                else
+                    # Straight up.
+                    assert.equal ($(root + ' ' + selector)[fn]()).trim(), value, "`#{selector}` fail"
+
 browser = new Browser
     'debug': false
 
@@ -58,45 +86,18 @@ async.waterfall [ (cb) ->
 
 , (cb) ->
     # Cheerio when loaded brother.
-    $ = cheerio.load browser.html()
+    $ = cheerio.load browser.html(),
+        'ignoreWhitespace': true
+        'lowerCaseTags': true
 
     # Just check we are on the right page.
     assert.equal $('h2.title').text(), 'Example List Widgets', 'page title not matching'
 
     # Go through the widgets and do DOM checks.
     for root, widget of spec
-        for selector, fns of widget.dom
-            for fn, value of fns
-                # It better exist.
-                assert $(root + ' ' + selector)[0], "`#{root} #{selector}` does not exist in DOM"
-                # Check the contents.
-                assert.equal $(root + ' ' + selector)[fn](), value
-
+        domValidator root, widget.dom
+    
     cb null
-
-, (cb) ->
-    fns = []
-
-    # Click around checks.
-    for root, widget of spec then do (root, widget) ->
-        for selector, value of widget.click
-            fns.push (cb) ->
-                # It better exist.
-                assert $(root + ' ' + selector)[0], "`#{root} #{selector}` does not exist in DOM"
-                # Click on it!
-                browser.clickLink root + ' ' + selector, ->
-                    # What are we actually checking?
-                    for where, what of value
-                        switch where
-                            # Console log?
-                            when 'log'
-                                assert.deepEqual what, log.pop()[0]
-
-                    # We done.
-                    cb null
-
-    # Run fns in sync as we work with a dummy logging stack.
-    async.waterfall fns, cb
 
 ], (err) ->
     process.exit(0)
