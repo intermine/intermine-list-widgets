@@ -2,7 +2,7 @@
 <div class="head" style="display:table">
     <div style="font-weight:bold;display:table-cell;padding:0 8px;"><input type="checkbox" class="check" /></div>
     <div style="font-weight:bold;display:table-cell;padding:0 8px;"><%= @label %></div>
-    <div style="font-weight:bold;display:table-cell;padding:0 8px;">p-Value <a href="http://intermine.readthedocs.org/en/latest/embedding/list-widgets/enrichment-widgets/" target="_blank" class="badge badge-info" style="font-size:11px;font-family:serif;padding:1px 3px;border-radius:2px;font-style:italic">i</a></div>
+    <div style="font-weight:bold;display:table-cell;padding:0 8px;white-space:nowrap">p-Value <a href="http://intermine.readthedocs.org/en/latest/embedding/list-widgets/enrichment-widgets/" target="_blank" class="badge badge-info" style="font-size:11px;font-family:serif;padding:1px 3px;border-radius:2px;font-style:italic">i</a></div>
     <div style="font-weight:bold;display:table-cell;padding:0 8px;">Matches</div>
     <div style="clear:both"></div>
 </div>

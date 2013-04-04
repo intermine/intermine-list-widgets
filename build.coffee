@@ -16,7 +16,7 @@ VERSION = null
 # Main input/output.
 MAIN =
     INPUT: "src/widgets.coffee"
-    OUTPUT: "public/js/intermine.widgets.js"
+    OUTPUT: "public/intermine.widgets.js"
 
 # Templates dir.
 TEMPLATES = "src/templates"
@@ -235,5 +235,5 @@ async.waterfall [ (cb) ->
                 else cb null
 
 ], (err) ->
-    if err then winston.error error
+    if err then winston.error err
     else winston.info 'Done'

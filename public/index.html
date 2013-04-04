@@ -1,64 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>List Widgets Client</title>
+<head>
+    <meta charset="utf-8">
+    <title>List Widgets Client</title>
 
-        <!--[if lt IE 9]>
-            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 
-        <link href="css/bootstrap.css" rel="stylesheet">
-        <style>
-            .widget { margin:20px 10px; }
-        </style>
-
-        <!-- intermine api loader -->
-        <script src="http://cdn.intermine.org/api"></script>
-        <!-- widgets -->
-        <script src="js/intermine.widgets.js"></script>
-    </head>
-
-    <body>
-        <!-- menu -->
-        <div class="navbar">
-            <div class="navbar-inner">
-                <div class="container" style="width: auto;">
-                    <a class="brand" href="#">List Widgets Client</a>
-                    <ul class="nav pull-right">
-                        <li class="divider-vertical"></li>
-                        <li><a href="https://github.com/radekstepan/intermine-widget-client">Fork me on GitHub</a></li>
-                    </ul>
-                </div>
+    <!-- intermine api loader -->
+    <script src="http://cdn.intermine.org/api"></script>
+    <!-- widgets -->
+    <script src="intermine.widgets.js"></script>
+</head>
+<body class="bootstrap">
+    <!-- menu -->
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="container" style="width: auto;">
+                <a class="brand" href="#">List Widgets Client</a>
+                <ul class="nav pull-right">
+                    <li class="divider-vertical"></li>
+                    <li><a href="https://github.com/radekstepan/intermine-widget-client">Fork me on GitHub</a></li>
+                </ul>
             </div>
         </div>
+    </div>
 
-        <div class="container">
-
-            <div class="row">
-                <h2 class="title">Example List Widgets</h2>
-            </div>
-
-            <div class="row">
-                <div class="widget span4" id="one"></div>
-                <div class="widget span4" id="two"></div>
-                <div class="widget span4" id="three"></div>
-            </div>
-
-            <script type="text/javascript">
-            (function() {
-                /* A test of having $ not be jQuery. */
-                window.$ = 'I am an evil library!';
-
-                /* New Widgets client. */
-                var ListWidgets = new intermine.widgets({'root': 'http://beta.flymine.org/beta/service/'});
-
-                ListWidgets.chart('flyfish', 'demo-genes', '#one');
-                ListWidgets.enrichment('pathway_enrichment', 'demo-genes', '#two');
-                ListWidgets.table('orthologues', 'demo-genes', '#three');
-            })();
-            </script>
-
+    <div class="container">
+        <div class="row">
+            <h2 class="title">Example List Widgets</h2>
         </div>
-    </body>
+
+        <div class="row">
+            <div class="widget span4" id="one"></div>
+            <div class="widget span4" id="two"></div>
+            <div class="widget span4" id="three"></div>
+        </div>
+
+        <script type="text/javascript">
+        (function() {
+            /* A test of having $ not be jQuery. */
+            window.$ = 'I am an evil library!';
+
+            /* New Widgets client. */
+            var ListWidgets = new intermine.widgets({'root': 'http://beta.flymine.org/beta/service/'});
+
+            ListWidgets.chart('flyfish', 'demo-genes', '#one');
+            ListWidgets.enrichment('pathway_enrichment', 'demo-genes', '#two');
+            ListWidgets.table('orthologues', 'demo-genes', '#three');
+        })();
+        </script>
+
+    </div>
+</body>
 </html>
