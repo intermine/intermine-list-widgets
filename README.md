@@ -1,8 +1,8 @@
 # InterMine List Widgets
 
-[ ![Codeship Status for radekstepan/intermine-widget-client](https://www.codeship.io/projects/f7c370c0-7eb2-0130-3315-12313d1849b8/status?branch=master)](https://www.codeship.io/projects/2339)
+[ ![Codeship Status for intermine/intermine-list-widgets](https://www.codeship.io/projects/0b6f50a0-8272-0130-d7d0-22000a1c4ba4/status?branch=master)](https://www.codeship.io/projects/2424)
 
-![image](https://raw.github.com/radekstepan/intermine-widget-client/master/example.png)
+![image](https://raw.github.com/intermine/intermine-list-widgets/master/example.png)
 
 ## Build
 
