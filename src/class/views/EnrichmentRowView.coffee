@@ -41,7 +41,7 @@ class EnrichmentRowView extends Backbone.View
                 "resultsCb":   @callbacks.resultsCb
                 "listCb":      @callbacks.listCb
                 "response":    @response
-                "imService":   @imService
+                "widget":      @widget
                 "size":        $(e.target).text() # get the number of matches we clicked on
             )).el
         else @popoverView.toggle()

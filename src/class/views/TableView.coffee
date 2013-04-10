@@ -90,7 +90,7 @@ class TableView extends Backbone.View
                 "matchCb":   @options.matchCb
                 "resultsCb": @options.resultsCb
                 "listCb":    @options.listCb
-                "imService": @widget.imService
+                "widget":    @widget
             ).el
 
         # Append the fragment to trigger the browser reflow.
@@ -140,7 +140,7 @@ class TableView extends Backbone.View
                 "listCb":         @options.listCb
                 "pathQuery":      @response.pathQuery
                 "pathConstraint": @response.pathConstraint
-                "imService":      @widget.imService
+                "widget":         @widget
                 "type":           @response.type
                 "style":          'width:300px'
             )).el

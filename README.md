@@ -10,19 +10,29 @@
 $ coffee build.coffee
 ```
 
-## Demo run
+## Demo
 
 ```bash
 $ npm install
 $ PORT=5200 node start.js
 ```
 
-### Development
+## Development
 
 Watch source files and rebuild them on changes:
 
 ```bash
 $ nodemon --watch src --exec "coffee" build.coffee
+```
+
+## Testing
+
+The testing suite relies on [zombie.js](http://zombie.labnotes.org/). Make sure you have `node 0.8.*` installed:
+
+```bash
+$ nvm install 0.8.22
+$ npm install
+$ npm test
 ```
 
 ## Configure

@@ -12,37 +12,45 @@ class Widgets
 
     # JavaScript libraries as resources. Will be loaded if not present already.
     resources: [
-        path:   'http://cdn.intermine.org/css/bootstrap/2.0.4-prefixed-no-icons/css/bootstrap.min.css'
-        type:   'css'
+        path: 'http://cdn.intermine.org/css/bootstrap/2.0.4-prefixed-no-icons/css/bootstrap.min.css'
+        type: 'css'
     ,
-        name:  'JSON'
-        path:  'http://cdn.intermine.org/js/json3/3.2.2/json3.min.js'
-        type:  'js'
+        name: 'JSON'
+        path: 'http://cdn.intermine.org/js/json3/3.2.2/json3.min.js'
+        type: 'js'
     ,
-        name:  "jQuery"
-        path:  "http://cdn.intermine.org/js/jquery/1.7.2/jquery.min.js"
-        type:  "js"
-        wait:  true
+        name: 'setImmediate'
+        path: 'http://cdn.intermine.org/js/setImmediate/1.0.1/setImmediate.min.js'
+        type: 'js'
     ,
-        name:  "_"
-        path:  "http://cdn.intermine.org/js/underscore.js/1.3.3/underscore-min.js"
-        type:  "js"
-        wait:  true
+        name: 'async'
+        path: "http://cdn.intermine.org/js/async/0.2.6/async.min.js"
+        type: "js"
     ,
-        name:  "Backbone"
-        path:  "http://cdn.intermine.org/js/backbone.js/0.9.2/backbone-min.js"
-        type:  "js"
-        wait:  true
+        name: "jQuery"
+        path: "http://cdn.intermine.org/js/jquery/1.7.2/jquery.min.js"
+        type: "js"
+        wait: true
     ,
-        name:  "google"
-        path:  "https://www.google.com/jsapi"
-        type:  "js"
+        name: "_"
+        path: "http://cdn.intermine.org/js/underscore.js/1.3.3/underscore-min.js"
+        type: "js"
+        wait: true
     ,
-        path:  "http://cdn.intermine.org/js/intermine/imjs/latest/imjs.js"
-        type:  "js"
+        name: "Backbone"
+        path: "http://cdn.intermine.org/js/backbone.js/0.9.2/backbone-min.js"
+        type: "js"
+        wait: true
     ,
-        path:  "http://cdn.intermine.org/js/filesaver.js/FileSaver.min.js"
-        type:  "js"
+        name: "google"
+        path: "https://www.google.com/jsapi"
+        type: "js"
+    ,
+        path: "http://cdn.intermine.org/js/intermine/imjs/2.5.0/im.min.js"
+        type: "js"
+    ,
+        path: "http://cdn.intermine.org/js/filesaver.js/FileSaver.min.js"
+        type: "js"
     ]
 
     ###
@@ -110,7 +118,7 @@ class Widgets
                 @wait = true
                 # Fetch/cache lists this user has access to.
                 $.ajax
-                    'url': "#{@service}lists?token=#{@token}&format=json"
+                    'url':      "#{@service}lists?token=#{@token}&format=json"
                     'dataType': 'jsonp'
                     success: (data) =>
                         # Problems?
@@ -125,8 +133,8 @@ class Widgets
                             new o.EnrichmentWidget(@service, @token, @lists, opts...)
 
                     error: (xhr, opts, err) => $(el).html $ '<div/>',
-                        class: "alert alert-error"
-                        html:  "#{xhr.statusText} for <a href='#{@service}widgets'>#{@service}widgets</a>"
+                        'class': "alert alert-error"
+                        'html':  "#{xhr.statusText} for <a href='#{@service}widgets'>#{@service}widgets</a>"
 
 
     ###
@@ -150,8 +158,8 @@ class Widgets
         if @wait then window.setTimeout((=> @all(type, bagName, el, widgetOptions)), 0)
         else
             $.ajax
-                url:      "#{@service}widgets?format=json"
-                dataType: "jsonp"
+                'url':      "#{@service}widgets?format=json"
+                'dataType': 'jsonp'
                 
                 success: (response) =>
                     # We have results.
@@ -160,7 +168,7 @@ class Widgets
                         for widget in response.widgets when type in widget.targets
                             # Create target element for individual Widget (slugify just to make sure).
                             widgetEl = widget.name.replace(/[^-a-zA-Z0-9,&\s]+/ig, '').replace(/-/gi, "_").replace(/\s/gi, "-").toLowerCase()
-                            $(el).append $('<div/>', id: widgetEl, class: "widget span6")
+                            $(el).append $('<div/>', 'id': widgetEl, 'class': "widget span6")
                             
                             # What type is it?
                             switch widget.widgetType
@@ -172,8 +180,8 @@ class Widgets
                                     @table(widget.name, bagName, "#{el} ##{widgetEl}", widgetOptions)
                 
                 error: (xhr, opts, err) => $(el).html $ '<div/>',
-                    class: "alert alert-error"
-                    html:  "#{xhr.statusText} for <a href='#{@service}widgets'>#{@service}widgets</a>"
+                    'class': "alert alert-error"
+                    'html':  "#{xhr.statusText} for <a href='#{@service}widgets'>#{@service}widgets</a>"
 
 
 # Do we have the InterMine API Loader?

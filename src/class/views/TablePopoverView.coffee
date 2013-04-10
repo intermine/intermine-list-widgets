@@ -9,10 +9,10 @@ class TablePopoverView extends Backbone.View
     valuesLimit: 5
 
     events:
-        "click a.match":   "matchAction"
-        "click a.results": "resultsAction"
-        "click a.list":    "listAction"
-        "click a.close":   "toggle"
+        'click a.match':   'matchAction'
+        'click a.results': 'resultsAction'
+        'click a.list':    'listAction'
+        'click a.close':   'toggle'
 
     initialize: (o) ->
         @[k] = v for k, v of o
@@ -21,43 +21,40 @@ class TablePopoverView extends Backbone.View
 
     render: =>
         $(@el).css 'position':'relative'
-        $(@el).html @template "popover",
-            "description":      @description
-            "descriptionLimit": @descriptionLimit
-            "style":            @style or "width:300px;margin-left:-300px"
+        $(@el).html @template 'popover',
+            'description':      @description
+            'descriptionLimit': @descriptionLimit
+            'style':            @style or "width:300px;margin-left:-300px"
 
         # Modify JSON to constrain on these matches.
         @pathQuery = JSON.parse @pathQuery
         # Add the ONE OF constraint.
         @pathQuery.where.push
-            "path":   @pathConstraint
-            "op":     "ONE OF"
-            "values": @identifiers
+            'path':   @pathConstraint
+            'op':     'ONE OF'
+            'values': @identifiers
 
         # Grab the data.
-        values = []
-        @imService.query(JSON.parse(JSON.stringify(@pathQuery)), (q) =>
-            q.rows (response) =>
-                for object in response
-                    values.push do (object) ->
-                        for column in object
-                            return column if column and column.length > 0
-
-                @renderValues values
-
-                # Now that the size has changed, adjust the popover.
-                @adjustPopover()
-        )
+        @widget.queryRows @pathQuery, @renderValues
 
         @
 
     # Render the values from imjs request.
-    renderValues: (values) =>
-        $(@el).find('div.values').html @template "popover.values",
+    renderValues: (response) =>
+        values = []
+        for object in response
+            values.push do (object) ->
+                for column in object
+                    return column if column and column.length > 0
+
+        $(@el).find('div.values').html @template 'popover.values',
             'values':      values
             'type':        @type
             'valuesLimit': @valuesLimit
             'size':        @size # size is the number of matches count we clicked on
+
+        # Now that the size has changed, adjust the popover.
+        @adjustPopover()
 
     # Onclick the individual match, execute the callback.
     matchAction: (e) =>

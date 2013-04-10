@@ -27,22 +27,19 @@ class ChartPopoverView extends Backbone.View
             "style":            'width:300px'
 
         # Grab the data for this bar.
-        values = []
-        @imService.query(JSON.parse(JSON.stringify(@quickPq)), (q) =>
-            q.rows (response) =>
-                for object in response
-                    values.push do (object) ->
-                        for column in object
-                            return column if column and column.length > 0
-
-                @renderValues values
-        )
+        @widget.queryRows @quickPq, @renderValues
 
         @
 
     # Render the values from imjs request.
-    renderValues: (values) =>
-        $(@el).find('div.values').html @template "popover.values"
+    renderValues: (response) =>
+        values = []
+        for object in response
+            values.push do (object) ->
+                for column in object
+                    return column if column and column.length > 0
+
+        $(@el).find('div.values').html @template 'popover.values',
             'values':      values
             'type':        @type
             'valuesLimit': @valuesLimit

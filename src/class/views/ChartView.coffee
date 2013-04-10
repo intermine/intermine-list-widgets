@@ -203,7 +203,7 @@ class ChartView extends Backbone.View
                         "listCb":      @options.listCb
                         "matchCb":     @options.matchCb
                         "quickPq":     quickPq
-                        "imService":   @widget.imService
+                        "widget":      @widget
                         "type":        @response.type
                     )).el
 

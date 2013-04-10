@@ -64,9 +64,9 @@ class ChartWidget extends InterMineWidget
 
         # Payload.
         data =
-            'widget':     @id
-            'list':       @bagName
-            'token':      @token
+            'widget': @id
+            'list':   @bagName
+            'token':  @token
 
         # An extra form filter?
         for key, value of @formOptions

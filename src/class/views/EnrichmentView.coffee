@@ -136,7 +136,7 @@ class EnrichmentView extends Backbone.View
                 "type":      @response.type
                 "callbacks": { "matchCb": @options.matchCb, "resultsCb": @options.resultsCb, "listCb": @options.listCb }
                 "response":  @response
-                "imService": @widget.imService
+                "widget":    @widget
             ).el
 
         # Append the fragment to trigger the browser reflow.
@@ -171,26 +171,24 @@ class EnrichmentView extends Backbone.View
             "values": rowIdentifiers
 
         # Get the actual data.
-        @widget.imService.query(JSON.parse(JSON.stringify(pq)), (q) =>
-            q.rows (response) =>
-                # Assume the first column is the table column, while second is the matches object identifier (Gene).
-                # Form 'publication -> genes' object.
-                dict = {}
-                for object in response
-                    if not dict[object[0]]? then dict[object[0]] = []
-                    dict[object[0]].push object[1]
+        @widget.queryRows pq, (response) =>
+            # Assume the first column is the table column, while second is the matches object identifier (Gene).
+            # Form 'publication -> genes' object.
+            dict = {}
+            for object in response
+                if not dict[object[0]]? then dict[object[0]] = []
+                dict[object[0]].push object[1]
 
-                # Create a tab delimited string.
-                result = []
-                for model in @collection.selected()
-                    result.push [ model.get('description'), model.get('p-value') ].join("\t") + "\t" + dict[model.get('identifier')].join(',')
+            # Create a tab delimited string.
+            result = []
+            for model in @collection.selected()
+                result.push [ model.get('description'), model.get('p-value') ].join("\t") + "\t" + dict[model.get('identifier')].join(',')
 
-                if result.length
-                    try
-                        new Exporter result.join("\n"), "#{@widget.bagName} #{@widget.id}.tsv"
-                    catch TypeError
-                        new PlainExporter $(e.target), result.join("\n")
-        )
+            if result.length
+                try
+                    new Exporter result.join("\n"), "#{@widget.bagName} #{@widget.id}.tsv"
+                catch TypeError
+                    new PlainExporter $(e.target), result.join("\n")
 
     # Selecting table rows and clicking on **View** should create an EnrichmentMatches collection of all matches ids.
     viewAction: =>
@@ -213,7 +211,7 @@ class EnrichmentView extends Backbone.View
                 "resultsCb":   @options.resultsCb
                 "listCb":      @options.listCb
                 "response":    @response
-                "imService":   @widget.imService
+                "widget":      @widget
             )).el
 
     # Select background population list.

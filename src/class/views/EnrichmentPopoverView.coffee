@@ -34,34 +34,30 @@ class EnrichmentPopoverView extends Backbone.View
             "values": @identifiers
 
         # Grab the data for the selected row(s).
-        values = []
-        @imService.query(JSON.parse(JSON.stringify(pq)), (q) =>
-            q.rows (response) =>
-                for object in response
-                    value = do (object) ->
-                        # Show the first available identifier, start @ end because PQ has a View constraint in [0].
-                        for column in object.reverse()
-                            if column and column.length > 0 then return column
-
-                    # Filter out duplicates by saving to a dict.
-                    values.push value unless value in values
-
-                # Actually render the values through a template.
-                @renderValues values
-
-                # Now that the size has changed, adjust the popover.
-                @adjustPopover()
-        )
+        @widget.queryRows pq, @renderValues
 
         @
 
     # Render the values from imjs request.
-    renderValues: (values) =>
-        $(@el).find('div.values').html @template "popover.values"
+    renderValues: (response) =>
+        values = []
+        for object in response
+            value = do (object) ->
+                # Show the first available identifier, start @ end because PQ has a View constraint in [0].
+                for column in object.reverse()
+                    if column and column.length > 0 then return column
+
+            # Filter out duplicates by saving to a dict.
+            values.push value unless value in values
+
+        $(@el).find('div.values').html @template 'popover.values',
             'values':      values
             'type':        @response.type
             'valuesLimit': @valuesLimit
             'size':        @size # size is the number of matches count we clicked on
+
+        # Now that the size has changed, adjust the popover.
+        @adjustPopover()
 
     # Adjust popover position so that it is not cutoff if too close to the edge.
     adjustPopover: =>

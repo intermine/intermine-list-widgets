@@ -5,12 +5,15 @@ class InterMineWidget
     # Inject wrapper inside the target `div` that we have control over.
     constructor: ->
         $(@el).html $ '<div/>',
-            class: "inner"
-            style: "height:572px;overflow:hidden;position:relative"
+            'class': "inner"
+            'style': "height:572px;overflow:hidden;position:relative"
+        
         @el = "#{@el} div.inner"
 
         # Init imjs.
-        @imService = new intermine.Service('root': @service, 'token': @token)
+        @_service = new intermine.Service
+            'root': @service
+            'token': @token
 
     # Where is eco?
     template: (name, context = {}) -> JST["#{name}.eco"]?(context)
@@ -54,8 +57,32 @@ class InterMineWidget
         ( evt[key] = value for key, value of obj )
         evt.source = 'ListWidgets'
         evt.widget =
-            'id': @id
+            'id':  @id
             'bag': @bagName
-            'el': @el
+            'el':  @el
             'service': @service
+        
         window.dispatchEvent evt
+
+    # Call the service and return results.
+    queryRows: (query, cb) =>
+        service = @_service
+
+        async.waterfall [ (cb) ->
+            # setImmediate bug.
+            setTimeout cb, 0
+
+        # Create a query.
+        (cb) ->
+            service.query query, (q) ->
+                cb null, q
+        
+        # Turn query into rows.
+        , (q, cb) ->
+            q.rows (response) ->
+                cb null, response
+        
+        ], (err, response) ->
+            # TODO: Handle errors in a nice way.
+
+            cb response

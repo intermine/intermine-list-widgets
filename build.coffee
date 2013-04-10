@@ -1,13 +1,13 @@
 #!/usr/bin/env coffee
-fs       = require 'fs'            # I/O
-npath    = require 'path'          # does path exist?
-cs       = require 'coffee-script' # take a guess
-eco      = require 'eco'           # templating
-{ exec } = require 'child_process' # execute custom commands
-uglify   = require 'uglify-js'     # minify JS code
-async    = require 'async'         # control flow
-wrench   = require 'wrench'        # recursive file operations
-winston  = require 'winston'       # cli logging
+fs            = require 'fs'            # I/O
+npath         = require 'path'          # does path exist?
+cs            = require 'coffee-script' # take a guess
+eco           = require 'eco'           # templating
+{ exec }      = require 'child_process' # execute custom commands
+uglify        = require 'uglify-js'     # minify JS code
+async         = require 'async'         # control flow
+wrench        = require 'wrench'        # recursive file operations
+winston       = require 'winston'       # cli logging
 
 winston.cli()
 
@@ -164,7 +164,12 @@ async.waterfall [ (cb) ->
                                 else
                                     # Insert spaces as we are inside the factory function.
                                     source = ( "  #{line}\n" for line in source.split('\n') ).join('')
-                                    
+
+                                    indent = '  '
+
+                                    # Prefix source with filename.
+                                    source = [ indent + '###', indent + file, indent + '###', source ].join('\n')
+
                                     # `InterMineWidget.coffee` needs to go first...
                                     if file.match /InterMineWidget\.coffee$/
                                         classes.splice 1, 0, source
@@ -172,6 +177,7 @@ async.waterfall [ (cb) ->
                                         classes.push source
                                     
                                     # Get the class name (it better match).
+                                    file.split('/').pop().split('.')[0]
                                     names.push file.split('/').pop().split('.')[0]
 
                                     # This one is done.
@@ -201,8 +207,6 @@ async.waterfall [ (cb) ->
 
 # Write output.
 , (JS, CS, cb) ->
-    winston.debug 'Writing output'
-
     flatten = (input) ->
         output = []
         # Traverse.
@@ -216,16 +220,44 @@ async.waterfall [ (cb) ->
     indent = (input) -> ( "  #{row}" for row in input.split('\n') ).join('\n')
 
     # Flatten JS.
+    winston.debug 'Flatten JS'
     JS = flatten JS
 
     # Compile CoffeeScript to JavaScript.
-    JS.push cs.compile flatten(CS).join('\n'), 'bare': 'on'
+    winston.debug 'Compile CoffeeScript'
+    try
+        flat = flatten(CS).join('\n')
+        JS.push cs.compile flat, 'bare': 'on'
+    catch err
+        # Can we determine the location of the error? (CoffeeScript compile).
+        if loc = err.location
+            # This is the line
+            line = loc.first_line - 1
+
+            # Make us into lines.
+            lines = flat.split '\n'
+
+            block = []
+            # First line?
+            if line > 0 then block.push lines[line - 1]
+            # Actual line.
+            block.push lines[line].bold
+            # Last line?
+            if line + 1 < lines.length then block.push lines[line + 1]
+
+            # Throw a proper 
+            return cb new Error "#{err} on line #{loc.first_line} column #{loc.first_column}\n" + block.join('\n')
+        
+        # Unknown error.
+        return cb err
 
     # Combine JavaScript together, wrap in a fn & join on newlines.
+    winston.debug 'Combine JavaScript'
     code = indent flatten(JS).join('\n')
     output = "(function() {\n  var o = {};\n#{code}\n}).call(this);"
 
     # Create file if it does not exist.
+    winston.debug 'Writing output'
     fs.open MAIN.OUTPUT, 'w', 0o0666, (err) ->
         if err then cb err
         else

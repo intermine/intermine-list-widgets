@@ -41,7 +41,7 @@ class TableRowView extends Backbone.View
                 "listCb":         @listCb
                 "pathQuery":      @response.pathQuery
                 "pathConstraint": @response.pathConstraint
-                "imService":      @imService
+                "widget":         @widget
                 "type":           @response.type
                 "size":           $(e.target).text() # get the number of matches we clicked on
             )).el
