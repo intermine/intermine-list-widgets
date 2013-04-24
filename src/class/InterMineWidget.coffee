@@ -68,12 +68,8 @@ class InterMineWidget
     queryRows: (query, cb) =>
         service = @_service
 
-        async.waterfall [ (cb) ->
-            # setImmediate bug.
-            setTimeout cb, 0
-
         # Create a query.
-        (cb) ->
+        async.waterfall [ (cb) ->
             service.query query, (q) ->
                 cb null, q
         
