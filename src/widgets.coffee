@@ -11,47 +11,32 @@ class Widgets
     wait:    true
 
     # JavaScript libraries as resources. Will be loaded if not present already.
-    resources: [
-        path: 'http://cdn.intermine.org/css/bootstrap/2.0.4-prefixed-no-icons/css/bootstrap.min.css'
-        type: 'css'
-    ,
-        name: 'JSON'
-        path: 'http://cdn.intermine.org/js/json3/3.2.2/json3.min.js'
-        type: 'js'
-    ,
-        name: 'setImmediate'
-        path: 'http://cdn.intermine.org/js/setImmediate/1.0.1/setImmediate.min.js'
-        type: 'js'
-    ,
-        name: 'async'
-        path: "http://cdn.intermine.org/js/async/0.2.6/async.min.js"
-        type: "js"
-    ,
-        name: "jQuery"
-        path: "http://cdn.intermine.org/js/jquery/1.7.2/jquery.min.js"
-        type: "js"
-        wait: true
-    ,
-        name: "_"
-        path: "http://cdn.intermine.org/js/underscore.js/1.3.3/underscore-min.js"
-        type: "js"
-        wait: true
-    ,
-        name: "Backbone"
-        path: "http://cdn.intermine.org/js/backbone.js/0.9.2/backbone-min.js"
-        type: "js"
-        wait: true
-    ,
-        name: "google"
-        path: "https://www.google.com/jsapi"
-        type: "js"
-    ,
-        path: "http://cdn.intermine.org/js/intermine/imjs/2.5.0/im.min.js"
-        type: "js"
-    ,
-        path: "http://cdn.intermine.org/js/filesaver.js/FileSaver.min.js"
-        type: "js"
-    ]
+    resources:
+        'css':
+            'Bootstrap':
+                'path': 'http://cdn.intermine.org/css/bootstrap/2.0.4-prefixed-no-icons/css/bootstrap.min.css'
+        'js':
+            'JSON':
+                'path': 'http://cdn.intermine.org/js/json3/3.2.2/json3.min.js'
+            'setImmediate':
+                'path': 'http://cdn.intermine.org/js/setImmediate/1.0.1/setImmediate.min.js'
+            'async':
+                'path': 'http://cdn.intermine.org/js/async/0.2.6/async.min.js'
+                'depends': [ 'setImmediate' ]
+            'jQuery':
+                'path': 'http://cdn.intermine.org/js/jquery/1.9.1/jquery-1.9.1.min.js'
+            '_':
+                'path': 'http://cdn.intermine.org/js/underscore.js/1.3.3/underscore-min.js'
+            'Backbone':
+                'path': 'http://cdn.intermine.org/js/backbone.js/1.0.0/backbone-min.js'
+                'depends': [ 'jQuery', '_' ]
+            'google':
+                'path': 'https://www.google.com/jsapi'
+            'intermine.imjs':
+                'path': 'http://cdn.intermine.org/js/intermine/imjs/latest/imjs.js'
+                'depends': [ 'jQuery', '_' ]
+            'FileSaver':
+                'path': 'http://cdn.intermine.org/js/filesaver.js/FileSaver.min.js'
 
     ###
     New Widgets client.
@@ -75,7 +60,10 @@ class Widgets
             # Do we have a token?
             @token = opts[0].token or ''
 
-        intermine.load @resources, =>
+        done = (err) =>
+            # Any problems?
+            throw err if err
+
             # All libraries loaded, welcome jQuery, export classes.
             $ = window.jQuery
             # Enable Cross-Origin Resource Sharing (for Opera, IE).
@@ -83,6 +71,10 @@ class Widgets
             o extends factory window.Backbone
             # Switch off waiting switch.
             @wait = false
+
+        # Skip loading dependencies?
+        if opts[0].skipDeps then done()
+        else intermine.load @resources, done
 
     ###
     Chart Widget.
