@@ -83,7 +83,7 @@ class EnrichmentView extends Backbone.View
     # Render the actions toolbar based on how many collection model rows are selected.
     renderToolbar: =>
         $(@el).find("div.actions").html(
-            $ @template "actions", "disabled": @collection.selected().length is 0
+            $ @template "actions"
         )
 
     # Render the table of results using Document Fragment to prevent browser reflows.
@@ -155,12 +155,13 @@ class EnrichmentView extends Backbone.View
 
     # Export selected rows into a file.
     exportAction: (e) =>
-        # Are we actually enabled?
-        return if @collection.selected() is 0
+        # Select all if none selected (@kkara #164).
+        selected = @collection.selected()
+        if !selected.length then selected = @collection.models
 
         # Get column identifiers to constrain on.
         rowIdentifiers = []
-        for model in @collection.selected()
+        for model in selected
             rowIdentifiers.push model.get 'identifier'
 
         # PathQuery for matches values.
@@ -181,7 +182,7 @@ class EnrichmentView extends Backbone.View
 
             # Create a tab delimited string.
             result = []
-            for model in @collection.selected()
+            for model in selected
                 result.push [ model.get('description'), model.get('p-value') ].join("\t") + "\t" + dict[model.get('identifier')].join(',')
 
             if result.length
@@ -192,9 +193,13 @@ class EnrichmentView extends Backbone.View
 
     # Selecting table rows and clicking on **View** should create an EnrichmentMatches collection of all matches ids.
     viewAction: =>
+        # Select all if none selected (@kkara #164).
+        selected = @collection.selected()
+        if !selected.length then selected = @collection.models
+
         # Get all the matches in selected rows.
         descriptions = [] ; rowIdentifiers = []
-        for model in @collection.selected()
+        for model in selected
             descriptions.push model.get 'description' ; rowIdentifiers.push model.get 'identifier'
 
         if rowIdentifiers.length # Can be empty.

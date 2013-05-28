@@ -39,17 +39,17 @@
         </div>
 
         <script type="text/javascript">
-        (function() {
+        (function(root) {
             /* A test of having $ not be jQuery. */
-            window.$ = 'I am an evil library!';
+            root.$ = 'I am an evil library!';
 
             /* New Widgets client. */
             var ListWidgets = new intermine.widgets({ 'root': 'http://beta.flymine.org/beta/service/' });
 
-            ListWidgets.chart('flyfish', 'demo-genes', '#one');
-            ListWidgets.enrichment('prot_dom_enrichment_for_gene', 'demo-genes', '#two');
-            ListWidgets.table('orthologues', 'demo-genes', '#three');
-        })();
+            ListWidgets.chart('flyfish', 'demo-list', '#one');
+            ListWidgets.enrichment('prot_dom_enrichment_for_gene', 'demo-list', '#two');
+            ListWidgets.table('orthologues', 'demo-list', '#three');
+        })(window);
         </script>
 
     </div>

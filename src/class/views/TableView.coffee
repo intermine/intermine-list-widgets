@@ -41,7 +41,7 @@ class TableView extends Backbone.View
     # Render the actions toolbar based on how many collection model rows are selected.
     renderToolbar: =>
         $(@el).find("div.actions").html(
-            $ @template "actions", "disabled": @collection.selected().length is 0
+            $ @template "actions"
         )
 
     # Render the table of results using Document Fragment to prevent browser reflows.
@@ -104,12 +104,13 @@ class TableView extends Backbone.View
 
     # Export selected rows into a file.
     exportAction: (e) =>
-        # Are we actually enabled?
-        return if @collection.selected() is 0
+        # Select all if none selected (@kkara #164).
+        selected = @collection.selected()
+        if !selected.length then selected = @collection.models
         
         # Create a tab delimited string of the table as it is.
         result = [ @response.columns.replace(/,/g, "\t") ]
-        for model in @collection.selected()
+        for model in selected
             result.push model.get('descriptions').join("\t") + "\t" + model.get('matches')
 
         if result.length
@@ -120,9 +121,13 @@ class TableView extends Backbone.View
 
     # Selecting table rows and clicking on **View** should create an TableMatches collection of all matches ids.
     viewAction: =>
+        # Select all if none selected (@kkara #164).
+        selected = @collection.selected()
+        if !selected.length then selected = @collection.models
+
         # Get all the identifiers for selected rows.
         descriptions = [] ; rowIdentifiers = []
-        for model in @collection.selected()
+        for model in selected
             # Grab the first (only?) description.
             descriptions.push model.get('descriptions')[0] ; rowIdentifiers.push model.get 'identifier'
 

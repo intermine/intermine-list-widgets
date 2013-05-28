@@ -33,7 +33,7 @@ class Widgets
             'google':
                 'path': 'https://www.google.com/jsapi'
             'intermine.imjs':
-                'path': 'http://cdn.intermine.org/js/intermine/imjs/latest/imjs.js'
+                'path': 'http://cdn.intermine.org/js/intermine/imjs/2.6.0/im.js'
                 'depends': [ 'jQuery', '_' ]
             'FileSaver':
                 'path': 'http://cdn.intermine.org/js/filesaver.js/FileSaver.min.js'

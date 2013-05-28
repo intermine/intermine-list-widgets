@@ -29,7 +29,7 @@ module.exports =
                     "path": "Gene"
                     "op": "IN"
                     "code": "A"
-                    "value": "demo-genes"
+                    "value": "demo-list"
                 ]
     
 # Target element.
@@ -54,8 +54,7 @@ module.exports =
         ".background .popover table tr td a":
             "text": [
                 'Default'
-                'copy'
-                'demo-genes'
+                'demo-list'
                 'some genes fbgn'
             ]
         "table.table tbody tr td.description":
@@ -78,16 +77,23 @@ module.exports =
             "text": "Orthologues"
         "table.table tbody tr":
             "text": [
-                'Drosophila melanogaster23'
-                'Drosophila sechellia23'
-                'Drosophila yakuba23'
-                'Drosophila erecta22'
-                'Drosophila ananassae21'
-                'Drosophila grimshawi20'
-                'Drosophila mojavensis20'
-                'Drosophila persimilis20'
-                'Drosophila pseudoobscura20'
-                'Drosophila virilis20'
-                'Drosophila willistoni20'
-                'Drosophila simulans19'
+                "Drosophila melanogaster23"
+                "Drosophila sechellia23"
+                "Drosophila yakuba23"
+                "Drosophila erecta22"
+                "Danio rerio21"
+                "Drosophila ananassae21"
+                "Homo sapiens21"
+                "Mus musculus21"
+                "Rattus norvegicus21"
+                "Drosophila grimshawi20"
+                "Drosophila mojavensis20"
+                "Drosophila persimilis20"
+                "Drosophila pseudoobscura20"
+                "Drosophila virilis20"
+                "Drosophila willistoni20"
+                "Anopheles gambiae19"
+                "Caenorhabditis elegans19"
+                "Drosophila simulans19"
+                "Saccharomyces cerevisiae3"
             ]
