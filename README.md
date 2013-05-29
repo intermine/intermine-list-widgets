@@ -7,14 +7,15 @@
 ## Build
 
 ```bash
-$ coffee build.coffee
+$ npm install
+$ make build
 ```
 
 ## Demo
 
 ```bash
 $ npm install
-$ PORT=5200 node start.js
+$ PORT=5200 node index.js
 ```
 
 ## Development
@@ -22,7 +23,7 @@ $ PORT=5200 node start.js
 Watch source files and rebuild them on changes:
 
 ```bash
-$ nodemon --watch src --exec "coffee" build.coffee
+$ nodemon --watch src --exec "make" build
 ```
 
 ## Testing
@@ -79,7 +80,7 @@ Widgets.table('interactions', 'myList', '#widget-3');
 
 ### How do apply a CSS style to the widgets?
 
-Use or modify a [Twitter Bootstrap 2.3.1](http://twitter.github.com/bootstrap/) [theme](http://bootswatch.com/).
+Use or modify [Twitter Bootstrap 2.3.1](http://twitter.github.com/bootstrap/).
 
 ### I want to define a custom behavior when clicking on an Enrichment or Chart widget.
 

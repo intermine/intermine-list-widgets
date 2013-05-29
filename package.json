@@ -1,7 +1,7 @@
 {
     "name": "intermine-list-widgets",
     "author": "Radek <rs676@cam.ac.uk>",
-    "version": "1.12.1",
+    "version": "1.12.2",
     "private": true,
     "dependencies": {
         "coffee-script": ">=1.3.1",
@@ -24,7 +24,7 @@
         "url": "https://github.com/radekstepan/intermine-widget-client.git"
     },
     "scripts": {
-        "start": "start.js",
+        "start": "index.js",
         "test": "./node_modules/.bin/coffee test/runner.coffee"
     }
 }

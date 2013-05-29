@@ -1,3 +1,4 @@
 js/vendor/*
 node_modules/
 intermine.api.js
+*.log
