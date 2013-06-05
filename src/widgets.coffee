@@ -83,13 +83,15 @@ class Widgets
     @param {jQuery selector} el Where to render the Widget to.
     @param {Object} widgetOptions `{ "title": true/false, "description": true/false, "matchCb": function(id, type) {}, "resultsCb": function(pq) {}, "listCb": function(pq) {} }`
     ###
-    chart: (opts...) =>
-        if @wait then window.setTimeout((=> @chart(opts...)), 0)
-        else
+    chart: (opts...) ->
+        do wait = =>
+            return setTimeout wait, 20 if @wait
+
             # Load Google Visualization.
-            google.load "visualization", "1.0",
-                packages: [ "corechart" ]
-                callback: => new o.ChartWidget(@service, @token, opts...)
+            google.load 'visualization', '1.0',
+                packages: [ 'corechart' ]
+                callback: =>
+                    new o.ChartWidget @service, @token, opts...
     
     ###
     Enrichment Widget.
@@ -98,13 +100,12 @@ class Widgets
     @param {jQuery selector} el Where to render the Widget to.
     @param {Object} widgetOptions `{ "title": true/false, "description": true/false, "matchCb": function(id, type) {}, "resultsCb": function(pq) {}, "listCb": function(pq) {} }`
     ###
-    enrichment: (opts...) =>
-        # Wait to render the widget?
-        if @wait
-            window.setTimeout((=> @enrichment(opts...)), 0)
-        else
+    enrichment: (opts...) ->
+        do wait = =>
+            return setTimeout wait, 20 if @wait
+
             # Do we already have lists accessible to us?
-            if @lists? then new o.EnrichmentWidget(@service, @token, @lists, opts...)
+            if @lists? then new o.EnrichmentWidget @service, @token, @lists, opts...
             else
                 # First to get here slows the others.
                 @wait = true
@@ -122,7 +123,7 @@ class Widgets
                             # Save it and stop waiting.
                             @lists = data.lists ; @wait = false
                             # New instance of a widget.
-                            new o.EnrichmentWidget(@service, @token, @lists, opts...)
+                            new o.EnrichmentWidget @service, @token, @lists, opts...
 
                     error: (xhr, opts, err) => $(el).html $ '<div/>',
                         'class': "alert alert-error"
@@ -136,8 +137,11 @@ class Widgets
     @param {jQuery selector} el Where to render the Widget to.
     @param {Object} widgetOptions `{ "title": true/false, "description": true/false, "matchCb": function(id, type) {}, "resultsCb": function(pq) {}, "listCb": function(pq) {} }`
     ###
-    table: (opts...) =>
-        if @wait then window.setTimeout((=> @table(opts...)), 0) else new o.TableWidget(@service, @token, opts...)
+    table: (opts...) ->
+        do wait = =>
+            return setTimeout wait, 20 if @wait
+
+            new o.TableWidget @service, @token, opts...
 
     ###
     All available List Widgets.
@@ -146,9 +150,10 @@ class Widgets
     @param {jQuery selector} el Where to render the Widget to.
     @param {Object} widgetOptions `{ "title": true/false, "description": true/false, "matchCb": function(id, type) {}, "resultsCb": function(pq) {}, "listCb": function(pq) {} }`
     ###
-    all: (type = "Gene", bagName, el, widgetOptions) =>
-        if @wait then window.setTimeout((=> @all(type, bagName, el, widgetOptions)), 0)
-        else
+    all: (type = "Gene", bagName, el, widgetOptions) ->
+        do wait = =>
+            return setTimeout wait, 20 if @wait
+
             $.ajax
                 'url':      "#{@service}widgets?format=json"
                 'dataType': 'jsonp'
@@ -175,9 +180,8 @@ class Widgets
                     'class': "alert alert-error"
                     'html':  "#{xhr.statusText} for <a href='#{@service}widgets'>#{@service}widgets</a>"
 
-
 # Do we have the InterMine API Loader?
-if not window.intermine
+if not window.intermine and window.intermine.load
     throw 'You need to include the InterMine API Loader first!'
 else
     window.intermine.widgets = Widgets

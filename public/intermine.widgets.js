@@ -2500,7 +2500,7 @@
   $ = window.jQuery || window.Zepto;
   
   Widgets = (function() {
-    Widgets.prototype.VERSION = '1.12.2';
+    Widgets.prototype.VERSION = '1.12.3';
   
     Widgets.prototype.wait = true;
   
@@ -2558,10 +2558,6 @@
         _this = this;
   
       opts = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
-      this.all = __bind(this.all, this);
-      this.table = __bind(this.table, this);
-      this.enrichment = __bind(this.enrichment, this);
-      this.chart = __bind(this.chart, this);
       if (typeof opts[0] === 'string') {
         this.service = opts[0];
         this.token = opts[1] || '';
@@ -2598,17 +2594,16 @@
   
   
     Widgets.prototype.chart = function() {
-      var opts,
+      var opts, wait,
         _this = this;
   
       opts = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
-      if (this.wait) {
-        return window.setTimeout((function() {
-          return _this.chart.apply(_this, opts);
-        }), 0);
-      } else {
-        return google.load("visualization", "1.0", {
-          packages: ["corechart"],
+      return (wait = function() {
+        if (_this.wait) {
+          return setTimeout(wait, 20);
+        }
+        return google.load('visualization', '1.0', {
+          packages: ['corechart'],
           callback: function() {
             return (function(func, args, ctor) {
               ctor.prototype = func.prototype;
@@ -2617,7 +2612,7 @@
             })(o.ChartWidget, [_this.service, _this.token].concat(__slice.call(opts)), function(){});
           }
         });
-      }
+      })();
     };
   
     /*
@@ -2630,25 +2625,24 @@
   
   
     Widgets.prototype.enrichment = function() {
-      var opts,
+      var opts, wait,
         _this = this;
   
       opts = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
-      if (this.wait) {
-        return window.setTimeout((function() {
-          return _this.enrichment.apply(_this, opts);
-        }), 0);
-      } else {
-        if (this.lists != null) {
+      return (wait = function() {
+        if (_this.wait) {
+          return setTimeout(wait, 20);
+        }
+        if (_this.lists != null) {
           return (function(func, args, ctor) {
             ctor.prototype = func.prototype;
             var child = new ctor, result = func.apply(child, args);
             return Object(result) === result ? result : child;
-          })(o.EnrichmentWidget, [this.service, this.token, this.lists].concat(__slice.call(opts)), function(){});
+          })(o.EnrichmentWidget, [_this.service, _this.token, _this.lists].concat(__slice.call(opts)), function(){});
         } else {
-          this.wait = true;
+          _this.wait = true;
           return $.ajax({
-            'url': "" + this.service + "lists?token=" + this.token + "&format=json",
+            'url': "" + _this.service + "lists?token=" + _this.token + "&format=json",
             'dataType': 'jsonp',
             success: function(data) {
               if (data.statusCode !== 200 && (data.lists == null)) {
@@ -2674,7 +2668,7 @@
             }
           });
         }
-      }
+      })();
     };
   
     /*
@@ -2687,21 +2681,20 @@
   
   
     Widgets.prototype.table = function() {
-      var opts,
+      var opts, wait,
         _this = this;
   
       opts = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
-      if (this.wait) {
-        return window.setTimeout((function() {
-          return _this.table.apply(_this, opts);
-        }), 0);
-      } else {
+      return (wait = function() {
+        if (_this.wait) {
+          return setTimeout(wait, 20);
+        }
         return (function(func, args, ctor) {
           ctor.prototype = func.prototype;
           var child = new ctor, result = func.apply(child, args);
           return Object(result) === result ? result : child;
-        })(o.TableWidget, [this.service, this.token].concat(__slice.call(opts)), function(){});
-      }
+        })(o.TableWidget, [_this.service, _this.token].concat(__slice.call(opts)), function(){});
+      })();
     };
   
     /*
@@ -2714,18 +2707,18 @@
   
   
     Widgets.prototype.all = function(type, bagName, el, widgetOptions) {
-      var _this = this;
+      var wait,
+        _this = this;
   
       if (type == null) {
         type = "Gene";
       }
-      if (this.wait) {
-        return window.setTimeout((function() {
-          return _this.all(type, bagName, el, widgetOptions);
-        }), 0);
-      } else {
+      return (wait = function() {
+        if (_this.wait) {
+          return setTimeout(wait, 20);
+        }
         return $.ajax({
-          'url': "" + this.service + "widgets?format=json",
+          'url': "" + _this.service + "widgets?format=json",
           'dataType': 'jsonp',
           success: function(response) {
             var widget, widgetEl, _i, _len, _ref1, _results;
@@ -2767,14 +2760,14 @@
             }));
           }
         });
-      }
+      })();
     };
   
     return Widgets;
   
   })();
   
-  if (!window.intermine) {
+  if (!window.intermine && window.intermine.load) {
     throw 'You need to include the InterMine API Loader first!';
   } else {
     window.intermine.widgets = Widgets;
