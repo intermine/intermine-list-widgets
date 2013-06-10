@@ -51,6 +51,8 @@ class ChartWidget extends InterMineWidget
         # Merge `widgetOptions`.
         @widgetOptions = merge widgetOptions, @widgetOptions
 
+        @log = []
+
         super()
         @render()
 
@@ -73,13 +75,17 @@ class ChartWidget extends InterMineWidget
             # This should be handled better...
             if key not in [ 'errorCorrection', 'pValue' ] then data['filter'] = value
 
+        @log.push 'Sending data payload ' + JSON.stringify data
+
         # Get JSON response by calling the service.
         $.ajax
-            url:      "#{@service}list/chart?format=json"
+            url:      "#{@service}list/chart"
             dataType: "jsonp"
             data:     data
             
             success: (response) =>
+                @log.push 'Received a response ' + JSON.stringify response
+
                 # No need for a loading overlay.
                 window.clearTimeout timeout
                 @loading?.remove()
@@ -90,6 +96,8 @@ class ChartWidget extends InterMineWidget
                 if response.wasSuccessful
                     # Actual name of the widget.
                     @name = response.title
+
+                    @log.push 'Creating new ChartView'
 
                     # New **View**.
                     @view = new ChartView(
@@ -102,4 +110,5 @@ class ChartWidget extends InterMineWidget
                         "options":  @widgetOptions
                     )
             
-            error: (request, status, error) => clearTimeout timeout ; @error { 'text': "#{@service}list/chart" }, "AJAXTransport"
+            error: (request, status, error) =>
+                clearTimeout timeout ; @error { 'text': "#{@service}list/chart" }, 'AJAXTransport'

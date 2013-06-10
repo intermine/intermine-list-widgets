@@ -61,7 +61,9 @@ class EnrichmentWidget extends InterMineWidget
             errorCorrection: "Holm-Bonferroni"
             pValue:          "0.05"
 
-        super() # Luke... I am your father!
+        @log = []
+
+        super()
         @render()
 
     # Visualize the widget.
@@ -86,13 +88,17 @@ class EnrichmentWidget extends InterMineWidget
             if key not in [ 'errorCorrection', 'pValue', 'current_population', 'remember_population', 'gene_length_correction' ] then key = 'filter'
             data[key] = value
 
+        @log.push 'Sending data payload ' + JSON.stringify data
+
         # Request new data.
         $.ajax
-            'url':      "#{@service}list/enrichment?format=json"
+            'url':      "#{@service}list/enrichment"
             'dataType': "jsonp"
             'data':     data
             
             success: (response) =>
+                @log.push 'Received a response ' + JSON.stringify response
+
                 # No need for a loading overlay.
                 window.clearTimeout timeout
                 @loading?.remove()
@@ -106,6 +112,8 @@ class EnrichmentWidget extends InterMineWidget
 
                     # Pass on only lists of our type that are not empty.
                     lists = ( l for l in @lists when l.type is response.type and l.size isnt 0 )
+
+                    @log.push 'Creating new EnrichmentView'
 
                     # New **View**.
                     @view = new EnrichmentView(

@@ -42,6 +42,8 @@ class TableWidget extends InterMineWidget
     constructor: (@service, @token, @id, @bagName, @el, widgetOptions = {}) ->
         # Merge `widgetOptions`.
         @widgetOptions = merge widgetOptions, @widgetOptions
+        
+        @log = []
 
         super()
         @render()
@@ -60,13 +62,17 @@ class TableWidget extends InterMineWidget
             'list':       @bagName
             'token':      @token
 
+        @log.push 'Sending data payload ' + JSON.stringify data
+
         # Get JSON response by calling the service.
         $.ajax
-            url:      "#{@service}list/table?format=json"
+            url:      "#{@service}list/table"
             dataType: "jsonp"
             data:     data
             
             success: (response) =>
+                @log.push 'Received a response ' + JSON.stringify response
+
                 # No need for a loading overlay.
                 window.clearTimeout timeout
                 @loading?.remove()
@@ -77,6 +83,8 @@ class TableWidget extends InterMineWidget
                 if response.wasSuccessful
                     # Actual name of the widget.
                     @name = response.title
+
+                    @log.push 'Creating new TableView'
 
                     # New **View**.
                     @view = new TableView(

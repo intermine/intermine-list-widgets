@@ -31,7 +31,7 @@ async.waterfall [ (cb) ->
         if err then cb err
         else
             VERSION = (JSON.parse(file)).version
-            winston.info "Compiling version #{VERSION}"
+            winston.info "Compiling version #{VERSION.bold}"
             cb null, [], []
 
 # Compile templates.

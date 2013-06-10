@@ -52,8 +52,6 @@ class ChartView extends Backbone.View
             "notAnalysed": @response.notAnalysed
             "type": @response.type
 
-        # View all results btn.
-
         # Extra attributes (DataSets etc.)?
         if @response.filterLabel?
             $(@el).find('div.form form').append @template "extra",
