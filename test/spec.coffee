@@ -51,12 +51,6 @@ module.exports =
                 '0.10'
                 '1.00'
             ]
-        ".background .popover table tr td a":
-            "text": [
-                'Default'
-                'demo-list'
-                'some genes fbgn'
-            ]
         "table.table tbody tr td.description":
             "text": [
                 'Homeobox, conserved site [IPR017970]'
