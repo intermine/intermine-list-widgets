@@ -1,15 +1,13 @@
-<div class="group correction" style="display:inline-block;margin-right:5px;float:left;height:60px">
-    <label>Normalise by length <em class="badge badge-info" style="font-size:11px;font-family:serif;padding:1px 3px;border-radius:2px">i</em><div class="help"></div></label>
-    <p style="width:300px">
+<div class="group correction" style="display:inline-block;margin-right:10px;float:left;height:60px">
+    <label>Normalise by length <em class="badge badge-info" style="font-size:11px;font-family:serif;padding:1px 3px;border-radius:2px">i</em><div class="hjalp" style="padding:0"></div></label>
 
     <% if @gene_length_correction: %>
-        <a class="btn btn-small active correction">Normalised</a>
+        <a class="btn btn-small active correction" style="float:right">Normalised</a>
     <% else: %>
-        <a class="btn btn-small correction">Normalise</a>
+        <a class="btn btn-small correction" style="float:right">Normalise</a>
     <% end %>
 
     <% if @percentage_gene_length_not_null: %>
     	<%= @percentage_gene_length_not_null %> of genes in your list do not have a length and will be discarded, <a class="which" style="cursor:pointer">see which</a>.
     <% end %>
-    </p>
 </div>

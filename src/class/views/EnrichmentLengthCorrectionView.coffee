@@ -31,11 +31,11 @@ class EnrichmentLengthCorrectionView extends Backbone.View
         @
 
     showHelp: =>
-        $(@el).find('.help').html @widget.template "popover.help",
+        $(@el).find('.hjalp').html @widget.template "popover.help",
             "title": 'What does "Normalise by length" mean?'
             "text":  @help
 
-    hideHelp: => $(@el).find('.help').empty()
+    hideHelp: => $(@el).find('.hjalp').empty()
 
     toggleCull: (e) =>
         # Toggle the active status and text.
