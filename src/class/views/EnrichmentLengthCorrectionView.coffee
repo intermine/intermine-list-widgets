@@ -14,7 +14,7 @@ class EnrichmentLengthCorrectionView extends Backbone.View
     """
 
     events:
-        'click .correction input.correction': 'toggleCull'
+        'click .correction a.correction': 'toggleCull'
         'click .correction a.which': 'seeWhich'
         'hover .correction label .badge': 'showHelp'
         'click .correction a.close': 'hideHelp'
@@ -38,7 +38,12 @@ class EnrichmentLengthCorrectionView extends Backbone.View
     hideHelp: => $(@el).find('.help').empty()
 
     toggleCull: (e) =>
-        @widget.widget.formOptions['gene_length_correction'] = $(e.target).is(':checked')
+        # Toggle the active status and text.
+        (el = $(e.target)).toggleClass('active').text ->
+            if el.hasClass('active') then 'Normalised' else 'Normalise'
+        # Set in form options.
+        @widget.widget.formOptions['gene_length_correction'] = el.hasClass('active')
+        # Re-render the widget.
         @widget.widget.render()
 
     # Will throw an exception when PQ not valid.
