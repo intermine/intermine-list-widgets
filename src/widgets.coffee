@@ -125,7 +125,7 @@ class Widgets
                             # New instance of a widget.
                             new o.EnrichmentWidget @service, @token, @lists, opts...
 
-                    error: (xhr, opts, err) => $(el).html $ '<div/>',
+                    error: (xhr, opts, err) => $(opts[2]).html $ '<div/>',
                         'class': "alert alert-error"
                         'html':  "#{xhr.statusText} for <a href='#{@service}widgets'>#{@service}widgets</a>"
 
