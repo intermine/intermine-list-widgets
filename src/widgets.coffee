@@ -111,7 +111,7 @@ class Widgets
                 @wait = true
                 # Fetch/cache lists this user has access to.
                 $.ajax
-                    'url':      "#{@service}lists?token=#{@token}"
+                    'url':      "#{@service}lists?token=#{@token}&format=json"
                     'dataType': 'jsonp'
                     success: (data) =>
                         # Problems?
