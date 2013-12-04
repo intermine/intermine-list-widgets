@@ -1,7 +1,0 @@
-<td class="check"><input type="checkbox" <% if @row["selected"]: %>checked="checked"<% end %> /></td>
-<% for column in @row["descriptions"]: %>
-    <td><%= column %></td>
-<% end %>
-<td class="matches">
-    <a class="count" style="cursor:pointer"><%= @row["matches"] %></a>
-</td>

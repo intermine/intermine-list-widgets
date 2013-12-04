@@ -1,6 +1,0 @@
-<h4><%= @size %> <%= @type %><%= 's' if parseInt(@size) != 1 %>:</h4>
-
-<% for object in @values[..@valuesLimit - 1]: %>
-    <a href="#" class="match"><%= object %></a>
-<% end %>
-<%- '&hellip;' if @values.length > @valuesLimit %>
